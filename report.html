@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>The K Tower 검단 — 적정 분양가 검토 및 사업성 재검토 보고서</title>
+<style>
+  @page { size: A4; margin: 16mm 14mm 20mm 14mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Malgun Gothic","맑은 고딕",sans-serif;
+    color: #1a2230; font-size: 10.3px; line-height: 1.62; margin: 0;
+  }
+  /* ---- running footer (every printed page) ---- */
+  .runfoot{ position: fixed; left:0; right:0; bottom:7mm; height:0;
+    font-size:8px; color:var(--mut); letter-spacing:.3px; }
+  .runfoot .ln{ position:absolute; left:0; right:0; top:-5px; border-top:1px solid var(--gold-l); }
+  .runfoot .l{ position:absolute; left:0; top:0; }
+  .runfoot .r{ position:absolute; right:0; top:0; color:var(--gold); font-weight:700; letter-spacing:1.5px; }
+  .cover ~ .runfoot{ display:block; }
+  /* ---- page-break hygiene ---- */
+  table, .box, .stat, .grid2 { page-break-inside: avoid; }
+  h3, h4 { page-break-after: avoid; }
+  thead { display: table-header-group; }
+  :root{
+    --navy:#0e2a4d; --navy2:#163a66; --gold:#b8924a; --gold-l:#e9dcc2;
+    --ink:#1a2230; --mut:#5d6b7e; --line:#d7dde6; --bg:#f4f6f9;
+    --red:#b5302a; --amber:#c8821b; --green:#1f7a4d; --blue:#2a6db5;
+  }
+  /* ---- cover ---- */
+  .cover{ height:265mm; display:flex; flex-direction:column; justify-content:space-between;
+    background:linear-gradient(160deg,#0e2a4d 0%,#163a66 60%,#1e4a80 100%); color:#fff;
+    margin:-16mm -14mm 0 -14mm; padding:34mm 22mm; }
+  .cover .kick{ letter-spacing:5px; font-size:12px; color:var(--gold-l); font-weight:600;}
+  .cover h1{ font-size:33px; line-height:1.25; margin:14px 0 0; font-weight:800; }
+  .cover h1 b{ color:#ffd98a; }
+  .cover .sub{ font-size:14px; color:#cdd9ea; margin-top:18px; }
+  .cover .rule{ height:3px; width:120px; background:var(--gold); margin:26px 0; }
+  .cover .meta{ font-size:12px; color:#dbe4f0; line-height:2; }
+  .cover .foot{ font-size:11px; color:#9fb3cc; border-top:1px solid rgba(255,255,255,.2); padding-top:12px;}
+  .cover .badge{ display:inline-block; border:1px solid var(--gold); color:#ffd98a; font-size:11px;
+    padding:3px 12px; border-radius:14px; margin-top:8px;}
+  /* ---- section ---- */
+  .sec{ page-break-before: always; }
+  .sechead{ display:flex; align-items:center; gap:12px; border-bottom:2px solid var(--navy); padding-bottom:7px; margin:4px 0 14px;}
+  .secno{ background:var(--navy); color:#fff; font-weight:800; font-size:13px; padding:4px 11px; border-radius:3px;}
+  .sectitle{ font-size:17px; font-weight:800; color:var(--navy); }
+  .secdesc{ margin-left:auto; font-size:10px; color:var(--mut); }
+  h3{ font-size:12.5px; color:var(--navy2); border-left:4px solid var(--gold); padding-left:9px; margin:18px 0 8px;}
+  h4{ font-size:11px; color:var(--navy); margin:12px 0 5px;}
+  p{ margin:6px 0; }
+  .mut{ color:var(--mut); }
+  .small{ font-size:9.2px; }
+  /* ---- tables ---- */
+  table{ width:100%; border-collapse:collapse; margin:8px 0 10px; font-size:9.6px; }
+  th,td{ border:1px solid var(--line); padding:5px 7px; vertical-align:middle; }
+  th{ background:var(--navy); color:#fff; font-weight:700; text-align:center; }
+  td.l{ text-align:left;} td.c{text-align:center;} td.r{text-align:right;}
+  tbody tr:nth-child(even){ background:#f6f8fb; }
+  .sub th{ background:var(--navy2); }
+  caption{ caption-side:top; text-align:left; font-size:9px; color:var(--mut); padding:2px 0;}
+  /* ---- callouts ---- */
+  .box{ border:1px solid var(--line); border-radius:5px; padding:10px 13px; margin:10px 0; background:#fff;}
+  .box.key{ border-left:5px solid var(--gold); background:#fcf9f2;}
+  .box.warn{ border-left:5px solid var(--red); background:#fcf2f1;}
+  .box.ok{ border-left:5px solid var(--green); background:#f1f8f4;}
+  .box .t{ font-weight:800; color:var(--navy); font-size:10.6px; margin-bottom:3px;}
+  .grid2{ display:flex; gap:12px; } .grid2>div{ flex:1; }
+  .stat{ display:flex; gap:10px; margin:10px 0; }
+  .stat .c{ flex:1; border:1px solid var(--line); border-top:3px solid var(--navy); border-radius:4px; padding:9px 11px; text-align:center; background:#fff;}
+  .stat .c .n{ font-size:19px; font-weight:800; color:var(--navy); }
+  .stat .c .l{ font-size:8.8px; color:var(--mut); margin-top:2px;}
+  .stat .c.gd{ border-top-color:var(--gold);} .stat .c.gd .n{ color:var(--gold);}
+  .stat .c.rd{ border-top-color:var(--red);} .stat .c.rd .n{ color:var(--red);}
+  .tag{ display:inline-block; font-size:8.4px; font-weight:700; padding:1px 7px; border-radius:10px; color:#fff;}
+  .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--blue);}
+  /* ---- bar ---- */
+  .bar{ height:15px; background:linear-gradient(90deg,var(--navy),var(--blue)); border-radius:2px; display:inline-block; vertical-align:middle;}
+  .barbg{ background:#eef1f5; border-radius:2px; width:100%; display:inline-block; }
+  ul{ margin:5px 0 8px; padding-left:18px;} li{ margin:3px 0;}
+  ol{ margin:5px 0 8px; padding-left:20px;}
+  .foot-note{ font-size:8.6px; color:var(--mut); border-top:1px solid var(--line); margin-top:14px; padding-top:6px;}
+  a{ color:var(--blue); text-decoration:none; word-break:break-all;}
+  .pill{ font-size:8.6px; background:var(--gold-l); color:#6b5320; padding:1px 7px; border-radius:9px; font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div>
+    <div class="kick">REAL ESTATE INVESTMENT REVIEW</div>
+    <h1>The K Tower 검단<br><b>적정 분양가</b> 검토 및<br><b>사업성 재검토</b> 보고서</h1>
+    <div class="sub">인천 서구 당하동 1237 · 검단신도시 C3-①-5 일반상업BL<br>근린생활시설 · 업무시설 · 판매시설 개발사업</div>
+    <span class="badge">시장조사 기반 독립 검토 · 다중출처 교차검증 · 제4판(직접 비교사례 보강)</span>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="meta">
+      <b>검토 기준일</b> &nbsp; 2026. 06. 22<br>
+      <b>대상 사업</b> &nbsp; 지하3층~지상10층 / 근생 128호·업무 48호·판매 19호<br>
+      <b>시행</b> ㈜케이타워검단 &nbsp;·&nbsp; <b>원자료</b> ㈜킴앤코 사업계획서(2026.02.10)
+    </div>
+  </div>
+  <div class="foot">
+    본 보고서는 공개된 시장 데이터(네이버부동산·상가114·KB부동산·한국부동산원·금융위·언론보도 등)를 교차검증해 작성했다.
+    수치 중 상당수는 분양 마케팅 자료 또는 추정치이며, 실제 의사결정 전 1차 통계·현장 실사로 재확인이 필요하다.
+  </div>
+</div>
+
+<!-- ============ 0. 요약 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">0</span><span class="sectitle">검토 요약 (Executive Summary)</span>
+    <span class="secdesc">핵심 결론</span></div>
+
+  <div class="stat">
+    <div class="c"><div class="n">17.3%</div><div class="l">원안 수익률(낙관)</div></div>
+    <div class="c rd"><div class="n">0.4%</div><div class="l">근생 −20% 시 (손익분기)</div></div>
+    <div class="c gd"><div class="n">84.8%</div><div class="l">근생이 차지하는 수입비중</div></div>
+    <div class="c"><div class="n">2028.3</div><div class="l">법조타운 개원(지연 확정)</div></div>
+  </div>
+
+  <div class="box key">
+    <div class="t">검토 결론</div>
+    원안 수익률 17.3%는 상가(근생)를 1층 근접가로 거의 다 비싸게 분양한다는 가정 위에 서 있다.
+    시장 데이터를 보면 상가는 1층만 강하고 상층부 평당가는 1층의 1/3~1/5로 떨어진다. 여기에 검단 상가는 공급과잉과 공실 위험이 구조적이다.
+    블렌디드 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 내려간다.
+    사업을 끌고 가려면 층별 분양가 현실화, 상가 선임대·상품구성 재편, 신탁·책준·자기자본을 통한 신용보강이 함께 가야 한다.
+  </div>
+
+  <h3>판정 요약</h3>
+  <table>
+    <thead><tr><th style="width:18%">항목</th><th style="width:14%">원안</th><th style="width:34%">시장 데이터(2025~26)</th><th style="width:12%">판정</th><th>코멘트</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>근생 1층 분양가</b></td><td class="c">4,500만/평<br>(계약)</td><td class="l">선양법조타워(검단 법조타운) 1층 계약평당 4,800만, 메트로시티 1층 4,500~4,900만</td><td class="c"><span class="tag g">적정</span></td><td class="l">동일 입지 직접사례보다 오히려 낮음. 1층 단가 자체는 무리 없음</td></tr>
+      <tr><td class="l"><b>근생 2층</b></td><td class="c">(블렌디드<br>4,500 의심)</td><td class="l">선양 2층 계약평당 2,200~2,500만, 메트로시티 1,600~1,800만</td><td class="c"><span class="tag r">과대위험</span></td><td class="l">1층의 35~50% 수준이 정상</td></tr>
+      <tr><td class="l"><b>근생 3~7층</b></td><td class="c">〃</td><td class="l">메트로시티 1,000~1,300만</td><td class="c"><span class="tag r">과대위험</span></td><td class="l">층별 차등 분양가 재설정 필수</td></tr>
+      <tr><td class="l"><b>업무 8~10층</b></td><td class="c">1,200만/평<br>(계약면적)</td><td class="l">검단 직접데이터 없음 / 문정 법조 오피스 매매 ~3,400만(전용)</td><td class="c"><span class="tag a">조건부</span></td><td class="l">전용률 환산 시 2,400~3,000만/평 가능. 전용률·개원지연 공실 확인 필요</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid2">
+    <div class="box ok"><div class="t">긍정 요인</div>
+      <ul class="small">
+        <li>인천1호선 검단연장 2025.6.28 개통(아라역=101역), 확정 역세권</li>
+        <li>검단 법조타운 착공 완료(2024.12), 법조 배후수요 잠재</li>
+        <li>배후 주거 구매력 견조(국평 7~8억대, 분양가상한제 안전마진)</li>
+        <li>상업용지 비율 희소, 오피스는 상가 대비 시장 우위</li>
+      </ul></div>
+    <div class="box warn"><div class="t">위험 요인</div>
+      <ul class="small">
+        <li>근생 수입비중 84.8%로 수익률이 상가 분양가에 종속</li>
+        <li>인천 상가 공실 13.6%, 오피스 공실 18.7%로 둘 다 전국 상회('25 3Q)</li>
+        <li>인천 미분양 3,818호 중 서구(검단)가 준공후 물량의 74%('26.2)</li>
+        <li>법조타운 개원 2028.3로 지연, 저신용 시행사, '26 하반기 PF 만기 정점</li>
+      </ul></div>
+  </div>
+
+  <div class="box small" style="border-left:5px solid var(--blue);background:#f1f6fb">
+    <b>제4판 보강.</b> 동일 입지·동일 유형의 직접 비교사례인 <b>선양법조타워</b>(검단 법조타운, 지하1~지상7층 근생빌딩) 실분양가를 확보해 반영했다.
+    1층 분양가 예시는 10.73억원(전용 11.04평/분양 22.35평)으로, 계약평당 약 4,800만원, 전용평당 약 9,720만원, 전용률 약 49.4%다.
+    이로써 기존에 추정에 머물던 상업지 근생빌딩 전용률 50% 가정이 실측으로 뒷받침됐고, 원안 1층 계약단가 4,500만원의 적정성도 직접 확인됐다.
+    잔여 갭은 검단 업무시설(오피스) 평당 실분양가로, 분양이 홍보관 문의로만 진행돼 공개 데이터로는 확인되지 않는다.
+  </div>
+</div>
+
+<!-- ============ 1. 사업 개요 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">1</span><span class="sectitle">사업 개요</span>
+    <span class="secdesc">원자료: 킴앤코 사업계획서</span></div>
+
+  <div class="grid2">
+    <table>
+      <thead><tr><th colspan="2">사업 기본정보</th></tr></thead>
+      <tbody>
+        <tr><td class="l" style="width:38%"><b>대지위치</b></td><td class="l">인천 서구 당하동 1237 (검단신도시 C3-①-5)</td></tr>
+        <tr><td class="l"><b>용도지역</b></td><td class="l">일반상업지역(지구단위계획구역)</td></tr>
+        <tr><td class="l"><b>대지면적</b></td><td class="l">2,013.60㎡ (609.11평)</td></tr>
+        <tr><td class="l"><b>건축면적</b></td><td class="l">1,388.23㎡ / 건폐율 68.94%(법정 70%)</td></tr>
+        <tr><td class="l"><b>연면적</b></td><td class="l">17,078.88㎡ (5,166.36평) / 용적률 595.72%(법정 600%)</td></tr>
+        <tr><td class="l"><b>규모</b></td><td class="l">지하3층 ~ 지상10층</td></tr>
+        <tr><td class="l"><b>주차</b></td><td class="l">127대(법정 108대, 118%)</td></tr>
+        <tr><td class="l"><b>상품구성</b></td><td class="l">근생 128호 · 업무 48호 · 판매 19호</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>층별 면적 구성 (지상부, 전용/지상 면적)</caption>
+      <thead><tr><th>층</th><th>용도</th><th>면적(평)</th></tr></thead>
+      <tbody>
+        <tr><td class="c">10 / 9 / 8</td><td class="l">업무시설(오피스 48호)</td><td class="r">각 292.87</td></tr>
+        <tr><td class="c">7 / 6</td><td class="l">근생(독서실·의원)</td><td class="r">각 365.12</td></tr>
+        <tr><td class="c">5 / 4 / 3 / 2</td><td class="l">근생(의원·학원·식당)</td><td class="r">각 409.79</td></tr>
+        <tr><td class="c">1</td><td class="l">근생(3호)/판매(19호)</td><td class="r">380.58</td></tr>
+        <tr style="font-weight:700;background:#eef1f5"><td class="c" colspan="2">지상 소계</td><td class="r">3,628.61</td></tr>
+        <tr><td class="c">B1~B3</td><td class="l">주차장·기계·전기·관리</td><td class="r">1,537.75</td></tr>
+        <tr style="font-weight:700;background:var(--navy);color:#fff"><td class="c" colspan="2">합계</td><td class="r">5,166.36</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <div class="t">검토의견서(원자료)가 이미 지적한 리스크 — 본 검토의 출발점</div>
+    <ol class="small">
+      <li>수익형상품 대출제한이 분양성의 주요 쟁점이다. 적정 분양가라도 낮은 LTV로 투자심리가 약화될 우려가 있다.</li>
+      <li>배달앱 대체로 요식업 기피 분위기가 있어 업종 선별이 필요하다(맞은편 북측블록에 병원·소매가 이미 구축).</li>
+      <li>인근 주거단지·법조타운 형성 추이를 보며 분양가를 연동해 재검토할 필요가 있다.</li>
+      <li>시행사·시공사의 신용·자본력이 PF대주 인정 여부와 사업 진행을 좌우하는 결정적 사안이다.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ 2. 시장환경 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">2</span><span class="sectitle">시장환경 분석</span>
+    <span class="secdesc">입지 · 호재 · 인구 · 시장</span></div>
+
+  <h3>2-1. 교통·개발 호재 — '확정'과 '예정'의 구분</h3>
+  <table>
+    <thead><tr><th style="width:22%">호재</th><th style="width:16%">상태</th><th style="width:18%">시점</th><th>핵심 내용</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>인천1호선 검단연장</b></td><td class="c"><span class="tag g">개통(확정)</span></td><td class="c">2025.6.28</td><td class="l">계양~검단 신설 3개역(아라역=101역 등). 이미 시세에 반영</td></tr>
+      <tr><td class="l"><b>검단 법조타운</b></td><td class="c"><span class="tag b">착공(확정)</span></td><td class="c">착공 2024.12<br>개원 2028.3</td><td class="l">인천지법 북부지원·인천지검 북부지청. 개원이 후행(당초 2025에서 2028로 연기)</td></tr>
+      <tr><td class="l"><b>GTX-D(서부권급행)</b></td><td class="c"><span class="tag a">예타통과(예정)</span></td><td class="c">착공 2028목표<br>완공 2033</td><td class="l">김포~검단~부천~서울. 착공 전 공백 리스크</td></tr>
+      <tr><td class="l"><b>서울5호선 연장</b></td><td class="c"><span class="tag a">답보(미착공)</span></td><td class="c">미확정</td><td class="l">GTX-D와 선형 중복으로 동시 실현 불확실</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn small">분양가에 즉시 반영할 수 있는 확정 호재는 인천1호선뿐이며, 이는 이미 가격에 선반영됐다. GTX-D·5호선은 예정 호재로만 보수적으로 반영해야 하고, 법조타운 배후수요는 2028년 개원 이후에 본격화한다. 미실현 호재를 현재 분양가에 전부 반영하면 흡수율 리스크로 돌아온다.</div>
+
+  <h3>2-2. 인구·배후수요</h3>
+  <div class="grid2">
+    <div class="box small"><div class="t">배후 주거 구매력 — 견조</div>
+      검단신도시는 계획 18.7만명/7.6만세대 규모로 2026~27년 입주가 활발하다(2026년 약 5,400세대).
+      국평(84㎡) 실거래가 7~8억대를 형성하고 있고(우미린더시그니처 8.1억, 호반써밋1차 7.1억), 분양가상한제 안전마진이 하락장 방어선이 된다.
+      <br><span class="pill">다만 이는 주거 수요이며 상업·업무 수요와는 구분해야 한다</span>
+    </div>
+    <div class="box small"><div class="t">상업 수요 — 시간 필요</div>
+      검단산단은 노후 단지로 신규 자족기능이 약해, 주간 상주인구 기반의 상권 형성에 시간이 걸린다.
+      상업용지 비율이 2기 신도시 최고 수준이라는 분석도 있어 공급과잉 구조의 한 요인으로 본다.
+    </div>
+  </div>
+
+  <h3>2-3. 상업용 부동산 시장 — 전국·인천 공실/수익률 (공식통계)</h3>
+  <div class="grid2">
+    <table>
+      <caption>전국 (한국부동산원, 2026년 1분기)</caption>
+      <thead><tr><th>구분</th><th>공실률</th><th>수익률</th></tr></thead>
+      <tbody>
+        <tr><td class="l">오피스</td><td class="c">8.8%</td><td class="c">1.80%</td></tr>
+        <tr><td class="l">중대형 상가</td><td class="c" style="color:var(--red)">14.1%</td><td class="c">0.99%</td></tr>
+        <tr><td class="l">소규모 상가</td><td class="c">8.3%</td><td class="c">0.79%</td></tr>
+        <tr><td class="l">집합 상가</td><td class="c">10.5%</td><td class="c">1.23%</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>인천 (부동산원 인용, 2025년 3분기) — 전국보다 부진</caption>
+      <thead><tr><th>구분</th><th>공실률</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td class="l"><b>오피스</b></td><td class="c" style="color:var(--red);font-weight:700">18.7%</td><td class="l">전국의 2배 이상</td></tr>
+        <tr><td class="l">중대형 상가</td><td class="c" style="color:var(--red)">13.6%</td><td class="l">수익률 0.5~0.7%</td></tr>
+        <tr><td class="l">소규모 상가</td><td class="c">11.3%</td><td class="l">금리 역수익</td></tr>
+        <tr><td class="l">집합 상가</td><td class="c">9.7%</td><td class="l">인천평균 13.3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <table>
+    <caption>인천 세부권역 공실률 & 미분양 (2025 3Q / 국토부 '26.2)</caption>
+    <thead><tr><th>권역</th><th>공실률</th><th>권역</th><th>공실률</th><th colspan="2">인천 미분양 ('26.2)</th></tr></thead>
+    <tbody>
+      <tr><td class="l">구월동(원도심)</td><td class="c">34%</td><td class="l">부평</td><td class="c">16.2%</td><td class="l">총 미분양</td><td class="r">3,818호</td></tr>
+      <tr><td class="l">영종(신도심)</td><td class="c">25~30%</td><td class="l">주안</td><td class="c">11.5%</td><td class="l">준공후(악성)</td><td class="r">1,277호</td></tr>
+      <tr><td class="l">신포</td><td class="c">21.4%</td><td class="l">송도</td><td class="c">~8%</td><td class="l"><b>서구(검단)</b></td><td class="r" style="color:var(--red);font-weight:700">준공후의 74%</td></tr>
+      <tr><td class="l" colspan="2"></td><td class="l">청라</td><td class="c">6.8%</td><td class="l" colspan="2" style="font-size:8.6px">서구 950호 = 준공후 악성의 다수</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn small">제2판은 오피스를 상대적 우위로 봤으나, 인천 단위에서는 오피스 공실이 18.7%로 상가(13.6%)보다 오히려 높다(원도심 노후오피스 영향). 오피스라서 안전하다는 전제는 성립하지 않는다. 게다가 인천 미분양 중 서구(검단)가 준공후 물량의 74%를 차지한다는 점은 분양시장 침체를 직접 보여준다. 원안의 근생 84.8% 편중에 더해 오피스 확대도 인천 공실 리스크를 동반하므로, 용도와 무관하게 선임대·마스터리스·보수적 분양가가 관건이다.</div>
+</div>
+
+<!-- ============ 3. 주변 시세 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">3</span><span class="sectitle">주변 시세 — 상가 · 오피스</span>
+    <span class="secdesc">다중출처 수집</span></div>
+
+  <div class="box small" style="background:#fcf9f2;border-left:5px solid var(--gold)">
+    <b>데이터 신뢰도 고지.</b> 상가·오피스는 아파트와 달리 실거래 공개가 드물어, 아래 수치 상당수는 분양 호가·마케팅 자료의 성격이 강하다.
+    네이버부동산·직방·다방·아실의 동적 매물 원자료는 로그인·동적페이지 제약으로 직접 수집이 제한된다. 추정치와 실데이터를 구분해 표기했다.
+  </div>
+
+  <h3>3-1. 근생(상가) 직접 비교사례 — 선양법조타워</h3>
+  <p class="small">검단 법조타운 내 동일 유형(중심상업지 근생빌딩)으로, 본 사업과 입지·상품성이 가장 가까운 직접 비교사례다. 네이버 분양정보로 1층 분양가 예시와 면적이 공개돼 있어 평당가·전용률을 역산할 수 있었다.</p>
+  <div class="grid2">
+    <table>
+      <caption>선양법조타워 개요 (인천 서구 당하동 1235-6)</caption>
+      <thead><tr><th colspan="2">제원</th></tr></thead>
+      <tbody>
+        <tr><td class="l" style="width:42%">입지</td><td class="l">검단 법조타운, 아라역 도보 1분, 중심상업지</td></tr>
+        <tr><td class="l">규모</td><td class="l">지하1~지상7층, 73호실 전체 근생</td></tr>
+        <tr><td class="l">연면적</td><td class="l">10,816.50㎡ (3,275평)</td></tr>
+        <tr><td class="l">준공</td><td class="l">2026.8 예정</td></tr>
+        <tr><td class="l">주차</td><td class="l">171대(법정 대비 740%)</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>1층 분양가 역산 (공개 예시 호실)</caption>
+      <thead><tr><th>구분</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td class="l">분양가(1층 예시)</td><td class="r">10.73억원</td></tr>
+        <tr><td class="l">전용 / 분양면적</td><td class="r">11.04평 / 22.35평</td></tr>
+        <tr><td class="l"><b>계약평당가</b></td><td class="r"><b>약 4,800만원</b></td></tr>
+        <tr><td class="l"><b>전용평당가</b></td><td class="r"><b>약 9,720만원</b></td></tr>
+        <tr style="background:#fcf9f2"><td class="l"><b>전용률</b></td><td class="r"><b>약 49.4%</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box ok small">동일 입지 직접사례에서 두 가지가 확인된다. 첫째, 상업지 근생빌딩의 전용률이 약 49.4%로, 그동안 추정으로만 두었던 전용률 50% 가정이 실측으로 뒷받침된다. 둘째, K tower 원안의 1층 계약평당 4,500만원은 선양(4,800만원)보다 낮아 1층 단가 자체는 무리가 없다. 핵심 쟁점은 1층이 아니라 상층 근생에 1층 근접가를 적용했는지 여부로 좁혀진다. 한편 선양 2층 선임대 특별분양 6개 호실은 분양가 3.9억~4.5억원, 현금수익률 약 6%(대출 활용 시 8%)로 안내되며, 면적을 감안하면 2층 계약평당은 2,200~2,500만원 수준으로 추정된다.</div>
+
+  <h3>3-2. 층별 가격 체계 — 메트로시티(101역세권) 보조 비교</h3>
+  <table>
+    <thead><tr><th>층</th><th>메트로시티(C12-2-2BL, 101역세권)<br>3.3㎡당 분양가</th><th>1층 대비</th><th class="l">시각화</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><b>지상 1층</b></td><td class="c"><b>4,500~4,900만원</b></td><td class="c">100%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:100%"></span></span></td></tr>
+      <tr><td class="c">2층</td><td class="c">1,600~1,800만원</td><td class="c">~36%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:36%"></span></span></td></tr>
+      <tr><td class="c">3층</td><td class="c">1,220~1,440만원</td><td class="c">~28%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:28%"></span></span></td></tr>
+      <tr><td class="c">4층</td><td class="c">970~1,140만원</td><td class="c">~22%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:22%"></span></span></td></tr>
+      <tr><td class="c">5층</td><td class="c">860~1,030만원</td><td class="c">~20%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:20%"></span></span></td></tr>
+      <tr><td class="c">6~9층</td><td class="c">750~980만원</td><td class="c">~18%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:18%"></span></span></td></tr>
+    </tbody>
+    <caption>출처: 상가114 메트로시티 층별 분양가표. ※ 중개사이트 종합 추정으로는 검단 1층 상가 7,000~9,000만/평 제시도 있으나 호가 성격.</caption>
+  </table>
+  <div class="box key small">1층 프리미엄이 절대적이고 2층 이상은 1층의 1/3~1/5로 떨어진다. 선양 2층(2,200~2,500만, 1층의 약 46~52%)이 메트로시티 2층(36%)보다 높은 것은 법조타운 입지 프리미엄으로 설명된다. 어느 경우든 근생을 단일 평균가로 보는 것은 의미가 없고, 층별 차등 분양가로 설계·검증해야 한다.</div>
+
+  <h4>교차검증 — iH 웰카운티 단지내상가 공공 입찰 공급가 (2024, 실데이터)</h4>
+  <table>
+    <thead><tr><th>호실(1층)</th><th>전용</th><th>공급가(총액)</th><th>환산 평당가</th></tr></thead>
+    <tbody>
+      <tr><td class="l">일반 13~14호</td><td class="c">33~42㎡</td><td class="r">3.39~4.37억</td><td class="c">계약평당 ~2,740~2,830만</td></tr>
+      <tr><td class="l">103호(코너)</td><td class="c">46㎡</td><td class="r">6.60억</td><td class="c">전용평당 ~4,750만</td></tr>
+      <tr><td class="l">106호(코너)</td><td class="c">51㎡</td><td class="r">7.85억</td><td class="c">전용평당 ~5,100만</td></tr>
+    </tbody>
+    <caption>출처: iH 인천도시공사 온비드 공급예정가(머니투데이·인천in). 평당가는 공급가÷면적 환산. 단지내상가 전용률 약 80~82% 역산.</caption>
+  </table>
+  <div class="box ok small">단지내상가(전용률 80%)인 iH 사례는 1층 전용평당 4,750~5,100만원으로, 선양·메트로시티의 1층 시장 앵커와 같은 구간에서 수렴한다. 다만 iH는 전용률이 K tower(상업지 근생빌딩, 약 50%)와 달라 계약평당 환산은 별도 확인이 필요하다. 직접 비교는 전용률이 같은 선양(49.4%)을 기준으로 보는 것이 정확하다.</div>
+
+  <h3>3-3. 상가 임대료·공실 (실데이터)</h3>
+  <table>
+    <thead><tr><th>항목</th><th>수치</th><th>시점</th></tr></thead>
+    <tbody>
+      <tr><td class="l">1층 임대료(평당)</td><td class="c"><b>월 30만~42만원/평</b></td><td class="c">2023.11 (KB)</td></tr>
+      <tr><td class="l">공실 현황</td><td class="l">대로변·코너는 입점 대체로 완료 / 이면·고층 근생 공실 다수</td><td class="c">2023~25</td></tr>
+      <tr><td class="l">시행사 목표수익률</td><td class="l">4%대 맞추려 GS마트 등 우량 키테넌트 선임대로 끼워 분양</td><td class="c">2023~25</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn small">1층 임대료 30~42만원/평(2023)을 분양가 4,500만원/평으로 나누면 표면수익률이 3~4%대로 빠듯하다. 이면·고층 공실을 반영하면 실질수익률은 더 내려가, 분양 후 임차 미스매치 위험이 있다.</div>
+
+  <h3>3-4. 업무(오피스) — 직접데이터 부재, 벤치마크로 추정</h3>
+  <table>
+    <thead><tr><th>구분</th><th>수치</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="l">검단 오피스 분양가</td><td class="c"><b>공개 실데이터 없음</b></td><td class="l">분양이 비공개·홍보관 문의로만 진행(선양법조타워, 메트로시티 오피스 등 가격 미공개)</td></tr>
+      <tr><td class="l">벤치마크: 문정 법조타운 오피스</td><td class="c">매매 ~3,400만원/평</td><td class="l">서울 핵심 법조타운(2025). 검단은 이보다 낮은 게 정상</td></tr>
+      <tr><td class="l">제안 업무 분양가</td><td class="c">1,200만원/평(계약)</td><td class="l">전용률 50% 가정 시 전용 2,400만/평으로, 문정의 약 70%</td></tr>
+    </tbody>
+  </table>
+  <div class="box small">계약면적 1,200만/평은 외형상 과도하지 않으나, 전용률 환산 비교와 법조타운 개원(2028.3) 지연에 따른 개원 전 입주분의 1~3년 공실 리스크(문정 전례)를 함께 반영해야 한다.</div>
+  <div class="box warn small">인천 오피스 공실률 18.7%(2025 3Q, 전국 8.8%의 2배 이상)는 검단 오피스 분양·임대의 직접 경고다. 검단은 오피스 공급 자체가 미미해 직접 시세는 여전히 미확보 상태(전부 홍보관 문의)이나, 인천 오피스 시장의 높은 공실은 오피스라서 안전하다는 전제를 약화시킨다. 오피스도 선임대 없이는 1,200만/평 흡수가 불확실하다.</div>
+</div>
+
+<!-- ============ 4. 적정 분양가 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">4</span><span class="sectitle">적정 분양가 산정</span>
+    <span class="secdesc">용도·층별 권고</span></div>
+
+  <h3>4-1. 층별 적정 분양가 권고 (전용/지상 면적 기준)</h3>
+  <table>
+    <thead><tr><th>층</th><th>용도</th><th>면적(평)</th><th>시장근거 단가<br>(만원/평)</th><th>권고 적정가<br>(만원/평)</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td class="l">근생/판매</td><td class="r">380.58</td><td class="c">4,500~4,900</td><td class="c"><b>4,500</b></td><td class="c"><span class="tag g">유지</span></td></tr>
+      <tr><td class="c">2</td><td class="l">근생</td><td class="r">409.79</td><td class="c">1,600~1,800</td><td class="c"><b>1,700</b></td><td class="c"><span class="tag r">하향</span></td></tr>
+      <tr><td class="c">3</td><td class="l">근생</td><td class="r">409.79</td><td class="c">1,220~1,440</td><td class="c"><b>1,300</b></td><td class="c"><span class="tag r">하향</span></td></tr>
+      <tr><td class="c">4</td><td class="l">근생</td><td class="r">409.79</td><td class="c">970~1,140</td><td class="c"><b>1,100</b></td><td class="c"><span class="tag r">하향</span></td></tr>
+      <tr><td class="c">5</td><td class="l">근생</td><td class="r">409.79</td><td class="c">860~1,030</td><td class="c"><b>1,000</b></td><td class="c"><span class="tag r">하향</span></td></tr>
+      <tr><td class="c">6~7</td><td class="l">근생</td><td class="r">730.24</td><td class="c">750~980</td><td class="c"><b>950</b></td><td class="c"><span class="tag r">하향</span></td></tr>
+      <tr><td class="c">8~10</td><td class="l">업무</td><td class="r">878.61</td><td class="c">(계약 1,200)</td><td class="c"><b>1,200</b><span class="small mut"> 계약</span></td><td class="c"><span class="tag a">조건부</span></td></tr>
+    </tbody>
+    <caption>※ 근생은 전용/지상면적 기준 단가, 업무는 원안과 동일 계약면적 단가. 메트로시티 층별표를 보수 적용한 권고치(2층은 선양 사례를 감안하면 상향 여지 있음).</caption>
+  </table>
+
+  <div class="box key">
+    <div class="t">권고: 단일 평균가에서 층별 차등가로 재설계</div>
+    원안 수지는 근생을 1층 기준 @4,500만원(계약면적)으로 산정해 근생 수입을 833.9억(84.8%)으로 계상했다. 이 부분이 가장 큰 검증 포인트다.
+    상층 근생에도 1층 근접가가 적용됐다면 수입을 과대계상한 것이며, 시장 층별가(2층 1,700~2,500, 3~7층 950~1,300만원)로 현실화하면 수입이 크게 줄어든다.
+    1순위 조치는 원본 엑셀의 층별 단가 가정을 확인하고 시장가 기준으로 재산정하는 것이다.
+  </div>
+
+  <h3>4-2. 권고가의 블렌디드(가중평균) 환산 — 산정기준 불일치 경고</h3>
+  <table>
+    <thead><tr><th>구분</th><th>값</th><th class="l">비고</th></tr></thead>
+    <tbody>
+      <tr><td class="l">권고 층별가의 전용 블렌디드(지상 근생 2,750평 가중평균)</td><td class="c"><b>약 1,635만원/평</b></td><td class="l">시장 층별가(메트로시티 기준) 적용</td></tr>
+      <tr><td class="l">원안 가정 계약면적 블렌디드</td><td class="c">4,500만원/평</td><td class="l">1층 기준 단일가</td></tr>
+      <tr><td class="l">전용률(실측 49.4%) 환산 시 원안</td><td class="c">전용 ~9,100만원/평</td><td class="l">전용 기준으로는 1층 비교사례(선양 9,720만 등)와 유사</td></tr>
+    </tbody>
+  </table>
+  <div class="box warn small">원안 4,500만원은 계약면적 기준, 권고 블렌디드 1,635만원은 전용면적 기준이라 산정기준이 달라 직접 비교는 불가하다. 핵심은 원안이 상층 근생에도 1층 수준 단가를 적용했는지이며, 이는 층별 계약평당가 분해표로만 판정된다(5장 가정·방법론, 7장 검증항목). 본 보고서가 절대 수입을 재계산하지 않고 민감도로 제시하는 이유다. 다만 선양 사례로 전용률 49.4%가 확인되면서, 원안 계약평당 4,500만원을 전용으로 환산하면 약 9,100만원으로 1층 비교사례와 정합한다. 즉 원안 단가가 1층에만 적용된 것이라면 정상이고, 상층까지 적용됐다면 과대다.</div>
+</div>
+
+<!-- ============ 5. 사업성 재검토 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">5</span><span class="sectitle">사업성 재검토</span>
+    <span class="secdesc">원안 수지 + 민감도</span></div>
+
+  <h3>5-1. 원안 사업수지 (킴앤코, 단위: 천원, VAT별도)</h3>
+  <div class="grid2">
+    <table>
+      <thead><tr><th colspan="2">수입 (983.1억)</th><th>비중</th></tr></thead>
+      <tbody>
+        <tr><td class="l">업무시설</td><td class="r">14,925,900</td><td class="c">15.2%</td></tr>
+        <tr><td class="l">근린생활시설</td><td class="r">83,385,500</td><td class="c">84.8%</td></tr>
+        <tr style="font-weight:700;background:#eef1f5"><td class="l">수입 계</td><td class="r">98,311,400</td><td class="c">100%</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead><tr><th colspan="2">지출 (812.7억)</th><th>비중</th></tr></thead>
+      <tbody>
+        <tr><td class="l">토지비</td><td class="r">26,729,495</td><td class="c">32.9%</td></tr>
+        <tr><td class="l">직접공사비</td><td class="r">23,253,553</td><td class="c">28.6%</td></tr>
+        <tr><td class="l">금융비</td><td class="r">13,219,402</td><td class="c">16.3%</td></tr>
+        <tr><td class="l">판매비</td><td class="r">9,868,026</td><td class="c">12.1%</td></tr>
+        <tr><td class="l">기타(부대·제세·취득·기타공사)</td><td class="r">8,196,021</td><td class="c">10.1%</td></tr>
+        <tr style="font-weight:700;background:#eef1f5"><td class="l">지출 계</td><td class="r">81,267,402</td><td class="c">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stat">
+    <div class="c gd"><div class="n">170.4억</div><div class="l">세전이익</div></div>
+    <div class="c gd"><div class="n">17.3%</div><div class="l">수익률(세전이익/수입)</div></div>
+    <div class="c"><div class="n">@4,500만</div><div class="l">근생 가정 단가(계약/평)</div></div>
+    <div class="c"><div class="n">@1,200만</div><div class="l">업무 가정 단가(계약/평)</div></div>
+  </div>
+
+  <h3>5-2. 민감도 분석 — 근생 분양가가 수익률을 좌우 <span class="small mut">(지출 고정 가정)</span></h3>
+  <table>
+    <thead><tr><th>시나리오</th><th>근생 수입</th><th>총수입</th><th>세전이익</th><th>수익률</th><th class="l">시각화</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>원안(낙관)</b></td><td class="r">833.9억</td><td class="r">983.1억</td><td class="r">170.4억</td><td class="c" style="color:var(--green);font-weight:700">17.3%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:87%;background:var(--green)"></span></span></td></tr>
+      <tr><td class="l">근생 −10%</td><td class="r">750.5억</td><td class="r">899.7억</td><td class="r">87.0억</td><td class="c" style="color:var(--amber);font-weight:700">9.7%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:49%;background:var(--amber)"></span></span></td></tr>
+      <tr><td class="l">근생 −15%</td><td class="r">708.8억</td><td class="r">858.0억</td><td class="r">45.4억</td><td class="c" style="color:var(--amber);font-weight:700">5.3%</td><td><span class="barbg" style="width:100%"><span class="bar" style="width:27%;background:var(--amber)"></span></span></td></tr>
+      <tr><td class="l" style="background:#fcf2f1"><b>근생 −20%</b></td><td class="r" style="background:#fcf2f1">667.1억</td><td class="r" style="background:#fcf2f1">816.3억</td><td class="r" style="background:#fcf2f1">3.7억</td><td class="c" style="color:var(--red);font-weight:700;background:#fcf2f1">0.4%</td><td style="background:#fcf2f1"><span class="barbg" style="width:100%"><span class="bar" style="width:2%;background:var(--red)"></span></span> <span class="small">손익분기</span></td></tr>
+      <tr><td class="l">근생 −25%</td><td class="r">625.4억</td><td class="r">774.7억</td><td class="r" style="color:var(--red)">−38.0억</td><td class="c" style="color:var(--red);font-weight:700">적자</td><td><span class="small" style="color:var(--red)">자본잠식 위험</span></td></tr>
+    </tbody>
+  </table>
+  <div class="box warn">
+    <div class="t">민감도 결론</div>
+    블렌디드 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 무너진다.
+    상층 근생을 시장가(2층 1,700~2,500, 3~7층 950~1,300만원)대로만 반영해도 이 구간에 진입할 가능성이 크다.
+    더욱이 본 민감도는 지출을 고정한 보수적 단순화로, 실제로는 분양 지연 시 금융비(현재 16.3%)가 추가로 늘어 수익률은 더 악화된다.
+    17.3%는 상한선이지 기준선이 아니다.
+  </div>
+
+  <h3>5-3. 가정 및 방법론 <span class="small mut">(수치의 한계를 명시)</span></h3>
+  <div class="box">
+    <table style="margin:2px 0">
+      <thead><tr><th style="width:26%">항목</th><th>본 보고서의 처리</th></tr></thead>
+      <tbody>
+        <tr><td class="l"><b>지출 고정 가정</b></td><td class="l">민감도에서 지출 81,267백만원을 고정했다. 보수적 단순화이며, 실제로는 분양가가 내리면 판매비(분양수수료)는 소폭 줄고 금융비(분양기간 연장)는 늘어, 순효과는 수익률을 더 악화시키는 방향이다.</td></tr>
+        <tr><td class="l"><b>절대 수입 미재계산</b></td><td class="l">원안은 근생을 계약면적 @4,500만원으로 계상했으나, 층별 계약평당가 분해표를 확보하지 못해 절대 수입을 재산정하지 않고 % 민감도로 제시했다. 자의적 재계산에 따른 오류를 피하기 위함이다.</td></tr>
+        <tr><td class="l"><b>권고 적정가</b></td><td class="l">메트로시티(동일 101역세권) 층별 분양가표와 선양법조타워 직접사례를 보수 적용한 권고치다. 호가·마케팅 성격이 섞여 있어 실거래로 재확인이 필요하다.</td></tr>
+        <tr><td class="l"><b>업무 분양가</b></td><td class="l">검단 오피스 직접데이터가 없어 문정 법조타운(매매 ~3,400만/평, 전용) 벤치마크로 방향성만 판단했다. 절대가는 단정하지 않았다.</td></tr>
+        <tr><td class="l"><b>VAT·금융 일정</b></td><td class="l">원안과 동일하게 VAT별도다. 분양·입주 일정에 따른 금융비 변동은 본 검토 범위 밖이며, 실사 시 현금흐름표로 별도 산출을 권고한다.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot-note">방법론 주: 본 장의 수익률(세전이익/수입)은 원자료 표기를 따랐다. 분양가 변동분은 근생 수입에만 적용했으며, 업무 수입(149.3억)은 불변으로 두었다.</div>
+</div>
+
+<!-- ============ 6. 필수조건 1안/2안 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">6</span><span class="sectitle">사업 진행 필수조건 — 1안 / 2안</span>
+    <span class="secdesc">선결조건 로드맵</span></div>
+
+  <div class="grid2">
+    <div class="box" style="border-top:4px solid var(--navy)">
+      <div class="t" style="font-size:12px">1안 — 원안(분양형) 강행</div>
+      <p class="small mut">수익률 우선. 리스크를 신용보강·선임대로 통제하며 원 상품구성을 유지한다.</p>
+      <h4>필수 선결조건</h4>
+      <ol class="small">
+        <li>토지 권원 확보(매매계약→소유권). 본PF 인출의 선행조건이다.</li>
+        <li>관리형토지신탁 + 분양보증/대리사무. 건축물분양법상 선분양의 법적요건이다.</li>
+        <li>시공사 책임준공확약(신용 BBB 이상). 단 '25년 책준 256억 배상판결·신탁 한도규제로 문턱이 올라갔다.</li>
+        <li>자기자본 확충. 토지 현물출자·프로젝트 리츠로 비율을 높인다(의무화 '27년 5%→'30년 20%).</li>
+        <li>근생 앵커 선임대 확보와 층별 차등가 재설정(상층 현실화).</li>
+        <li>본PF 기표조건 사전확정(분양률·선임대율). '26 하반기 PF 만기 정점, 규제완화 6/30 만료.</li>
+      </ol>
+      <div class="box small" style="margin:6px 0 0;background:#fcf2f1;border:none;border-left:3px solid var(--red)">
+        <b>전제.</b> 분양 흡수율이 받쳐줘야 성립한다. 미분양 시 금융비 폭증으로 수익률이 급락한다.
+      </div>
+    </div>
+
+    <div class="box" style="border-top:4px solid var(--gold)">
+      <div class="t" style="font-size:12px">2안 — 분양성 우선 재편</div>
+      <p class="small mut">분양 리스크 최소화 우선. 수익률은 낮추되 사업 완주 가능성을 높인다.</p>
+      <h4>필수 선결조건</h4>
+      <ol class="small">
+        <li>상가 비중 축소와 용도 불문 선임대 확정. 인천은 상가 공실 13.6%, 오피스도 18.7%로 둘 다 부진해, 오피스 확대만으론 부족하고 앵커 임차 확정이 분양성의 핵심이다.</li>
+        <li>마스터리스(책임임대차) 도입. 수익형 보장으로 분양 흡수율을 높인다.</li>
+        <li>분양가 보수 재산정(시장 층별가 반영). 수익률은 낮추되 미분양 위험을 줄인다.</li>
+        <li>법조타운 개원(2028.3) 타이밍에 맞춰 분양·입주 일정을 설계한다.</li>
+        <li>강한 신용보강 구조(책준형 신탁)에 더해, 필요 시 일부 통매각(벌크)·리츠 편입으로 분양 리스크를 분산한다.</li>
+      </ol>
+      <div class="box small" style="margin:6px 0 0;background:#f1f8f4;border:none;border-left:3px solid var(--green)">
+        <b>장점.</b> 시장 약세·저신용 시행사 환경에서 완주 확률을 높이는 현실적 경로다.
+      </div>
+    </div>
+  </div>
+
+  <h3>공통 — 어느 안이든 반드시 충족 (자금조달 환경 '26)</h3>
+  <table>
+    <thead><tr><th style="width:20%">영역</th><th>핵심 조건</th><th style="width:24%">'26년 시장 메모</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>대출·금리</b></td><td class="l">비주택 LTV 70% 유지(상가·오피스). 단 전반적 자금경색</td><td class="l">기준금리 2.50% 동결, 은행 자본규제로 대출여력 축소</td></tr>
+      <tr><td class="l"><b>PF</b></td><td class="l">토지권원+인허가+신탁+책준이 기표 4대 전제</td><td class="l">'26 4Q 만기 13.5조, 규제완화 6/30 만료로 선별심사 강화</td></tr>
+      <tr><td class="l"><b>신탁</b></td><td class="l">관리형토지신탁(사업주체 전환)에 책준형으로 신용보강</td><td class="l">신탁 토지신탁 한도 자기자본 100%로 제한</td></tr>
+      <tr><td class="l"><b>분양보증</b></td><td class="l">신탁+대리사무 또는 분양보증(HUG 등) 택일</td><td class="l">상가 3,000㎡ 이상 / 오피스텔 호수 기준 분양신고</td></tr>
+      <tr><td class="l"><b>시공</b></td><td class="l">책임준공 가능 시공사 확보(비주거는 메이저 참여난)</td><td class="l">책준 미이행 배상판결로 신탁사 신용보강 보수화</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 7. 결론 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">7</span><span class="sectitle">결론 및 권고</span>
+    <span class="secdesc">의사결정 포인트</span></div>
+
+  <div class="box key">
+    <div class="t">종합 결론</div>
+    <ol>
+      <li>1층 근생·업무 분양가는 시장 범위 안에 있다. 선양법조타워 직접사례(1층 계약평당 4,800만)와 비교해도 원안 4,500만은 오히려 낮다.
+        문제는 상층 근생을 1층 근접가로 가정한 부분으로, 이것이 수익률 17.3%의 핵심 취약점이다. 층별 차등가로 재산정하면 수익률은 한 자릿수로 내려갈 개연성이 크다.</li>
+      <li>상품구성이 상가(근생)에 84.8% 편중되어, 시장에서 가장 약한 부문에 사업이 종속된다.
+        오피스 비중 확대 또는 선임대 확정이 분양성 제고의 현실적 선결조건이다.</li>
+      <li>저신용 시행사에 '26 하반기 PF 만기 정점이라는 자금환경이 겹쳐, 신탁·책준·자기자본·분양보증의 다층 신용보강 없이는 본PF 기표가 사실상 불가하다.</li>
+      <li>권고 방향은 수익률을 다소 양보하더라도 2안(분양성 우선 재편)을 기본으로 하되,
+        근생 앵커 선임대가 조기 확정되면 1안 요소를 가미하는 하이브리드가 합리적이다.</li>
+    </ol>
+  </div>
+
+  <h3>다음 단계 — 즉시 확인할 검증 항목</h3>
+  <table>
+    <thead><tr><th style="width:6%">순위</th><th>검증 항목</th><th style="width:26%">방법/출처</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td class="l">원본 수지의 근생 층별 단가 가정 확인(상층에도 1층가 적용 여부)</td><td class="l">킴앤코 원본 엑셀</td></tr>
+      <tr><td class="c">2</td><td class="l">업무·근생 전용률 확인 후 전용 평당가로 환산 비교(선양 49.4% 대조)</td><td class="l">건축도면·분양면적표</td></tr>
+      <tr><td class="c">3</td><td class="l">검단 상업·업무 미분양·공실 1차 통계</td><td class="l">한국부동산원 R-ONE, 국토부 통계누리, iH 입찰결과</td></tr>
+      <tr><td class="c">4</td><td class="l">비교사례(선양법조타워 등) 호실별 분양가·잔여세대</td><td class="l">분양사무소 직접 확인</td></tr>
+      <tr><td class="c">5</td><td class="l">시공사·신탁사 책준·신용보강 의향</td><td class="l">시공사 도급·신탁사 사전협의</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box small">
+    <b>본 검토의 한계.</b> 상업·업무시설은 실거래 공개가 드물어 일부 수치는 분양 호가·마케팅 자료에 의존했다.
+    검단 오피스의 전용 분양가·임대료·공실률 실데이터와 검단 단위 미분양 1차 통계는 공개검색으로 확보되지 않아 추정으로 대체했다.
+    선양법조타워 1층 분양가 등 일부는 직접 비교사례로 보강했으나, 최종 의사결정 전에는 분양사무소 호실별 자료와 1차 통계로 재확인이 필요하다.
+  </div>
+</div>
+
+<!-- ============ 부록 ============ -->
+<div class="sec">
+  <div class="sechead"><span class="secno">A</span><span class="sectitle">부록 — 출처</span>
+    <span class="secdesc">References</span></div>
+  <h4>시세·시장</h4>
+  <p class="small">상가114 메트로시티 층별 분양가 sangga114.co.kr/enter/enter_detail?num=16667 · 선양법조타워 분양정보 blog.naver.com/songyoon0716(224195674850)·blog.naver.com/kdnewcity(224307308504) · 상가허브 검단상가 sanggahub.kr · KB부동산 메인상권 kbland.kr/se/otd/184569 · 검단아테라자이 단지내상가 v.daum.net/v/20260120143743198 · 호갱노노 송파법조타운 hogangnono.com/apt/dw01e · 산업다아라 문정 오피스 임대 land.daara.co.kr · 비즈한국 문정 상가공실 bizhankook.com/bk/article/15866 · 이코노미스트 검단 아파트시세 economist.co.kr(2026.02)</p>
+  <h4>입지·호재</h4>
+  <p class="small">철도경제신문 인천1호선 검단연장 개통 redaily.co.kr · 뉴스1 GTX-D 예타통과 news1.kr/local/incheon/5842187 · 인천투데이 5호선 연장 incheontoday.com · 기호일보·인천일보 법조타운 개원 kihoilbo.co.kr / incheonilbo.com · 나무위키 검단신도시 · 호갱노노 검단 분양권 hogangnono.com/apt/giv3e</p>
+  <h4>시장·금융·PF·신탁</h4>
+  <p class="small">한국부동산원 임대동향조사(2025 3Q) jaemo.co.kr/info_policy/107168 · 금융위 비주택 LTV·자기자본·신탁한도 fsc.go.kr · 한국경제 위험가중치/풍선효과 hankyung.com · 뉴스핌 PF 규제완화 연장 newspim.com · 베타뉴스/서울경제 PF 만기 · 인베스트조선·법률신문 책준 배상판결 investchosun.com / lawtimes.co.kr · 김·장/신&김/PwC/KPMG 신탁·PF 해설</p>
+  <h4>공식통계·실분양가</h4>
+  <p class="small">한국부동산원 '26 1Q 임대동향 reb.or.kr · 경기일보 인천 공실 18.7%/권역별 kyeonggi.com/article/20251215580413 · 다음뉴스 인천 미분양·서구 74% v.daum.net/v/USy5QcztOM · 인천투데이 검단상가 공실·폐업 incheontoday.com(idxno=307587) · 인천투데이 검단 상업용지 30필지 낙찰 incheontoday.com(idxno=116945) · iH 웰카운티 단지내상가 공급가 mt.co.kr·incheonin.com · 상가114 메트로시티 층별표 sangga114.co.kr(num=16667) · 공공데이터포털 지역별 공실률 data.go.kr/data/15069735</p>
+  <div class="foot-note">
+    The K Tower 검단 — 적정 분양가 검토 및 사업성 재검토 보고서 (제4판) · 검토기준일 2026.06.22 · 공개 데이터 교차검증 기반 독립 검토.
+    본 보고서는 투자 권유가 아니며, 수치는 추정을 포함한다. 실제 의사결정 전 1차 통계·현장 실사·전문가(감정평가·신탁·법무) 검토를 권고한다.
+  </div>
+</div>
+
+<div class="runfoot">
+  <div class="ln"></div>
+  <div class="l">The K Tower 검단 · 적정 분양가 검토 및 사업성 재검토 보고서 (제4판) · 2026.06.22</div>
+  <div class="r">CONFIDENTIAL</div>
+</div>
+
+</body>
+</html>
