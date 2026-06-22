@@ -12,19 +12,19 @@
     --ink:#1a2230; --mut:#5d6b7e; --line:#d7dde6; --bg:#f4f6f9;
     --red:#b5302a; --amber:#c8821b; --green:#1f7a4d; --blue:#2a6db5;
   }
-  body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400; }
+  body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400; counter-reset:slidepg; }
   .serif{ font-family:"Noto Serif KR","Noto Sans KR",serif; }
 
   .slide{
     width:297mm; height:167mm; background:#fff; position:relative; overflow:hidden;
     page-break-after:always; margin:0 auto 6mm; padding:14mm 16mm 11mm;
-    display:flex; flex-direction:column;
+    display:flex; flex-direction:column; counter-increment:slidepg;
   }
   /* header */
   .shead{ flex:0 0 auto; margin-bottom:9px; }
   .skick{ font-size:12px; letter-spacing:4px; color:var(--gold); font-weight:700; text-transform:uppercase; }
   .stitle{ font-size:33px; font-weight:700; color:var(--navy); margin-top:5px; line-height:1.18; letter-spacing:-.3px; }
-  .stitle.sm{ font-size:28px; }
+  .stitle.sm{ font-size:27px; }
   .srule{ width:62px; height:4px; background:var(--gold); margin:12px 0 0; }
   /* body fills the page */
   .sbody{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; min-height:0; }
@@ -35,6 +35,7 @@
     border-top:1px solid var(--gold-l); padding-top:7px; margin-top:10px; font-size:10px; color:var(--mut); }
   .sfoot .cf{ color:var(--gold); font-weight:700; letter-spacing:2px; }
   .sfoot .pg{ color:var(--navy); font-weight:700; }
+  .sfoot .pg::after{ content: counter(slidepg, decimal-leading-zero); }
 
   /* cover & closing */
   .cover{ background:linear-gradient(150deg,#0b2342 0%,#143861 55%,#1e4a80 100%); color:#fff;
@@ -72,20 +73,19 @@
   .call.ok{ border-left-color:var(--green); background:#f1f8f4; }
   .call.big{ font-size:16px; }
   .call .t{ font-weight:700; color:var(--navy); font-size:14.5px; display:block; margin-bottom:6px; }
-  .call.fill{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; }
 
   /* tables */
   table{ width:100%; border-collapse:collapse; font-size:13.5px; }
-  .sbody > table.fill{ flex:1 1 auto; min-height:0; }   /* table stretches to fill the page */
+  .sbody > table.fill{ flex:1 1 auto; min-height:0; }
   th,td{ border:1px solid var(--line); padding:11px 13px; }
   th{ background:var(--navy); color:#fff; font-weight:700; text-align:center; font-size:13.5px; }
   td.l{text-align:left;} td.c{text-align:center;} td.r{text-align:right;}
   tbody tr:nth-child(even){ background:#f6f8fb; }
+  td.hl{ background:#fcf9f2 !important; }
   .tag{ display:inline-block; font-size:11.5px; font-weight:700; padding:3px 11px; border-radius:12px; color:#fff;}
   .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--blue);}
 
   /* bars */
-  .bars{ display:flex; flex-direction:column; justify-content:center; gap:14px; flex:1 1 auto; }
   .barrow{ display:flex; align-items:center; gap:14px; font-size:14px; }
   .barrow .lab{ width:74px; color:var(--navy); font-weight:700; }
   .barbg{ flex:1; background:#eef1f5; border-radius:4px; height:26px; }
@@ -108,11 +108,61 @@
   ul.clean li::before{ content:""; position:absolute; left:0; top:7px; width:11px; height:11px;
     background:var(--gold); border-radius:2px; transform:rotate(45deg); }
 
-  /* fact grid (개요) */
+  /* fact grid */
   .facts{ display:grid; grid-template-columns:1fr 1fr; gap:0 28px; }
   .facts .f{ display:flex; border-bottom:1px solid var(--line); padding:11px 2px; font-size:14px; }
   .facts .f .k{ width:96px; color:var(--gold); font-weight:700; flex:0 0 auto; }
   .facts .f .v{ color:#2a3445; }
+
+  /* ===== MAP figure + overlay ===== */
+  .mapfig{ position:relative; border:1px solid var(--line); border-radius:8px; overflow:hidden;
+    flex:1 1 auto; min-height:0; }
+  .mapfig img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .mapfig .src{ position:absolute; right:6px; bottom:5px; font-size:9px; color:#33415a;
+    background:rgba(255,255,255,.78); padding:1px 6px; border-radius:3px; }
+  .pin{ position:absolute; transform:translate(-50%,-100%); text-align:center; }
+  .pin .dot{ width:18px; height:18px; border-radius:50% 50% 50% 0; background:var(--navy);
+    transform:rotate(-45deg); margin:0 auto; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.4); }
+  .pin.gold .dot{ background:var(--gold); }
+  .pin .tag2{ display:inline-block; transform:translateY(6px); white-space:nowrap; font-size:11px; font-weight:700;
+    color:#fff; background:var(--navy); padding:2px 8px; border-radius:11px; box-shadow:0 1px 3px rgba(0,0,0,.3); }
+  .pin.gold .tag2{ background:var(--gold); }
+  .mlabel{ position:absolute; transform:translate(-50%,-50%); white-space:nowrap; font-size:11px; font-weight:700;
+    color:var(--navy); background:rgba(255,255,255,.9); border:1px solid var(--gold-l); padding:2px 8px; border-radius:11px; }
+  .mline{ position:absolute; height:0; border-top:2px dashed var(--gold); transform-origin:left center; }
+  .mdist{ position:absolute; transform:translate(-50%,-50%); font-size:10.5px; font-weight:700; color:#6b5320;
+    background:var(--gold-l); padding:1px 7px; border-radius:10px; }
+
+  /* ===== cross-section diagram ===== */
+  .xsec{ display:flex; flex-direction:column-reverse; gap:3px; flex:1 1 auto; justify-content:center; }
+  .fl{ display:flex; align-items:center; gap:12px; }
+  .fl .flno{ width:54px; font-size:12px; font-weight:700; color:var(--navy); text-align:right; }
+  .fl .flbar{ height:30px; border-radius:3px; display:flex; align-items:center; padding:0 10px;
+    color:#fff; font-size:11.5px; font-weight:700; white-space:nowrap; min-width:60px; }
+  .fl .flmeta{ font-size:11.5px; color:#2a3445; }
+  .fl .flmeta b{ color:var(--navy); }
+  .u-1{ background:var(--gold); } .u-g{ background:var(--navy); }
+  .u-b{ background:#9aa6b5; }
+  .leg{ display:flex; gap:16px; font-size:11.5px; color:var(--mut); margin-top:4px; }
+  .leg span{ display:inline-flex; align-items:center; gap:5px; }
+  .leg i{ width:11px; height:11px; border-radius:2px; display:inline-block; }
+
+  /* ===== donut + structure ===== */
+  .donut{ width:172px; height:172px; border-radius:50%; flex:0 0 auto;
+    background:conic-gradient(var(--gold) 0 84.8%, var(--navy3) 84.8% 100%); position:relative; }
+  .donut::after{ content:""; position:absolute; inset:34px; background:#fff; border-radius:50%; }
+  .donut .ctr{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1; }
+  .donut .ctr .n{ font-size:24px; font-weight:700; color:var(--gold); line-height:1; }
+  .donut .ctr .l{ font-size:10.5px; color:var(--mut); margin-top:3px; }
+  .dleg{ font-size:13.5px; line-height:2; }
+  .dleg .sw{ display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:7px; vertical-align:-1px; }
+  .flow{ display:flex; align-items:stretch; gap:0; flex:1 1 auto; }
+  .node{ flex:1; border:1px solid var(--line); border-top:3px solid var(--navy); border-radius:7px;
+    padding:13px 12px; display:flex; flex-direction:column; justify-content:center; background:#fcfdfe; }
+  .node .nt{ font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .node .nd{ font-size:11.5px; color:var(--mut); line-height:1.5; }
+  .node.gold{ border-top-color:var(--gold); }
+  .arrow{ flex:0 0 30px; display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:22px; font-weight:700; }
 </style>
 </head>
 <body>
@@ -129,11 +179,7 @@
 
 <!-- 2. 검토 개요 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Overview</div>
-    <h2 class="stitle serif">검토 개요</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Overview</div><h2 class="stitle serif">검토 개요</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <div class="row" style="gap:22px; align-items:stretch;">
       <div class="col" style="flex:1.05">
@@ -163,16 +209,36 @@
       수익형상품 대출제한에 따른 분양성, 업종 선별(요식업 기피), 법조타운 형성 추이 연동, 그리고 시행·시공사의 신용·자본력 — 이 네 가지가 PF 인정과 사업 진행을 좌우한다.
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">02</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 3. 한눈에 -->
+<!-- 3. 입지 현황 (위성) -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Executive Summary</div>
-    <h2 class="stitle serif">한눈에 보는 결론</h2>
-    <div class="srule"></div>
+  <div class="shead"><div class="skick">Site & Location</div><h2 class="stitle serif">입지 현황 — 검단 법조타운 핵심 블록</h2><div class="srule"></div></div>
+  <div class="sbody">
+    <div class="row fill" style="gap:18px; align-items:stretch;">
+      <div class="col" style="flex:1.25;">
+        <div class="mapfig">
+          <img src="map_sat.png" alt="K타워 부지 항공뷰">
+          <div class="pin" style="left:48%; top:44%;"><div class="dot"></div><div class="tag2">K타워 부지 (당하동 1237)</div></div>
+          <div class="mlabel" style="left:24%; top:74%;">법조타운 · 만남의광장</div>
+          <div class="mlabel" style="left:60%; top:16%;">상업 스파인 (병원·은행·F&amp;B)</div>
+          <div class="src">출처: 카카오맵 스카이뷰 (2026)</div>
+        </div>
+      </div>
+      <div class="col" style="flex:.85; justify-content:center; gap:11px;">
+        <div class="call ok" style="padding:12px 15px;"><span class="t">역세권 · 법조타운</span>인천1호선 검단연장(2025.6.28 개통) 역세권. 인천지법 북부지원·검찰 북부지청(2028.3 개원)에 인접한 핵심 상업 블록.</div>
+        <div class="call" style="padding:12px 15px;"><span class="t">배후수요</span>검단신도시 계획 18.7만명·7.6만세대. 2026~27년 입주 활발(국평 7~8억대).</div>
+        <div class="call warn" style="padding:12px 15px;"><span class="t">현황</span>부지는 현재 조성 중(공터). 주변 법조타운·오피스텔·상가가 형성되는 단계 — 상권 성숙에는 시간이 필요.</div>
+      </div>
+    </div>
   </div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
+</section>
+
+<!-- 4. 한눈에 -->
+<section class="slide">
+  <div class="shead"><div class="skick">Executive Summary</div><h2 class="stitle serif">한눈에 보는 결론</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <div class="kpis fill">
       <div class="kpi"><div class="n">17.3%</div><div class="l">원안 수익률<br>(낙관·상한선)</div></div>
@@ -191,16 +257,12 @@
       <div class="call warn" style="flex:1;font-size:13px;"><span class="t" style="font-size:13px;">관전 포인트 ③</span>신탁·책준·자기자본 다층 신용보강</div>
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">03</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 4. 판정 요약 -->
+<!-- 5. 판정 요약 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Assessment</div>
-    <h2 class="stitle serif">분양가 판정 요약</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Assessment</div><h2 class="stitle serif">분양가 판정 요약</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <table class="fill">
       <thead><tr><th style="width:16%">항목</th><th style="width:18%">원안</th><th>시장 데이터 (2025~26)</th><th style="width:13%">판정</th></tr></thead>
@@ -212,20 +274,15 @@
       </tbody>
     </table>
     <div class="call">
-      1층·업무 단가는 시장 범위 안에 있다. 취약점은 <b>상층 근생에 1층 근접가를 적용했는지 여부</b>로 좁혀지며,
-      층별 차등가로 재산정하면 수익률은 한 자릿수로 내려갈 개연성이 크다.
+      1층·업무 단가는 시장 범위 안에 있다. 취약점은 <b>상층 근생에 1층 근접가를 적용했는지 여부</b>로 좁혀지며, 층별 차등가로 재산정하면 수익률은 한 자릿수로 내려갈 개연성이 크다.
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">04</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 5. 입지·호재 -->
+<!-- 6. 입지·호재 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Location & Catalysts</div>
-    <h2 class="stitle serif">입지와 개발 호재 — 확정과 예정의 구분</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Location &amp; Catalysts</div><h2 class="stitle serif">입지와 개발 호재 — 확정과 예정의 구분</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <table class="fill">
       <thead><tr><th style="width:24%">호재</th><th style="width:20%">상태</th><th style="width:18%">시점</th><th>핵심 내용</th></tr></thead>
@@ -238,20 +295,15 @@
     </table>
     <div class="call warn">
       <span class="t">시사점</span>
-      분양가에 즉시 반영할 수 있는 확정 호재는 인천1호선뿐이며 이미 가격에 들어가 있다.
-      GTX-D·5호선은 예정 호재로만 보수 반영하고, 법조타운 수요는 2028년 개원 이후로 본다. 미실현 호재를 현재 분양가에 전부 반영하면 흡수율 리스크로 돌아온다.
+      분양가에 즉시 반영할 수 있는 확정 호재는 인천1호선뿐이며 이미 가격에 들어가 있다. GTX-D·5호선은 예정 호재로만 보수 반영하고, 법조타운 수요는 2028년 개원 이후로 본다. 미실현 호재를 현재 분양가에 전부 반영하면 흡수율 리스크로 돌아온다.
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">05</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 6. 시장 위험 -->
+<!-- 7. 인천 시장 위험 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Market Risk</div>
-    <h2 class="stitle serif">인천 시장 — 공실·미분양 경고등</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Market Risk</div><h2 class="stitle serif">인천 시장 — 공실·미분양 경고등</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <div class="kpis fill">
       <div class="kpi rd"><div class="n">18.7%</div><div class="l">인천 오피스 공실률<br>(전국 8.8%의 2배+)</div></div>
@@ -260,30 +312,17 @@
       <div class="kpi"><div class="n">3,818호</div><div class="l">인천 총 미분양<br>('26.2)</div></div>
     </div>
     <div class="row" style="gap:14px;">
-      <div class="col call warn">
-        <span class="t">오피스라서 안전하지 않다</span>
-        인천에서는 오피스 공실(18.7%)이 상가(13.6%)보다 오히려 높다. 원도심 노후오피스 영향으로, 용도 전환만으론 리스크를 피하지 못한다.
-      </div>
-      <div class="col call warn">
-        <span class="t">검단에 집중된 침체</span>
-        인천 준공후 악성 미분양의 74%가 서구(검단)에 몰려 있다. 분양시장 침체가 본 사업 입지에 직접 작용한다.
-      </div>
+      <div class="col call warn"><span class="t">오피스라서 안전하지 않다</span>인천에서는 오피스 공실(18.7%)이 상가(13.6%)보다 오히려 높다. 원도심 노후오피스 영향으로, 용도 전환만으론 리스크를 피하지 못한다.</div>
+      <div class="col call warn"><span class="t">검단에 집중된 침체</span>인천 준공후 악성 미분양의 74%가 서구(검단)에 몰려 있다. 분양시장 침체가 본 사업 입지에 직접 작용한다.</div>
     </div>
-    <div class="call ok">
-      <span class="t">반대로, 받쳐주는 요인</span>
-      인천1호선 개통(확정 역세권) · 법조타운 착공 완료 · 배후 주거 구매력 견조(국평 7~8억대, 분양가상한제 안전마진).
-    </div>
+    <div class="call ok"><span class="t">반대로, 받쳐주는 요인</span>인천1호선 개통(확정 역세권) · 법조타운 착공 완료 · 배후 주거 구매력 견조(국평 7~8억대, 분양가상한제 안전마진).</div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">06</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 7. 직접 비교사례 -->
+<!-- 8. 직접 비교사례 (표) -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Direct Comparable</div>
-    <h2 class="stitle serif">직접 비교사례 — 선양법조타워</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Direct Comparable</div><h2 class="stitle serif">직접 비교사례 — 선양법조타워</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <p class="body mut">검단 법조타운 내 동일 유형(중심상업지 근생빌딩, 지하1~지상7층). 본 사업과 입지·상품성이 가장 가까운 직접 비교사례다.</p>
     <div class="row fill" style="gap:18px; align-items:stretch;">
@@ -295,7 +334,7 @@
             <tr><td class="l">전용 / 분양면적</td><td class="r">11.04평 / 22.35평</td></tr>
             <tr><td class="l"><b>계약평당가</b></td><td class="r"><b>약 4,800만원</b></td></tr>
             <tr><td class="l"><b>전용평당가</b></td><td class="r"><b>약 9,720만원</b></td></tr>
-            <tr style="background:#fcf9f2"><td class="l"><b>전용률</b></td><td class="r"><b>약 49.4%</b></td></tr>
+            <tr><td class="l hl"><b>전용률</b></td><td class="r hl"><b>약 49.4%</b></td></tr>
           </tbody>
         </table>
       </div>
@@ -310,47 +349,109 @@
     </div>
     <p class="body mut" style="font-size:12.5px;">※ 선양 2층 선임대 6호실 분양가 3.9~4.5억, 현금수익률 ~6%(대출 시 8%). 검단 오피스 평당 실분양가는 비공개(홍보관 문의)로 잔여 갭.</p>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">07</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 8. 적정 분양가 -->
+<!-- 9. 비교사례 포지셔닝 지도 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Pricing</div>
-    <h2 class="stitle serif">권고 — 단일 평균가에서 층별 차등가로</h2>
-    <div class="srule"></div>
-  </div>
-  <div class="sbody spread">
-    <div class="row fill" style="gap:22px; align-items:stretch;">
-      <div class="col" style="flex:1.25;">
-        <div class="bars">
-          <div class="barrow"><span class="lab">1층</span><div class="barbg"><div class="barfill" style="width:100%"></div></div><span class="val">4,500만 · 100%</span></div>
-          <div class="barrow"><span class="lab">2층</span><div class="barbg"><div class="barfill" style="width:38%"></div></div><span class="val">1,700만 · ~38%</span></div>
-          <div class="barrow"><span class="lab">3층</span><div class="barbg"><div class="barfill" style="width:29%"></div></div><span class="val">1,300만 · ~29%</span></div>
-          <div class="barrow"><span class="lab">4층</span><div class="barbg"><div class="barfill" style="width:24%"></div></div><span class="val">1,100만 · ~24%</span></div>
-          <div class="barrow"><span class="lab">5층</span><div class="barbg"><div class="barfill" style="width:22%"></div></div><span class="val">1,000만 · ~22%</span></div>
-          <div class="barrow"><span class="lab">6~7층</span><div class="barbg"><div class="barfill" style="width:21%"></div></div><span class="val">950만 · ~21%</span></div>
+  <div class="shead"><div class="skick">Comparable Positioning</div><h2 class="stitle serif">비교사례 포지셔닝 — 거리 · 연식 · 입지</h2><div class="srule"></div></div>
+  <div class="sbody">
+    <div class="row fill" style="gap:18px; align-items:stretch;">
+      <div class="col" style="flex:1.12;">
+        <div class="mapfig">
+          <img src="map_base.png" alt="비교사례 위치도">
+          <div class="pin gold" style="left:50%; top:41%;"><div class="dot"></div><div class="tag2">① K타워 (본건)</div></div>
+          <div class="pin" style="left:56%; top:64%;"><div class="dot"></div><div class="tag2">② 선양법조타워</div></div>
+          <div class="mline" style="left:50%; top:41%; width:90px; transform:rotate(63deg);"></div>
+          <div class="mdist" style="left:57%; top:53%;">약 200m · 도보 3분</div>
+          <div class="mlabel" style="left:50%; top:90%;">↓ 법조타운(법원·검찰) · 만남의광장</div>
+          <div class="src">출처: 카카오맵 (지도)</div>
         </div>
-        <p class="body mut" style="font-size:12px;">전용/지상면적 기준 권고 단가(만원/평). 메트로시티 층별표 보수 적용, 2층은 선양 감안 시 상향 여지.</p>
       </div>
-      <div class="col call" style="flex:.9; justify-content:center;">
-        <span class="t">왜 중요한가</span>
-        원안은 근생을 1층 기준 @4,500만(계약면적)으로 산정해 근생 수입을 <b>833.9억(84.8%)</b>으로 계상했다.
-        상층에도 1층 근접가를 적용했다면 수입 과대계상이며, 시장 층별가로 현실화하면 수입이 크게 줄어든다.
-        <br><br><b>1순위 조치 —</b> 원본 엑셀의 층별 단가 가정을 확인하고 시장가로 재산정.
+      <div class="col" style="flex:1.0; justify-content:center;">
+        <table style="font-size:12px;">
+          <thead><tr><th>사례</th><th>유형</th><th>거리/입지</th><th>연식</th></tr></thead>
+          <tbody>
+            <tr><td class="l hl"><b>① K타워 (본건)</b></td><td class="c">상업지 근생빌딩</td><td class="c">당하동 1237</td><td class="c">신축 예정</td></tr>
+            <tr><td class="l"><b>② 선양법조타워</b></td><td class="c">상업지 근생빌딩</td><td class="c">약 200m · 동일 법조타운</td><td class="c">2026.8 예정</td></tr>
+            <tr><td class="l">KR법조타워</td><td class="c">오피스텔</td><td class="c">인접 · 동일 블록</td><td class="c">2024.08</td></tr>
+            <tr><td class="l">메트로시티</td><td class="c">단지내 상가</td><td class="c">원당·불로지구(타 입지)</td><td class="c">기존 단지</td></tr>
+            <tr><td class="l">iH 웰카운티</td><td class="c">단지내 상가</td><td class="c">검단 타 블록</td><td class="c">2024 공급</td></tr>
+          </tbody>
+        </table>
+        <div class="call ok" style="font-size:12.5px; padding:11px 14px; margin-top:10px;">
+          동일 입지 · 동일 유형 · 동시기 신축은 <b>선양법조타워뿐</b>이다. 메트로시티·iH는 유형(단지내상가)과 입지가 달라 보조 참고로만 사용. 직접 비교 신뢰도는 <b>선양 &gt; 메트로시티 &gt; iH</b> 순.
+        </div>
       </div>
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">08</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 9. 민감도 -->
+<!-- 10. 층별 단면 도식 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Sensitivity</div>
-    <h2 class="stitle serif">민감도 — 근생 분양가가 수익률을 좌우</h2>
-    <div class="srule"></div>
+  <div class="shead"><div class="skick">Floor Pricing</div><h2 class="stitle serif">층별 단면 — 용도와 권고 분양가 차등</h2><div class="srule"></div></div>
+  <div class="sbody">
+    <div class="row fill" style="gap:22px; align-items:stretch;">
+      <div class="col" style="flex:1.3; justify-content:center;">
+        <div class="xsec">
+          <div class="fl"><span class="flno">B1~3</span><div class="flbar u-b" style="width:34%;">주차·기계·전기</div><span class="flmeta">지하 5,167㎡ 중</span></div>
+          <div class="fl"><span class="flno">1F</span><div class="flbar u-1" style="width:100%;">근생·판매 · 4,500만/평 · 100%</div></div>
+          <div class="fl"><span class="flno">2F</span><div class="flbar u-g" style="width:40%;">근생 · 1,700만 · ~38%</div><span class="flmeta">선양 2층 감안 상향 여지</span></div>
+          <div class="fl"><span class="flno">3F</span><div class="flbar u-g" style="width:31%;">근생 · 1,300만 · ~29%</div></div>
+          <div class="fl"><span class="flno">4F</span><div class="flbar u-g" style="width:26%;">근생 · 1,100만 · ~24%</div></div>
+          <div class="fl"><span class="flno">5F</span><div class="flbar u-g" style="width:24%;">근생 · 1,000만 · ~22%</div></div>
+          <div class="fl"><span class="flno">6~7F</span><div class="flbar u-g" style="width:23%;">근생 · 950만 · ~21%</div></div>
+          <div class="fl"><span class="flno">8~10F</span><div class="flbar u-1" style="width:30%; background:var(--gold);">업무 · 1,200만(계약)</div><span class="flmeta">전용률·개원지연 공실 확인</span></div>
+        </div>
+        <div class="leg"><span><i class="u-1"></i>1층·업무(시장 범위 내)</span><span><i class="u-g"></i>상층 근생(하향 재설정)</span><span><i class="u-b"></i>지하</span></div>
+      </div>
+      <div class="col call" style="flex:.8; justify-content:center;">
+        <span class="t">한 장으로 보는 핵심</span>
+        1층은 가격대가 절대적이고, 2층부터 1/3~1/5로 급락한다. 원안이 근생을 1층 기준 단일가(@4,500만)로 계상했다면 <b>상층에서 수입 과대계상</b>이다.
+        <br><br>권고는 단일 평균가를 <b>층별 차등가</b>로 분해해 재산정하는 것. 막대 길이가 곧 층별 분양가 비율이다.
+      </div>
+    </div>
   </div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
+</section>
+
+<!-- 11. 상품구성·사업구조 도식 -->
+<section class="slide">
+  <div class="shead"><div class="skick">Mix &amp; Structure</div><h2 class="stitle serif">상품구성과 사업구조</h2><div class="srule"></div></div>
+  <div class="sbody spread">
+    <div class="row" style="gap:26px; align-items:center; flex:1 1 auto;">
+      <div class="col" style="flex:0 0 auto; align-items:center; justify-content:center;">
+        <div class="donut"><div class="ctr"><div class="n">84.8%</div><div class="l">근생 수입비중</div></div></div>
+      </div>
+      <div class="col" style="justify-content:center;">
+        <h3 class="serif" style="font-size:16px; color:var(--navy2); margin-bottom:6px;">수입 구성 (원안 983.1억)</h3>
+        <div class="dleg">
+          <div><span class="sw" style="background:var(--gold);"></span><b>근린생활시설</b> 833.9억 · 84.8%</div>
+          <div><span class="sw" style="background:var(--navy3);"></span>업무시설 149.3억 · 15.2%</div>
+        </div>
+        <div class="call warn" style="font-size:12.5px; padding:11px 14px; margin-top:8px;">수입의 85%가 가장 약한 부문(상가)에 묶여 있다. 근생 분양가가 흔들리면 사업 전체가 흔들린다 — 구조적 편중이 최대 리스크.</div>
+      </div>
+    </div>
+    <h3 class="serif" style="font-size:16px; color:var(--navy2); margin:4px 0 8px;">사업 추진 구조 — 본PF 기표의 4대 전제</h3>
+    <div class="flow">
+      <div class="node gold"><div class="nt">① 토지 권원</div><div class="nd">매매계약 → 소유권<br>인출 선행조건</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="nt">② 신탁</div><div class="nd">관리형토지신탁<br>(사업주체 전환)</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="nt">③ 책임준공</div><div class="nd">시공사 확약<br>(신용 BBB↑)</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="nt">④ 분양보증·자본</div><div class="nd">대리사무/HUG<br>자기자본 확충</div></div>
+      <div class="arrow">⇒</div>
+      <div class="node gold"><div class="nt">본PF 기표</div><div class="nd">분양률·선임대율<br>사전 확정</div></div>
+    </div>
+  </div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
+</section>
+
+<!-- 12. 민감도 -->
+<section class="slide">
+  <div class="shead"><div class="skick">Sensitivity</div><h2 class="stitle serif">민감도 — 근생 분양가가 수익률을 좌우</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <table class="fill">
       <thead><tr><th>시나리오</th><th>근생 수입</th><th>총수입</th><th>세전이익</th><th>수익률</th></tr></thead>
@@ -364,20 +465,15 @@
     </table>
     <div class="call warn big">
       <span class="t">17.3%는 상한선이지 기준선이 아니다</span>
-      상층 근생을 시장가대로만 반영해도 −15~20% 구간(수익률 5%→손익분기)에 진입할 가능성이 크다.
-      본 민감도는 지출을 고정한 보수적 단순화로, 실제로는 분양 지연 시 금융비 상승이 겹쳐 더 악화된다.
+      상층 근생을 시장가대로만 반영해도 −15~20% 구간(수익률 5%→손익분기)에 진입할 가능성이 크다. 본 민감도는 지출을 고정한 보수적 단순화로, 실제로는 분양 지연 시 금융비 상승이 겹쳐 더 악화된다.
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">09</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 10. 1안 2안 -->
+<!-- 13. 1안 2안 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Roadmap</div>
-    <h2 class="stitle serif">사업 진행 — 1안 vs 2안</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Roadmap</div><h2 class="stitle serif">사업 진행 — 1안 vs 2안</h2><div class="srule"></div></div>
   <div class="sbody">
     <div class="row fill" style="align-items:stretch;">
       <div class="plan a">
@@ -406,16 +502,12 @@
       </div>
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">10</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 11. 결론 -->
+<!-- 14. 결론 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Conclusion</div>
-    <h2 class="stitle serif">종합 결론 및 권고</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Conclusion</div><h2 class="stitle serif">종합 결론 및 권고</h2><div class="srule"></div></div>
   <div class="sbody">
     <ul class="clean">
       <li><b>1층 근생·업무 분양가는 시장 범위 안.</b> 선양 직접사례(1층 4,800만)와 비교해도 원안 4,500만은 오히려 낮다. 취약점은 상층 근생에 1층가를 적용한 부분으로, 수익률 17.3%의 핵심 리스크다.</li>
@@ -424,16 +516,12 @@
       <li><b>권고 방향 —</b> 2안(분양성 우선 재편)을 기본으로, 근생 앵커 선임대가 조기 확정되면 1안 요소를 가미하는 하이브리드.</li>
     </ul>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">11</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 12. 검증 항목 -->
+<!-- 15. 검증 항목 -->
 <section class="slide">
-  <div class="shead">
-    <div class="skick">Next Steps</div>
-    <h2 class="stitle serif">즉시 확인할 검증 항목</h2>
-    <div class="srule"></div>
-  </div>
+  <div class="shead"><div class="skick">Next Steps</div><h2 class="stitle serif">즉시 확인할 검증 항목</h2><div class="srule"></div></div>
   <div class="sbody spread">
     <table class="fill">
       <thead><tr><th style="width:8%">순위</th><th>검증 항목</th><th style="width:28%">방법 / 출처</th></tr></thead>
@@ -446,14 +534,13 @@
       </tbody>
     </table>
     <div class="call">
-      상업·업무시설은 실거래 공개가 드물어 일부 수치는 분양 호가·마케팅 자료에 의존했다.
-      최종 의사결정 전 분양사무소 호실별 자료와 1차 통계, 전문가(감정평가·신탁·법무) 검토로 재확인을 권고한다.
+      상업·업무시설은 실거래 공개가 드물어 일부 수치는 분양 호가·마케팅 자료에 의존했다. 최종 의사결정 전 분양사무소 호실별 자료와 1차 통계, 전문가(감정평가·신탁·법무) 검토로 재확인을 권고한다.
     </div>
   </div>
-  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg">12</span></div>
+  <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토 (제4판)</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
 
-<!-- 13. 마무리 -->
+<!-- 16. 마무리 -->
 <section class="slide cover" style="justify-content:center;">
   <div class="ck">THANK YOU</div>
   <h1 class="serif" style="font-size:40px;">핵심은 <b>층별 분양가 현실화</b>와<br><b>선임대 · 신용보강</b>이다.</h1>
