@@ -12,7 +12,8 @@
     --ink:#1a2230; --mut:#5d6b7e; --line:#d7dde6; --bg:#f4f6f9;
     --red:#b5302a; --amber:#c8821b; --green:#1f7a4d; --blue:#2a6db5;
   }
-  body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400; counter-reset:slidepg; }
+  body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400; counter-reset:slidepg;
+    word-break:keep-all; overflow-wrap:break-word; }  /* 한글 단어·조사 중간 끊김 방지: 띄어쓰기 단위로만 줄바꿈 */
   .serif{ font-family:"Noto Serif KR","Noto Sans KR",serif; }
 
   .slide{
