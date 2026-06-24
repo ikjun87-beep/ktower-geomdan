@@ -43,16 +43,16 @@
   /* cover & closing */
   .cover{ background:linear-gradient(150deg,#0c1626 0%,#15233b 55%,#234a78 100%); color:#fff;
     justify-content:center; padding:0 30mm; }
-  .cover .ck{ letter-spacing:7px; font-size:13px; color:var(--gold-l); font-weight:700; }
+  .cover .ck{ letter-spacing:7px; font-size:14.5px; color:var(--gold-l); font-weight:700; }
   .cover h1{ font-size:50px; font-weight:700; line-height:1.2; margin:18px 0; }
   .cover h1 b{ color:var(--gold-b); font-weight:700; }
   .cover .cr{ width:100px; height:5px; background:var(--lime); margin:24px 0; }
   .cover .cs{ font-size:17px; color:#cdd9ea; line-height:1.75; }
   .cover .cm{ font-size:13.5px; color:#dbe4f0; line-height:2; margin-top:14px; }
-  .cover .cbadge{ display:inline-block; border:1px solid var(--lime); color:var(--gold-b); font-size:12.5px;
+  .cover .cbadge{ display:inline-block; border:1px solid var(--lime); color:var(--gold-b); font-size:14px;
     padding:5px 16px; border-radius:18px; margin-top:18px; }
 
-  p.body{ font-size:15px; line-height:1.7; color:#2a3445; }
+  p.body{ font-size:16.5px; line-height:1.7; color:#2a3445; }
   .mut{ color:var(--mut); }
   .row{ display:flex; gap:16px; }
   .row.fill{ flex:1 1 auto; min-height:0; }
@@ -61,31 +61,31 @@
   /* KPI cards */
   .kpis{ display:flex; gap:16px; }
   .kpis.fill{ flex:1 1 auto; }
-  .kpi{ flex:1; border:1px solid var(--line); border-top:4px solid var(--navy); border-radius:7px;
-    padding:20px 18px; background:#fcfdfe; display:flex; flex-direction:column; justify-content:center; }
-  .kpi .n{ font-size:38px; font-weight:700; color:var(--navy); line-height:1; }
-  .kpi .l{ font-size:12.5px; color:var(--mut); margin-top:11px; line-height:1.45; }
-  .kpi.gd{ border-top-color:var(--gold);} .kpi.gd .n{ color:var(--gold);}
-  .kpi.rd{ border-top-color:var(--red);} .kpi.rd .n{ color:var(--red);}
-  .kpi.gr{ border-top-color:var(--green);} .kpi.gr .n{ color:var(--green);}
+  .kpi{ flex:1; border:1px solid #e3e9f1; border-radius:12px;
+    padding:22px 20px; background:#fff; box-shadow:0 3px 12px rgba(21,35,59,.07); display:flex; flex-direction:column; justify-content:center; }
+  .kpi .n{ font-size:43px; font-weight:800; color:var(--navy); line-height:1; }
+  .kpi .l{ font-size:14.5px; color:var(--mut); margin-top:13px; line-height:1.45; }
+  .kpi.gd .n{ color:var(--gold);}
+  .kpi.rd .n{ color:var(--red);}
+  .kpi.gr .n{ color:var(--green);}
 
   /* callout */
-  .call{ border-left:5px solid var(--gold); background:#eef4fb; border-radius:6px; padding:16px 19px;
-    font-size:14.5px; line-height:1.65; }
+  .call{ border-left:5px solid var(--gold); background:#eef4fb; border-radius:6px; padding:17px 20px;
+    font-size:16px; line-height:1.7; }
   .call.warn{ border-left-color:var(--red); background:#fcf2f1; }
   .call.ok{ border-left-color:var(--green); background:#f1f8f4; }
-  .call.big{ font-size:16px; }
-  .call .t{ font-weight:700; color:var(--navy); font-size:14.5px; display:block; margin-bottom:6px; }
+  .call.big{ font-size:18.5px; }
+  .call .t{ font-weight:800; color:var(--navy); font-size:16px; display:block; margin-bottom:6px; }
 
   /* tables */
-  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  table{ width:100%; border-collapse:collapse; font-size:15px; }
   .sbody > table.fill{ flex:1 1 auto; min-height:0; }
-  th,td{ border:1px solid var(--line); padding:11px 13px; }
-  th{ background:#e8eef5; color:#15233b; font-weight:700; text-align:center; font-size:13.5px; }
+  th,td{ border:none; border-bottom:1px solid var(--line); padding:12px 14px; }
+  th{ background:transparent; color:var(--navy); font-weight:800; text-align:center; font-size:14px; border-bottom:2px solid var(--navy); letter-spacing:.2px; }
   td.l{text-align:left;} td.c{text-align:center;} td.r{text-align:right;}
-  tbody tr:nth-child(even){ background:#f3f7fb; }
+  tbody tr:nth-child(even){ background:#f6f9fc; }
   td.hl{ background:#eef4fb !important; }
-  .tag{ display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:800; padding:4px 11px; border-radius:6px; color:#fff; letter-spacing:.2px; box-shadow:0 1px 2px rgba(21,35,59,.18); white-space:nowrap;}
+  .tag{ display:inline-flex; align-items:center; gap:4px; font-size:14.5px; font-weight:800; padding:4px 11px; border-radius:6px; color:#fff; letter-spacing:.2px; box-shadow:0 1px 2px rgba(21,35,59,.18); white-space:nowrap;}
   .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--blue);}
   .tag.g::before{content:"\2713"; font-weight:900;}            /* ✓ 적정·확정 */
   .tag.r::before{content:"\25B2"; font-size:9px;}              /* ▲ 위험 */
@@ -93,31 +93,31 @@
   .tag.b::before{content:"\25C6"; font-size:8px;}              /* ◆ 정보·착공 */
 
   /* bars */
-  .barrow{ display:flex; align-items:center; gap:14px; font-size:14px; }
+  .barrow{ display:flex; align-items:center; gap:14px; font-size:15.5px; }
   .barrow .lab{ width:74px; color:var(--navy); font-weight:700; }
   .barbg{ flex:1; background:#eef1f5; border-radius:4px; height:26px; }
   .barfill{ height:26px; border-radius:4px; background:linear-gradient(90deg,var(--navy),var(--blue)); }
   .barrow .val{ width:170px; text-align:right; color:#2a3445; font-size:13.5px; }
 
   /* two-plan */
-  .plan{ flex:1; border:1px solid var(--line); border-radius:9px; padding:20px 22px; display:flex; flex-direction:column; }
-  .plan.a{ border-top:6px solid var(--navy); }
-  .plan.b{ border-top:6px solid var(--gold); }
-  .plan h3{ font-size:19px; color:var(--navy); margin-bottom:4px; font-weight:700; }
-  .plan .ph{ font-size:13px; color:var(--mut); margin-bottom:12px; }
-  .plan ul{ padding-left:19px; font-size:13.5px; line-height:1.7; flex:1 1 auto; }
+  .plan{ flex:1; border:1px solid #e3e9f1; border-radius:12px; padding:22px 24px; display:flex; flex-direction:column; box-shadow:0 3px 12px rgba(21,35,59,.06); }
+  .plan.a h3{ border-left-color:var(--navy); }
+  .plan.b h3{ color:var(--gold); border-left-color:var(--gold); }
+  .plan h3{ font-size:21px; color:var(--navy); margin-bottom:7px; font-weight:800; border-left:5px solid var(--navy); padding-left:11px; }
+  .plan .ph{ font-size:14.5px; color:var(--mut); margin-bottom:12px; }
+  .plan ul{ padding-left:19px; font-size:15.5px; line-height:1.7; flex:1 1 auto; }
   .plan li{ margin:7px 0; }
 
   /* clean bullet list */
   ul.clean{ list-style:none; padding:0; display:flex; flex-direction:column; justify-content:center; flex:1 1 auto; gap:4px; }
-  ul.clean li{ font-size:16px; line-height:1.55; margin:9px 0; padding-left:26px; position:relative; }
+  ul.clean li{ font-size:18px; line-height:1.6; margin:10px 0; padding-left:28px; position:relative; }
   ul.clean li b{ color:var(--navy); }
   ul.clean li::before{ content:""; position:absolute; left:0; top:7px; width:11px; height:11px;
     background:var(--gold); border-radius:2px; transform:rotate(45deg); }
 
   /* fact grid */
   .facts{ display:grid; grid-template-columns:1fr 1fr; gap:0 28px; }
-  .facts .f{ display:flex; border-bottom:1px solid var(--line); padding:11px 2px; font-size:14px; }
+  .facts .f{ display:flex; border-bottom:1px solid var(--line); padding:12px 2px; font-size:15.5px; }
   .facts .f .k{ width:96px; color:var(--gold); font-weight:700; flex:0 0 auto; }
   .facts .f .v{ color:#2a3445; }
 
@@ -131,26 +131,26 @@
   .pin .dot{ width:18px; height:18px; border-radius:50% 50% 50% 0; background:var(--navy);
     transform:rotate(-45deg); margin:0 auto; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.4); }
   .pin.gold .dot{ background:var(--gold); }
-  .pin .tag2{ display:inline-block; transform:translateY(6px); white-space:nowrap; font-size:11px; font-weight:700;
+  .pin .tag2{ display:inline-block; transform:translateY(6px); white-space:nowrap; font-size:14.5px; font-weight:700;
     color:#fff; background:var(--navy); padding:2px 8px; border-radius:11px; box-shadow:0 1px 3px rgba(0,0,0,.3); }
   .pin.gold .tag2{ background:var(--gold); }
-  .mlabel{ position:absolute; transform:translate(-50%,-50%); white-space:nowrap; font-size:11px; font-weight:700;
+  .mlabel{ position:absolute; transform:translate(-50%,-50%); white-space:nowrap; font-size:14.5px; font-weight:700;
     color:var(--navy); background:rgba(255,255,255,.9); border:1px solid var(--gold-l); padding:2px 8px; border-radius:11px; }
   .mline{ position:absolute; height:0; border-top:2px dashed var(--gold); transform-origin:left center; }
-  .mdist{ position:absolute; transform:translate(-50%,-50%); font-size:10.5px; font-weight:700; color:#4a3a86;
+  .mdist{ position:absolute; transform:translate(-50%,-50%); font-size:12px; font-weight:700; color:#4a3a86;
     background:var(--gold-l); padding:1px 7px; border-radius:10px; }
 
   /* ===== cross-section diagram ===== */
   .xsec{ display:flex; flex-direction:column-reverse; gap:3px; flex:1 1 auto; justify-content:center; }
   .fl{ display:grid; grid-template-columns:54px 1fr 150px; align-items:center; gap:12px; }
-  .fl .flno{ width:54px; font-size:12px; font-weight:700; color:var(--navy); text-align:right; }
-  .fl .flbar{ height:30px; border-radius:3px; display:flex; align-items:center; padding:0 10px;
-    color:#fff; font-size:11.5px; font-weight:700; white-space:nowrap; min-width:60px; }
-  .fl .flmeta{ font-size:11.5px; color:#2a3445; }
+  .fl .flno{ width:58px; font-size:14px; font-weight:700; color:var(--navy); text-align:right; }
+  .fl .flbar{ height:32px; border-radius:3px; display:flex; align-items:center; padding:0 11px;
+    color:#fff; font-size:13.5px; font-weight:700; white-space:nowrap; min-width:60px; }
+  .fl .flmeta{ font-size:13.5px; color:#2a3445; }
   .fl .flmeta b{ color:var(--navy); }
   .u-1{ background:var(--gold); } .u-g{ background:var(--navy); }
   .u-b{ background:#9aa6b5; }
-  .leg{ display:flex; gap:16px; font-size:11.5px; color:var(--mut); margin-top:4px; }
+  .leg{ display:flex; gap:16px; font-size:14.5px; color:var(--mut); margin-top:4px; }
   .leg span{ display:inline-flex; align-items:center; gap:5px; }
   .leg i{ width:11px; height:11px; border-radius:2px; display:inline-block; }
 
@@ -160,15 +160,15 @@
   .donut::after{ content:""; position:absolute; inset:34px; background:#fff; border-radius:50%; }
   .donut .ctr{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1; }
   .donut .ctr .n{ font-size:24px; font-weight:700; color:var(--gold); line-height:1; }
-  .donut .ctr .l{ font-size:10.5px; color:var(--mut); margin-top:3px; }
-  .dleg{ font-size:13.5px; line-height:2; }
+  .donut .ctr .l{ font-size:12px; color:var(--mut); margin-top:3px; }
+  .dleg{ font-size:15.5px; line-height:2; }
   .dleg .sw{ display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:7px; vertical-align:-1px; }
   .flow{ display:flex; align-items:stretch; gap:0; flex:1 1 auto; }
-  .node{ flex:1; border:1px solid var(--line); border-top:3px solid var(--navy); border-radius:7px;
-    padding:13px 12px; display:flex; flex-direction:column; justify-content:center; background:#fcfdfe; }
-  .node .nt{ font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
-  .node .nd{ font-size:11.5px; color:var(--mut); line-height:1.5; }
-  .node.gold{ border-top-color:var(--gold); }
+  .node{ flex:1; border:1px solid #e3e9f1; border-radius:9px;
+    padding:14px 13px; display:flex; flex-direction:column; justify-content:center; background:#fff; box-shadow:0 2px 8px rgba(21,35,59,.05); }
+  .node .nt{ font-size:15px; font-weight:800; color:var(--navy); margin-bottom:4px; }
+  .node .nd{ font-size:13.5px; color:var(--mut); line-height:1.5; }
+  .node.gold{ background:#eef4fb; border-color:#cfe0f2; }
   .arrow{ flex:0 0 30px; display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:22px; font-weight:700; }
 </style>
 </head>
@@ -260,9 +260,9 @@
       상가 평균 분양가가 15~20%만 내려가도 수익은 본전 수준(손익분기)으로 떨어진다.
     </div>
     <div class="row" style="gap:14px;">
-      <div class="call ok" style="flex:1;font-size:13px;"><span class="t" style="font-size:13px;">관전 포인트 ①</span>층별 분양가 현실화 — 1층가가 상층에 적용됐는지</div>
-      <div class="call" style="flex:1;font-size:13px;border-left-color:var(--blue);background:#f1f6fb;"><span class="t" style="font-size:13px;">관전 포인트 ②</span>상가 선임대·상품구성 재편으로 흡수율 확보</div>
-      <div class="call warn" style="flex:1;font-size:13px;"><span class="t" style="font-size:13px;">관전 포인트 ③</span>신탁·책준·자기자본 다층 신용보강</div>
+      <div class="call ok" style="flex:1;font-size:14.5px;"><span class="t" style="font-size:14.5px;">관전 포인트 ①</span>층별 분양가 현실화 — 1층가가 상층에 적용됐는지</div>
+      <div class="call" style="flex:1;font-size:14.5px;border-left-color:var(--blue);background:#f1f6fb;"><span class="t" style="font-size:14.5px;">관전 포인트 ②</span>상가 선임대·상품구성 재편으로 흡수율 확보</div>
+      <div class="call warn" style="flex:1;font-size:14.5px;"><span class="t" style="font-size:14.5px;">관전 포인트 ③</span>신탁·책준·자기자본 다층 신용보강</div>
     </div>
   </div>
   <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
@@ -355,7 +355,7 @@
         </ul>
       </div>
     </div>
-    <p class="body mut" style="font-size:12.5px;">※ 선양 2층 선임대 6호실 분양가 3.9~4.5억, 현금수익률 ~6%(대출 시 8%). 검단 오피스 평당 실분양가는 비공개(홍보관 문의)로 잔여 갭.</p>
+    <p class="body mut" style="font-size:14px;">※ 선양 2층 선임대 6호실 분양가 3.9~4.5억, 현금수익률 ~6%(대출 시 8%). 검단 오피스 평당 실분양가는 비공개(홍보관 문의)로 잔여 갭.</p>
   </div>
   <div class="sfoot"><span>The K Tower 검단 · 적정 분양가·사업성 검토</span><span class="cf">CONFIDENTIAL</span><span class="pg"></span></div>
 </section>
@@ -387,7 +387,7 @@
             <tr><td class="l">iH 웰카운티</td><td class="c">단지내 상가</td><td class="c">검단 타 블록</td><td class="c">2024 공급</td></tr>
           </tbody>
         </table>
-        <div class="call ok" style="font-size:12.5px; padding:11px 14px; margin-top:10px;">
+        <div class="call ok" style="font-size:14px; padding:11px 14px; margin-top:10px;">
           동일 입지 · 동일 유형 · 동시기 신축은 <b>선양법조타워뿐</b>이다. 메트로시티·iH는 유형(단지내상가)과 입지가 달라 보조 참고로만 사용. 직접 비교 신뢰도는 <b>선양 &gt; 메트로시티 &gt; iH</b> 순.
         </div>
       </div>
@@ -438,7 +438,7 @@
           <div><span class="sw" style="background:var(--gold);"></span><b>근린생활시설</b> 833.9억 · 84.8%</div>
           <div><span class="sw" style="background:var(--navy3);"></span>업무시설 149.3억 · 15.2%</div>
         </div>
-        <div class="call warn" style="font-size:12.5px; padding:11px 14px; margin-top:8px;">수입의 85%가 가장 약한 부문(상가)에 묶여 있다. 근생 분양가가 흔들리면 사업 전체가 흔들린다 — 구조적 편중이 최대 리스크.</div>
+        <div class="call warn" style="font-size:14px; padding:11px 14px; margin-top:8px;">수입의 85%가 가장 약한 부문(상가)에 묶여 있다. 근생 분양가가 흔들리면 사업 전체가 흔들린다 — 구조적 편중이 최대 리스크.</div>
       </div>
     </div>
     <h3 class="serif" style="font-size:16px; color:var(--navy2); margin:4px 0 8px;">사업 추진 구조 — 본PF 기표의 4대 전제</h3>
@@ -494,7 +494,7 @@
           <li>자기자본 확충 (현물출자·리츠)</li>
           <li>근생 앵커 선임대 + 층별 차등가 재설정</li>
         </ul>
-        <div class="call warn" style="font-size:12.5px; padding:11px 14px;">분양 흡수율이 받쳐줘야 성립. 미분양 시 금융비 폭증으로 수익률 급락.</div>
+        <div class="call warn" style="font-size:14px; padding:11px 14px;">분양 흡수율이 받쳐줘야 성립. 미분양 시 금융비 폭증으로 수익률 급락.</div>
       </div>
       <div class="plan b">
         <h3 class="serif">2안 — 분양성 우선 재편</h3>
@@ -506,7 +506,7 @@
           <li>법조타운 개원(2028.3) 타이밍 연동</li>
           <li>책준형 신탁 + 일부 통매각·리츠 편입</li>
         </ul>
-        <div class="call ok" style="font-size:12.5px; padding:11px 14px;">시장 약세·저신용 시행사 환경에서 완주 확률을 높이는 현실적 경로.</div>
+        <div class="call ok" style="font-size:14px; padding:11px 14px;">시장 약세·저신용 시행사 환경에서 완주 확률을 높이는 현실적 경로.</div>
       </div>
     </div>
   </div>
