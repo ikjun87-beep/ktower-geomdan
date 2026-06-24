@@ -24,15 +24,15 @@
   h3, h4 { page-break-after: avoid; }
   thead { display: table-header-group; }
   :root{
-    /* Sentry-inspired 바이올렛/라임 팔레트 — 네이비 대비 밝게 */
-    --navy:#3a2178; --navy2:#5b46a8; --gold:#6a5fc1; --gold-l:#ece8fb;
-    --lime:#c2ef4e;
-    --ink:#1f1633; --mut:#6b6480; --line:#e5e7eb; --bg:#ffffff;
-    --red:#d6453d; --amber:#c8821b; --green:#1f9d57; --blue:#4f5bd5;
+    /* 네이비 & 스카이블루 — 사업검토보고서 표준 톤(가독성↑) */
+    --navy:#15233b; --navy2:#2f6fb0; --gold:#2f6fb0; --gold-l:#e8eef5;
+    --lime:#7fb1e6;
+    --ink:#1f2937; --mut:#5b6b80; --line:#d9e1ec; --bg:#ffffff;
+    --red:#d23b3b; --amber:#e0a020; --green:#1e8e5a; --blue:#2f6fb0;
   }
   /* ---- cover ---- */
   .cover{ height:265mm; display:flex; flex-direction:column; justify-content:space-between;
-    background:linear-gradient(160deg,#150f23 0%,#2a1659 55%,#422082 100%); color:#fff;
+    background:linear-gradient(160deg,#0c1626 0%,#15233b 55%,#234a80 100%); color:#fff;
     margin:-16mm -14mm 0 -14mm; padding:34mm 22mm; }
   .cover .kick{ letter-spacing:5px; font-size:12px; color:var(--gold-l); font-weight:600;}
   .cover h1{ font-size:33px; line-height:1.25; margin:14px 0 0; font-weight:800; }
@@ -57,14 +57,14 @@
   /* ---- tables ---- */
   table{ width:100%; border-collapse:collapse; margin:8px 0 10px; font-size:9.6px; }
   th,td{ border:1px solid var(--line); padding:5px 7px; vertical-align:middle; }
-  th{ background:#efeafc; color:#33215f; font-weight:700; text-align:center; }
+  th{ background:#e8eef5; color:#15233b; font-weight:700; text-align:center; }
   td.l{ text-align:left;} td.c{text-align:center;} td.r{text-align:right;}
-  tbody tr:nth-child(even){ background:#f7f5fc; }
-  .sub th{ background:#e1d9f6; color:#33215f; }
+  tbody tr:nth-child(even){ background:#f3f7fb; }
+  .sub th{ background:#d8e4f1; color:#15233b; }
   caption{ caption-side:top; text-align:left; font-size:9px; color:var(--mut); padding:2px 0;}
   /* ---- callouts ---- */
   .box{ border:1px solid var(--line); border-radius:5px; padding:10px 13px; margin:10px 0; background:#fff;}
-  .box.key{ border-left:5px solid var(--gold); background:#f5f2ff;}
+  .box.key{ border-left:5px solid var(--gold); background:#eef4fb;}
   .box.warn{ border-left:5px solid var(--red); background:#fcf2f1;}
   .box.ok{ border-left:5px solid var(--green); background:#f1f8f4;}
   .box .t{ font-weight:800; color:var(--navy); font-size:10.6px; margin-bottom:3px;}
@@ -75,8 +75,12 @@
   .stat .c .l{ font-size:8.8px; color:var(--mut); margin-top:2px;}
   .stat .c.gd{ border-top-color:var(--gold);} .stat .c.gd .n{ color:var(--gold);}
   .stat .c.rd{ border-top-color:var(--red);} .stat .c.rd .n{ color:var(--red);}
-  .tag{ display:inline-block; font-size:8.4px; font-weight:700; padding:1px 7px; border-radius:10px; color:#fff;}
+  .tag{ display:inline-flex; align-items:center; gap:3px; font-size:8.4px; font-weight:800; padding:2px 7px; border-radius:4px; color:#fff; letter-spacing:.2px; white-space:nowrap;}
   .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--blue);}
+  .tag.g::before{content:"\2713"; font-weight:900;}
+  .tag.r::before{content:"\25B2"; font-size:7px;}
+  .tag.a::before{content:"\25CF"; font-size:6px;}
+  .tag.b::before{content:"\25C6"; font-size:6px;}
   /* ---- bar ---- */
   .bar{ height:15px; background:linear-gradient(90deg,var(--navy),var(--blue)); border-radius:2px; display:inline-block; vertical-align:middle;}
   .barbg{ background:#eef1f5; border-radius:2px; width:100%; display:inline-block; }
@@ -84,7 +88,7 @@
   ol{ margin:5px 0 8px; padding-left:20px;}
   .foot-note{ font-size:8.6px; color:var(--mut); border-top:1px solid var(--line); margin-top:14px; padding-top:6px;}
   a{ color:var(--blue); text-decoration:none; word-break:break-all;}
-  .pill{ font-size:8.6px; background:var(--gold-l); color:#4a3a86; padding:1px 7px; border-radius:9px; font-weight:700;}
+  .pill{ font-size:8.6px; background:var(--gold-l); color:#234a78; padding:1px 7px; border-radius:9px; font-weight:700;}
 </style>
 </head>
 <body>
@@ -95,7 +99,7 @@
     <div class="kick">REAL ESTATE INVESTMENT REVIEW</div>
     <h1>The K Tower 검단<br><b>적정 분양가</b> 검토 및<br><b>사업성 재검토</b> 보고서</h1>
     <div class="sub">인천 서구 당하동 1237 · 검단신도시 C3-①-5 일반상업BL<br>근린생활시설 · 업무시설 · 판매시설 개발사업</div>
-    <span class="badge">시장조사 기반 독립 검토 · 다중출처 교차검증 · 제5판(법규·교통호재 갱신)</span>
+    <span class="badge">시장조사 기반 독립 검토 · 다중출처 교차검증 · 2026.06 기준</span>
   </div>
   <div>
     <div class="rule"></div>
@@ -127,16 +131,16 @@
     <div class="t">검토 결론</div>
     원안 수익률 17.3%는 상가(근생)를 1층 근접가로 거의 다 비싸게 분양한다는 가정 위에 서 있다.
     시장 데이터를 보면 상가는 1층만 강하고 상층부 평당가는 1층의 1/3~1/5로 떨어진다. 여기에 검단 상가는 공급과잉과 공실 위험이 구조적이다.
-    블렌디드 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 내려간다.
+    가중평균 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 내려간다.
     사업을 끌고 가려면 층별 분양가 현실화, 상가 선임대·상품구성 재편, 신탁·책준·자기자본을 통한 신용보강이 함께 가야 한다.
   </div>
 
   <h3>판정 요약</h3>
   <table>
-    <thead><tr><th style="width:18%">항목</th><th style="width:14%">원안</th><th style="width:34%">시장 데이터(2025~26)</th><th style="width:12%">판정</th><th>코멘트</th></tr></thead>
+    <thead><tr><th style="width:18%">항목</th><th style="width:14%">원안</th><th style="width:34%">시장 데이터(2025~2026)</th><th style="width:12%">판정</th><th>코멘트</th></tr></thead>
     <tbody>
       <tr><td class="l"><b>근생 1층 분양가</b></td><td class="c">4,500만/평<br>(계약)</td><td class="l">선양법조타워(검단 법조타운) 1층 계약평당 4,800만, 메트로시티 1층 4,500~4,900만</td><td class="c"><span class="tag g">적정</span></td><td class="l">동일 입지 직접사례보다 오히려 낮음. 1층 단가 자체는 무리 없음</td></tr>
-      <tr><td class="l"><b>근생 2층</b></td><td class="c">(블렌디드<br>4,500 의심)</td><td class="l">선양 2층 계약평당 2,200~2,500만, 메트로시티 1,600~1,800만</td><td class="c"><span class="tag r">과대위험</span></td><td class="l">1층의 35~50% 수준이 정상</td></tr>
+      <tr><td class="l"><b>근생 2층</b></td><td class="c">(가중평균<br>4,500 의심)</td><td class="l">선양 2층 계약평당 2,200~2,500만, 메트로시티 1,600~1,800만</td><td class="c"><span class="tag r">과대위험</span></td><td class="l">1층의 35~50% 수준이 정상</td></tr>
       <tr><td class="l"><b>근생 3~7층</b></td><td class="c">〃</td><td class="l">메트로시티 1,000~1,300만</td><td class="c"><span class="tag r">과대위험</span></td><td class="l">층별 차등 분양가 재설정 필수</td></tr>
       <tr><td class="l"><b>업무 8~10층</b></td><td class="c">1,200만/평<br>(계약면적)</td><td class="l">검단 직접데이터 없음 / 문정 법조 오피스 매매 ~3,400만(전용)</td><td class="c"><span class="tag a">조건부</span></td><td class="l">전용률 환산 시 2,400~3,000만/평 가능. 전용률·개원지연 공실 확인 필요</td></tr>
     </tbody>
@@ -153,9 +157,9 @@
     <div class="box warn"><div class="t">위험 요인</div>
       <ul class="small">
         <li>근생 수입비중 84.8%로 수익률이 상가 분양가에 종속</li>
-        <li>인천 상가 공실 13.6%, 오피스 공실 18.7%로 둘 다 전국 상회('25 3Q)</li>
-        <li>인천 미분양 3,818호 중 서구(검단)가 준공후 물량의 74%('26.2)</li>
-        <li>법조타운 개원 2028.3로 지연, 저신용 시행사, '26 하반기 PF 만기 정점</li>
+        <li>인천 상가 공실 13.6%, 오피스 공실 18.7%로 둘 다 전국 상회(2025년 3분기)</li>
+        <li>인천 미분양 3,818호 중 서구(검단)가 준공후 물량의 74%(2026.2)</li>
+        <li>법조타운 개원 2028.3로 지연, 저신용 시행사, 2026 하반기 PF 만기 정점</li>
       </ul></div>
   </div>
 
@@ -224,10 +228,10 @@
       <tr><td class="l"><b>인천1호선 검단연장</b></td><td class="c"><span class="tag g">개통(확정)</span></td><td class="c">2025.6.28</td><td class="l">계양~검단 신설 3개역(아라역=101역 등). 이미 시세에 반영</td></tr>
       <tr><td class="l"><b>검단 법조타운</b></td><td class="c"><span class="tag b">착공(확정)</span></td><td class="c">착공 2024.12<br>개원 2028.3</td><td class="l">인천지법 북부지원·인천지검 북부지청. 개원이 후행(당초 2025에서 2028로 연기)</td></tr>
       <tr><td class="l"><b>GTX-D(서부권급행)</b></td><td class="c"><span class="tag a">예타통과(예정)</span></td><td class="c">착공 2028목표<br>완공 2033</td><td class="l">김포~검단~부천~서울. 착공 전 공백 리스크</td></tr>
-      <tr><td class="l"><b>서울5호선 연장</b></td><td class="c"><span class="tag a">예타통과</span></td><td class="c">'26.3.10</td><td class="l">방화~검단~김포(23.89km). 예타 통과로 진전 — 착공 전 공백은 잔존</td></tr>
+      <tr><td class="l"><b>서울5호선 연장</b></td><td class="c"><span class="tag a">예타통과</span></td><td class="c">2026.3.10</td><td class="l">방화~검단~김포(23.89km). 예타 통과로 진전 — 착공 전 공백은 잔존</td></tr>
     </tbody>
   </table>
-  <div class="box warn small">분양가에 즉시 반영할 수 있는 확정 호재는 인천1호선뿐이며, 이는 이미 가격에 선반영됐다. GTX-D·5호선은 예정 호재로만 보수적으로 반영해야 하고, 법조타운 배후수요는 2028년 개원 이후에 본격화한다. 미실현 호재를 현재 분양가에 전부 반영하면 흡수율 리스크로 돌아온다. 한편 서구는 '26년 검단구 분구가 예정되어 행정·생활권 위상은 강화된다.</div>
+  <div class="box warn small">분양가에 즉시 반영할 수 있는 확정 호재는 인천1호선뿐이며, 이는 이미 가격에 선반영됐다. GTX-D·5호선은 예정 호재로만 보수적으로 반영해야 하고, 법조타운 배후수요는 2028년 개원 이후에 본격화한다. 미실현 호재를 현재 분양가에 전부 반영하면 흡수율 리스크로 돌아온다. 한편 서구는 2026년 검단구 분구가 예정되어 행정·생활권 위상은 강화된다.</div>
 
   <h3>2-2. 인구·배후수요</h3>
   <div class="grid2">
@@ -266,8 +270,8 @@
     </table>
   </div>
   <table>
-    <caption>인천 세부권역 공실률 & 미분양 (2025 3Q / 국토부 '26.2)</caption>
-    <thead><tr><th>권역</th><th>공실률</th><th>권역</th><th>공실률</th><th colspan="2">인천 미분양 ('26.2)</th></tr></thead>
+    <caption>인천 세부권역 공실률 & 미분양 (2025년 3분기 / 국토부 2026.2)</caption>
+    <thead><tr><th>권역</th><th>공실률</th><th>권역</th><th>공실률</th><th colspan="2">인천 미분양 (2026.2)</th></tr></thead>
     <tbody>
       <tr><td class="l">구월동(원도심)</td><td class="c">34%</td><td class="l">부평</td><td class="c">16.2%</td><td class="l">총 미분양</td><td class="r">3,818호</td></tr>
       <tr><td class="l">영종(신도심)</td><td class="c">25~30%</td><td class="l">주안</td><td class="c">11.5%</td><td class="l">준공후(악성)</td><td class="r">1,277호</td></tr>
@@ -283,7 +287,7 @@
   <div class="sechead"><span class="secno">3</span><span class="sectitle">주변 시세 — 상가 · 오피스</span>
     <span class="secdesc">다중출처 수집</span></div>
 
-  <div class="box small" style="background:#f5f2ff;border-left:5px solid var(--gold)">
+  <div class="box small" style="background:#eef4fb;border-left:5px solid var(--gold)">
     <b>데이터 신뢰도 고지.</b> 상가·오피스는 아파트와 달리 실거래 공개가 드물어, 아래 수치 상당수는 분양 호가·마케팅 자료의 성격이 강하다.
     네이버부동산·직방·다방·아실의 동적 매물 원자료는 로그인·동적페이지 제약으로 직접 수집이 제한된다. 추정치와 실데이터를 구분해 표기했다.
   </div>
@@ -310,7 +314,7 @@
         <tr><td class="l">전용 / 분양면적</td><td class="r">11.04평 / 22.35평</td></tr>
         <tr><td class="l"><b>계약평당가</b></td><td class="r"><b>약 4,800만원</b></td></tr>
         <tr><td class="l"><b>전용평당가</b></td><td class="r"><b>약 9,720만원</b></td></tr>
-        <tr style="background:#f5f2ff"><td class="l"><b>전용률</b></td><td class="r"><b>약 49.4%</b></td></tr>
+        <tr style="background:#eef4fb"><td class="l"><b>전용률</b></td><td class="r"><b>약 49.4%</b></td></tr>
       </tbody>
     </table>
   </div>
@@ -364,7 +368,7 @@
     </tbody>
   </table>
   <div class="box small">계약면적 1,200만/평은 외형상 과도하지 않으나, 전용률 환산 비교와 법조타운 개원(2028.3) 지연에 따른 개원 전 입주분의 1~3년 공실 리스크(문정 전례)를 함께 반영해야 한다.</div>
-  <div class="box warn small">인천 오피스 공실률 18.7%(2025 3Q, 전국 8.8%의 2배 이상)는 검단 오피스 분양·임대의 직접 경고다. 검단은 오피스 공급 자체가 미미해 직접 시세는 여전히 미확보 상태(전부 홍보관 문의)이나, 인천 오피스 시장의 높은 공실은 오피스라서 안전하다는 전제를 약화시킨다. 오피스도 선임대 없이는 1,200만/평 흡수가 불확실하다.</div>
+  <div class="box warn small">인천 오피스 공실률 18.7%(2025년 3분기, 전국 8.8%의 2배 이상)는 검단 오피스 분양·임대의 직접 경고다. 검단은 오피스 공급 자체가 미미해 직접 시세는 여전히 미확보 상태(전부 홍보관 문의)이나, 인천 오피스 시장의 높은 공실은 오피스라서 안전하다는 전제를 약화시킨다. 오피스도 선임대 없이는 1,200만/평 흡수가 불확실하다.</div>
 </div>
 
 <!-- ============ 4. 적정 분양가 ============ -->
@@ -394,16 +398,16 @@
     1순위 조치는 원본 엑셀의 층별 단가 가정을 확인하고 시장가 기준으로 재산정하는 것이다.
   </div>
 
-  <h3>4-2. 권고가의 블렌디드(가중평균) 환산 — 산정기준 불일치 경고</h3>
+  <h3>4-2. 권고가의 가중평균 환산 — 산정기준 불일치 경고</h3>
   <table>
     <thead><tr><th>구분</th><th>값</th><th class="l">비고</th></tr></thead>
     <tbody>
-      <tr><td class="l">권고 층별가의 전용 블렌디드(지상 근생 2,750평 가중평균)</td><td class="c"><b>약 1,635만원/평</b></td><td class="l">시장 층별가(메트로시티 기준) 적용</td></tr>
-      <tr><td class="l">원안 가정 계약면적 블렌디드</td><td class="c">4,500만원/평</td><td class="l">1층 기준 단일가</td></tr>
+      <tr><td class="l">권고 층별가의 전용 가중평균(지상 근생 2,750평 가중평균)</td><td class="c"><b>약 1,635만원/평</b></td><td class="l">시장 층별가(메트로시티 기준) 적용</td></tr>
+      <tr><td class="l">원안 가정 계약면적 가중평균</td><td class="c">4,500만원/평</td><td class="l">1층 기준 단일가</td></tr>
       <tr><td class="l">전용률(실측 49.4%) 환산 시 원안</td><td class="c">전용 ~9,100만원/평</td><td class="l">전용 기준으로는 1층 비교사례(선양 9,720만 등)와 유사</td></tr>
     </tbody>
   </table>
-  <div class="box warn small">원안 4,500만원은 계약면적 기준, 권고 블렌디드 1,635만원은 전용면적 기준이라 산정기준이 달라 직접 비교는 불가하다. 핵심은 원안이 상층 근생에도 1층 수준 단가를 적용했는지이며, 이는 층별 계약평당가 분해표로만 판정된다(5장 가정·방법론, 7장 검증항목). 본 보고서가 절대 수입을 재계산하지 않고 민감도로 제시하는 이유다. 다만 선양 사례로 전용률 49.4%가 확인되면서, 원안 계약평당 4,500만원을 전용으로 환산하면 약 9,100만원으로 1층 비교사례와 정합한다. 즉 원안 단가가 1층에만 적용된 것이라면 정상이고, 상층까지 적용됐다면 과대다.</div>
+  <div class="box warn small">원안 4,500만원은 계약면적 기준, 권고 가중평균 1,635만원은 전용면적 기준이라 산정기준이 달라 직접 비교는 불가하다. 핵심은 원안이 상층 근생에도 1층 수준 단가를 적용했는지이며, 이는 층별 계약평당가 분해표로만 판정된다(5장 가정·방법론, 7장 검증항목). 본 보고서가 절대 수입을 재계산하지 않고 민감도로 제시하는 이유다. 다만 선양 사례로 전용률 49.4%가 확인되면서, 원안 계약평당 4,500만원을 전용으로 환산하면 약 9,100만원으로 1층 비교사례와 정합한다. 즉 원안 단가가 1층에만 적용된 것이라면 정상이고, 상층까지 적용됐다면 과대다.</div>
 </div>
 
 <!-- ============ 5. 사업성 재검토 ============ -->
@@ -453,7 +457,7 @@
   </table>
   <div class="box warn">
     <div class="t">민감도 결론</div>
-    블렌디드 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 무너진다.
+    가중평균 근생 분양가가 15~20%만 하락해도 수익률은 5%대를 거쳐 손익분기로 무너진다.
     상층 근생을 시장가(2층 1,700~2,500, 3~7층 950~1,300만원)대로만 반영해도 이 구간에 진입할 가능성이 크다.
     더욱이 본 민감도는 지출을 고정한 보수적 단순화로, 실제로는 분양 지연 시 금융비(현재 16.3%)가 추가로 늘어 수익률은 더 악화된다.
     17.3%는 상한선이지 기준선이 아니다.
@@ -488,10 +492,10 @@
       <ol class="small">
         <li>토지 권원 확보(매매계약→소유권). 본PF 인출의 선행조건이다.</li>
         <li>관리형토지신탁 + 분양보증/대리사무. 건축물분양법상 선분양의 법적요건이다.</li>
-        <li>시공사 책임준공확약(신용 BBB 이상). 단 '25년 책준 256억 배상판결·신탁 한도규제로 문턱이 올라갔다.</li>
-        <li>자기자본 확충. 토지 현물출자·프로젝트 리츠로 비율을 높인다(의무화 '27년 5%→'30년 20%).</li>
+        <li>시공사 책임준공확약(신용 BBB 이상). 단 2025년 책준 256억 배상판결·신탁 한도규제로 문턱이 올라갔다.</li>
+        <li>자기자본 확충. 토지 현물출자·프로젝트 리츠로 비율을 높인다(의무화 2027년 5%→2030년 20%).</li>
         <li>근생 앵커 선임대 확보와 층별 차등가 재설정(상층 현실화).</li>
-        <li>본PF 기표조건 사전확정(분양률·선임대율). '26 하반기 PF 만기 정점, 한시 PF 규제완화 '26 상반기 종료 예정.</li>
+        <li>본PF 기표조건 사전확정(분양률·선임대율). 2026 하반기 PF 만기 정점, 한시 PF 규제완화 2026 상반기 종료 예정.</li>
       </ol>
       <div class="box small" style="margin:6px 0 0;background:#fcf2f1;border:none;border-left:3px solid var(--red)">
         <b>전제.</b> 분양 흡수율이 받쳐줘야 성립한다. 미분양 시 금융비 폭증으로 수익률이 급락한다.
@@ -515,12 +519,12 @@
     </div>
   </div>
 
-  <h3>공통 — 어느 안이든 반드시 충족 (자금조달 환경 '26)</h3>
+  <h3>공통 — 어느 안이든 반드시 충족 (자금조달 환경 2026)</h3>
   <table>
-    <thead><tr><th style="width:20%">영역</th><th>핵심 조건</th><th style="width:24%">'26년 시장 메모</th></tr></thead>
+    <thead><tr><th style="width:20%">영역</th><th>핵심 조건</th><th style="width:24%">2026년 시장 메모</th></tr></thead>
     <tbody>
       <tr><td class="l"><b>대출·금리</b></td><td class="l">비주택 LTV 70% 유지(상가·오피스). 단 전반적 자금경색</td><td class="l">기준금리 2.50% 동결, 은행 자본규제로 대출여력 축소</td></tr>
-      <tr><td class="l"><b>PF</b></td><td class="l">토지권원+인허가+신탁+책준이 기표 4대 전제</td><td class="l">'26 4Q 만기 13.5조, 한시 PF 규제완화 '26 상반기 종료 예정으로 선별심사 강화</td></tr>
+      <tr><td class="l"><b>PF</b></td><td class="l">토지권원+인허가+신탁+책준이 기표 4대 전제</td><td class="l">2026년 4분기 만기 13.5조, 한시 PF 규제완화 2026 상반기 종료 예정으로 선별심사 강화</td></tr>
       <tr><td class="l"><b>신탁</b></td><td class="l">관리형토지신탁(사업주체 전환)에 책준형으로 신용보강</td><td class="l">신탁 토지신탁 한도 자기자본 100%로 제한</td></tr>
       <tr><td class="l"><b>분양보증</b></td><td class="l">신탁+대리사무 또는 분양보증(HUG 등) 택일</td><td class="l">상가 3,000㎡ 이상 / 오피스텔 호수 기준 분양신고</td></tr>
       <tr><td class="l"><b>시공</b></td><td class="l">책임준공 가능 시공사 확보(비주거는 메이저 참여난)</td><td class="l">책준 미이행 배상판결로 신탁사 신용보강 보수화</td></tr>
@@ -540,7 +544,7 @@
         문제는 상층 근생을 1층 근접가로 가정한 부분으로, 이것이 수익률 17.3%의 핵심 취약점이다. 층별 차등가로 재산정하면 수익률은 한 자릿수로 내려갈 개연성이 크다.</li>
       <li>상품구성이 상가(근생)에 84.8% 편중되어, 시장에서 가장 약한 부문에 사업이 종속된다.
         오피스 비중 확대 또는 선임대 확정이 분양성 제고의 현실적 선결조건이다.</li>
-      <li>저신용 시행사에 '26 하반기 PF 만기 정점이라는 자금환경이 겹쳐, 신탁·책준·자기자본·분양보증의 다층 신용보강 없이는 본PF 기표가 사실상 불가하다.</li>
+      <li>저신용 시행사에 2026 하반기 PF 만기 정점이라는 자금환경이 겹쳐, 신탁·책준·자기자본·분양보증의 다층 신용보강 없이는 본PF 기표가 사실상 불가하다.</li>
       <li>권고 방향은 수익률을 다소 양보하더라도 2안(분양성 우선 재편)을 기본으로 하되,
         근생 앵커 선임대가 조기 확정되면 1안 요소를 가미하는 하이브리드가 합리적이다.</li>
     </ol>
@@ -574,18 +578,18 @@
   <h4>입지·호재</h4>
   <p class="small">철도경제신문 인천1호선 검단연장 개통 redaily.co.kr · 뉴스1 GTX-D 예타통과 news1.kr/local/incheon/5842187 · 인천투데이 5호선 연장 incheontoday.com · 기호일보·인천일보 법조타운 개원 kihoilbo.co.kr / incheonilbo.com · 나무위키 검단신도시 · 호갱노노 검단 분양권 hogangnono.com/apt/giv3e</p>
   <h4>시장·금융·PF·신탁</h4>
-  <p class="small">한국부동산원 임대동향조사(2025 3Q) jaemo.co.kr/info_policy/107168 · 금융위 비주택 LTV·자기자본·신탁한도 fsc.go.kr · 한국경제 위험가중치/풍선효과 hankyung.com · 뉴스핌 PF 규제완화 연장 newspim.com · 베타뉴스/서울경제 PF 만기 · 인베스트조선·법률신문 책준 배상판결 investchosun.com / lawtimes.co.kr · 김·장/신&김/PwC/KPMG 신탁·PF 해설</p>
+  <p class="small">한국부동산원 임대동향조사(2025년 3분기) jaemo.co.kr/info_policy/107168 · 금융위 비주택 LTV·자기자본·신탁한도 fsc.go.kr · 한국경제 위험가중치/풍선효과 hankyung.com · 뉴스핌 PF 규제완화 연장 newspim.com · 베타뉴스/서울경제 PF 만기 · 인베스트조선·법률신문 책준 배상판결 investchosun.com / lawtimes.co.kr · 김·장/신&김/PwC/KPMG 신탁·PF 해설</p>
   <h4>공식통계·실분양가</h4>
-  <p class="small">한국부동산원 '26 1Q 임대동향 reb.or.kr · 경기일보 인천 공실 18.7%/권역별 kyeonggi.com/article/20251215580413 · 다음뉴스 인천 미분양·서구 74% v.daum.net/v/USy5QcztOM · 인천투데이 검단상가 공실·폐업 incheontoday.com(idxno=307587) · 인천투데이 검단 상업용지 30필지 낙찰 incheontoday.com(idxno=116945) · iH 웰카운티 단지내상가 공급가 mt.co.kr·incheonin.com · 상가114 메트로시티 층별표 sangga114.co.kr(num=16667) · 공공데이터포털 지역별 공실률 data.go.kr/data/15069735</p>
+  <p class="small">한국부동산원 2026년 1분기 임대동향 reb.or.kr · 경기일보 인천 공실 18.7%/권역별 kyeonggi.com/article/20251215580413 · 다음뉴스 인천 미분양·서구 74% v.daum.net/v/USy5QcztOM · 인천투데이 검단상가 공실·폐업 incheontoday.com(idxno=307587) · 인천투데이 검단 상업용지 30필지 낙찰 incheontoday.com(idxno=116945) · iH 웰카운티 단지내상가 공급가 mt.co.kr·incheonin.com · 상가114 메트로시티 층별표 sangga114.co.kr(num=16667) · 공공데이터포털 지역별 공실률 data.go.kr/data/15069735</p>
   <div class="foot-note">
-    The K Tower 검단 — 적정 분양가 검토 및 사업성 재검토 보고서 (제5판) · 검토기준일 2026.06.24 · 공개 데이터 교차검증 기반 독립 검토.
+    The K Tower 검단 — 적정 분양가 검토 및 사업성 재검토 보고서 · 검토기준일 2026.06.24 · 공개 데이터 교차검증 기반 독립 검토.
     본 보고서는 투자 권유가 아니며, 수치는 추정을 포함한다. 실제 의사결정 전 1차 통계·현장 실사·전문가(감정평가·신탁·법무) 검토를 권고한다.
   </div>
 </div>
 
 <div class="runfoot">
   <div class="ln"></div>
-  <div class="l">The K Tower 검단 · 적정 분양가 검토 및 사업성 재검토 보고서 (제5판) · 2026.06.24</div>
+  <div class="l">The K Tower 검단 · 적정 분양가 검토 및 사업성 재검토 보고서 · 2026.06.24</div>
   <div class="r">CONFIDENTIAL</div>
 </div>
 
