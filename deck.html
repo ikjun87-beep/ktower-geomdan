@@ -8,9 +8,11 @@
   * { box-sizing: border-box; margin:0; padding:0; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   :root{
-    --navy:#0e2a4d; --navy2:#163a66; --navy3:#1e4a80; --gold:#b8924a; --gold-l:#e9dcc2; --gold-b:#ffd98a;
-    --ink:#1a2230; --mut:#5d6b7e; --line:#d7dde6; --bg:#f4f6f9;
-    --red:#b5302a; --amber:#c8821b; --green:#1f7a4d; --blue:#2a6db5;
+    /* Sentry-inspired 바이올렛/라임 — report.html과 동일 톤. navy3=라임(도넛 업무 세그먼트 대비) */
+    --navy:#3a2178; --navy2:#5b46a8; --navy3:#c2ef4e; --gold:#6a5fc1; --gold-l:#ece8fb; --gold-b:#c2ef4e;
+    --lime:#c2ef4e;
+    --ink:#1f1633; --mut:#6b6480; --line:#e5e7eb; --bg:#ffffff;
+    --red:#d6453d; --amber:#c8821b; --green:#1f9d57; --blue:#4f5bd5;
   }
   body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400; counter-reset:slidepg;
     word-break:keep-all; overflow-wrap:break-word; }  /* 한글 단어·조사 중간 끊김 방지: 띄어쓰기 단위로만 줄바꿈 */
@@ -39,15 +41,15 @@
   .sfoot .pg::after{ content: counter(slidepg, decimal-leading-zero); }
 
   /* cover & closing */
-  .cover{ background:linear-gradient(150deg,#0b2342 0%,#143861 55%,#1e4a80 100%); color:#fff;
+  .cover{ background:linear-gradient(150deg,#150f23 0%,#2a1659 55%,#422082 100%); color:#fff;
     justify-content:center; padding:0 30mm; }
   .cover .ck{ letter-spacing:7px; font-size:13px; color:var(--gold-l); font-weight:700; }
   .cover h1{ font-size:50px; font-weight:700; line-height:1.2; margin:18px 0; }
   .cover h1 b{ color:var(--gold-b); font-weight:700; }
-  .cover .cr{ width:100px; height:5px; background:var(--gold); margin:24px 0; }
+  .cover .cr{ width:100px; height:5px; background:var(--lime); margin:24px 0; }
   .cover .cs{ font-size:17px; color:#cdd9ea; line-height:1.75; }
   .cover .cm{ font-size:13.5px; color:#dbe4f0; line-height:2; margin-top:14px; }
-  .cover .cbadge{ display:inline-block; border:1px solid var(--gold); color:var(--gold-b); font-size:12.5px;
+  .cover .cbadge{ display:inline-block; border:1px solid var(--lime); color:var(--gold-b); font-size:12.5px;
     padding:5px 16px; border-radius:18px; margin-top:18px; }
 
   p.body{ font-size:15px; line-height:1.7; color:#2a3445; }
@@ -68,7 +70,7 @@
   .kpi.gr{ border-top-color:var(--green);} .kpi.gr .n{ color:var(--green);}
 
   /* callout */
-  .call{ border-left:5px solid var(--gold); background:#fcf9f2; border-radius:6px; padding:16px 19px;
+  .call{ border-left:5px solid var(--gold); background:#f5f2ff; border-radius:6px; padding:16px 19px;
     font-size:14.5px; line-height:1.65; }
   .call.warn{ border-left-color:var(--red); background:#fcf2f1; }
   .call.ok{ border-left-color:var(--green); background:#f1f8f4; }
@@ -79,10 +81,10 @@
   table{ width:100%; border-collapse:collapse; font-size:13.5px; }
   .sbody > table.fill{ flex:1 1 auto; min-height:0; }
   th,td{ border:1px solid var(--line); padding:11px 13px; }
-  th{ background:var(--navy); color:#fff; font-weight:700; text-align:center; font-size:13.5px; }
+  th{ background:#efeafc; color:#33215f; font-weight:700; text-align:center; font-size:13.5px; }
   td.l{text-align:left;} td.c{text-align:center;} td.r{text-align:right;}
-  tbody tr:nth-child(even){ background:#f6f8fb; }
-  td.hl{ background:#fcf9f2 !important; }
+  tbody tr:nth-child(even){ background:#f7f5fc; }
+  td.hl{ background:#f5f2ff !important; }
   .tag{ display:inline-block; font-size:11.5px; font-weight:700; padding:3px 11px; border-radius:12px; color:#fff;}
   .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--blue);}
 
@@ -131,7 +133,7 @@
   .mlabel{ position:absolute; transform:translate(-50%,-50%); white-space:nowrap; font-size:11px; font-weight:700;
     color:var(--navy); background:rgba(255,255,255,.9); border:1px solid var(--gold-l); padding:2px 8px; border-radius:11px; }
   .mline{ position:absolute; height:0; border-top:2px dashed var(--gold); transform-origin:left center; }
-  .mdist{ position:absolute; transform:translate(-50%,-50%); font-size:10.5px; font-weight:700; color:#6b5320;
+  .mdist{ position:absolute; transform:translate(-50%,-50%); font-size:10.5px; font-weight:700; color:#4a3a86;
     background:var(--gold-l); padding:1px 7px; border-radius:10px; }
 
   /* ===== cross-section diagram ===== */
