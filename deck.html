@@ -157,12 +157,14 @@
     background:var(--gold-l); padding:1px 7px; border-radius:10px; }
 
   /* ===== cross-section diagram ===== */
-  .xsec{ display:flex; flex-direction:column-reverse; gap:3px; flex:1 1 auto; justify-content:center; }
-  .fl{ display:grid; grid-template-columns:54px 1fr 150px; align-items:center; gap:12px; }
-  .fl .flno{ width:58px; font-size:14px; font-weight:700; color:var(--navy); text-align:right; }
-  .fl .flbar{ height:32px; border-radius:3px; display:flex; align-items:center; padding:0 11px;
-    color:#fff; font-size:13.5px; font-weight:700; white-space:nowrap; min-width:60px; }
-  .fl .flmeta{ font-size:13.5px; color:#2a3445; }
+  .xsec{ display:flex; flex-direction:column-reverse; gap:7px; flex:1 1 auto; justify-content:center; }
+  .fl{ display:grid; grid-template-columns:58px minmax(0,1fr) 156px; align-items:center; gap:13px; }
+  .fl .flno{ font-size:14px; font-weight:700; color:var(--navy); text-align:right; }
+  .fl .barwrap{ display:flex; align-items:center; gap:12px; min-width:0; }
+  .fl .flbar{ height:30px; border-radius:4px; flex:0 0 auto; min-width:14px; box-shadow:0 1px 2px rgba(21,35,59,.14); }
+  .fl .flval{ font-size:14.5px; font-weight:800; color:var(--navy); white-space:nowrap; }
+  .fl .flval .u{ color:var(--mut); font-weight:600; font-size:13px; margin-right:4px; }
+  .fl .flmeta{ font-size:13px; color:var(--mut); }
   .fl .flmeta b{ color:var(--navy); }
   .u-1{ background:var(--gold); } .u-g{ background:var(--navy); }
   .u-b{ background:#9aa6b5; }
@@ -421,14 +423,14 @@
     <div class="row fill" style="gap:22px; align-items:stretch;">
       <div class="col" style="flex:1.12; justify-content:center;">
         <div class="xsec">
-          <div class="fl"><span class="flno">B1~3</span><div class="flbar u-b" style="width:34%;">주차·기계·전기</div><span class="flmeta">지하 5,167㎡ 중</span></div>
-          <div class="fl"><span class="flno">1F</span><div class="flbar u-1" style="width:100%;">근생·판매 · 4,500만/평 · 100%</div></div>
-          <div class="fl"><span class="flno">2F</span><div class="flbar u-g" style="width:40%;">근생 · 1,700만/평 · ~38%</div><span class="flmeta">선양 2층 감안 상향 여지</span></div>
-          <div class="fl"><span class="flno">3F</span><div class="flbar u-g" style="width:31%;">근생 · 1,300만/평 · ~29%</div></div>
-          <div class="fl"><span class="flno">4F</span><div class="flbar u-g" style="width:26%;">근생 · 1,100만/평 · ~24%</div></div>
-          <div class="fl"><span class="flno">5F</span><div class="flbar u-g" style="width:24%;">근생 · 1,000만/평 · ~22%</div></div>
-          <div class="fl"><span class="flno">6~7F</span><div class="flbar u-g" style="width:23%;">근생 · 950만/평 · ~21%</div></div>
-          <div class="fl"><span class="flno">8~10F</span><div class="flbar u-1" style="width:30%; background:var(--gold);">업무 · 1,200만/평(계약)</div><span class="flmeta">전용률·개원지연 공실 확인</span></div>
+          <div class="fl"><span class="flno">B1~3</span><div class="barwrap"><div class="flbar u-b" style="width:12%;"></div><span class="flval"><span class="u">지하</span>주차·기계·전기</span></div><span class="flmeta">지하 5,167㎡ 중</span></div>
+          <div class="fl"><span class="flno">1F</span><div class="barwrap"><div class="flbar u-1" style="width:40%;"></div><span class="flval"><span class="u">근생·판매</span>4,500만/평 · 100%</span></div></div>
+          <div class="fl"><span class="flno">2F</span><div class="barwrap"><div class="flbar u-g" style="width:15%;"></div><span class="flval"><span class="u">근생</span>1,700만/평 · 38%</span></div><span class="flmeta">선양 2층 감안 상향 여지</span></div>
+          <div class="fl"><span class="flno">3F</span><div class="barwrap"><div class="flbar u-g" style="width:12%;"></div><span class="flval"><span class="u">근생</span>1,300만/평 · 29%</span></div></div>
+          <div class="fl"><span class="flno">4F</span><div class="barwrap"><div class="flbar u-g" style="width:10%;"></div><span class="flval"><span class="u">근생</span>1,100만/평 · 24%</span></div></div>
+          <div class="fl"><span class="flno">5F</span><div class="barwrap"><div class="flbar u-g" style="width:9%;"></div><span class="flval"><span class="u">근생</span>1,000만/평 · 22%</span></div></div>
+          <div class="fl"><span class="flno">6~7F</span><div class="barwrap"><div class="flbar u-g" style="width:8%;"></div><span class="flval"><span class="u">근생</span>950만/평 · 21%</span></div></div>
+          <div class="fl"><span class="flno">8~10F</span><div class="barwrap"><div class="flbar u-1" style="width:11%; background:var(--gold);"></div><span class="flval"><span class="u">업무</span>1,200만/평(계약)</span></div><span class="flmeta">전용률·개원지연 공실 확인</span></div>
         </div>
         <div class="leg"><span><i class="u-1"></i>1층·업무(시장 범위 내)</span><span><i class="u-g"></i>상층 근생(하향 재설정)</span><span><i class="u-b"></i>지하</span></div>
       </div>
