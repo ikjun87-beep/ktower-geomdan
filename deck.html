@@ -52,6 +52,22 @@
   .cover .cbadge{ display:inline-block; border:1px solid var(--lime); color:var(--gold-b); font-size:14px;
     padding:5px 16px; border-radius:18px; margin-top:18px; }
 
+  /* ===== 흰색 기반 표지/마무리 (light) — 여백 위주 미니멀 ===== */
+  .cover.light{ background:#ffffff; color:var(--ink); padding:0 34mm; }
+  .cover.light::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:9px;
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 45%,var(--gold) 100%); }
+  .cover.light::after{ content:""; position:absolute; left:34mm; right:34mm; bottom:13mm; height:1px; background:var(--gold-l); }
+  .cover.light .ck{ color:var(--gold); letter-spacing:7px; }
+  .cover.light h1{ color:var(--navy); }
+  .cover.light h1 b{ color:var(--gold); }
+  .cover.light .cr{ width:84px; height:4px; background:var(--gold); margin:22px 0; }
+  .cover.light .cs{ color:#41506a; }
+  .cover.light .cm{ color:#8190a3; }
+  .cover.light .cbadge{ border:1px solid var(--navy); color:var(--navy); background:#fff; }
+  /* 표지 우상단 미세 워드마크 */
+  .cover.light .wm{ position:absolute; right:34mm; top:13mm; font-size:11px; letter-spacing:3px;
+    color:#b9c3d1; font-weight:700; }
+
   p.body{ font-size:16.5px; line-height:1.7; color:#2a3445; }
   .mut{ color:var(--mut); }
   .row{ display:flex; gap:16px; }
@@ -175,7 +191,8 @@
 <body>
 
 <!-- 1. COVER -->
-<section class="slide cover">
+<section class="slide cover light">
+  <div class="wm">THE K TOWER · 검단</div>
   <div class="ck">REAL ESTATE INVESTMENT REVIEW</div>
   <h1 class="serif">The K Tower 검단<br><b>적정 분양가</b> · <b>사업성</b> 검토</h1>
   <div class="cr"></div>
@@ -554,11 +571,12 @@
 </section>
 
 <!-- 16. 마무리 -->
-<section class="slide cover" style="justify-content:center;">
-  <div class="ck">THANK YOU</div>
+<section class="slide cover light" style="justify-content:center; align-items:flex-start;">
+  <div class="wm">THE K TOWER · 검단</div>
+  <div class="ck">CLOSING REMARKS</div>
   <h1 class="serif" style="font-size:40px;">핵심은 <b>층별 분양가 현실화</b>와<br><b>선임대 · 신용보강</b>이다.</h1>
   <div class="cr"></div>
-  <div class="cm" style="font-size:13.5px; max-width:82%;">
+  <div class="cm" style="font-size:13.5px; max-width:84%;">
     본 보고서는 투자 권유가 아니며, 수치는 추정을 포함한다. 실제 의사결정 전 1차 통계·현장 실사·전문가 검토를 권고한다.
     <br><br>The K Tower 검단 · 적정 분양가 검토 및 사업성 재검토 보고서 · 검토기준일 2026.06.24
   </div>
