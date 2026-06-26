@@ -25,7 +25,7 @@
   .runfoot .l{ position:absolute; left:0; top:0; }
   .runfoot .r{ position:absolute; right:0; top:0; color:var(--sky); font-weight:700; letter-spacing:1.5px; }
   .cover ~ .runfoot{ display:block; }
-  table, .box, .stat, .cards, .specs { page-break-inside: avoid; }
+  table, .box, .stat, .cards, .specs, .dwgrow, .dwg { page-break-inside: avoid; }
   .pagehead, h3, h4 { page-break-after: avoid; }
 
   /* ================= COVER ================= */
@@ -100,6 +100,15 @@
   .card.sky .cap{ background:var(--sky);} .card.red .cap{ background:var(--red);} .card.green .cap{ background:var(--green);} .card.amber .cap{ background:var(--amber);}
   .card .bd{ padding:10px 13px; }
   .card .bd ul{ margin:0; padding-left:16px;} .card .bd li{ margin:4px 0; font-size:9.8px;}
+
+  /* ================= DRAWING FIGURES ================= */
+  .dwgrow{ display:flex; gap:11px; margin:11px 0; }
+  .dwg{ flex:1; margin:0; border:1px solid var(--line); border-radius:7px; overflow:hidden; background:#fff; }
+  .dwg .im{ position:relative; }
+  .dwg .im img{ width:100%; display:block; }
+  .dwg .im .no{ position:absolute; left:8px; top:8px; background:var(--navy); color:#fff; font-size:8.5px; font-weight:700; padding:2px 8px; border-radius:4px; letter-spacing:.3px; }
+  .dwg figcaption{ font-size:8.8px; color:var(--mut); padding:6px 10px; border-top:1px solid var(--line); line-height:1.45; background:#fafcff; }
+  .dwg figcaption b{ color:var(--navy); }
 
   /* ================= STAT CARDS ================= */
   .stat{ display:flex; gap:11px; margin:12px 0; }
@@ -336,6 +345,12 @@
   <div class="box small" style="border-left:3px solid var(--line)"><b>면적 수치 기준 안내.</b> 도면에는 산정 목적별로 면적값이 다르게 나온다 — 주차장은 <b>층별개요 6,267.18㎡</b>(층별 공용 합산)와 <b>비율표 6,254.13㎡</b>(건축연면적 기준)로 약 13㎡ 차이가 있고, 근생도 2,380.94(층별 합계)·2,393.79(연면적 비율)·2,327.75㎡(용적률 산정, 지하 제외)로 나뉜다. 모두 도면 기재값이며, <b>요건 판정에는 각 요건이 정한 분모(연면적/용적산정/1층 바닥)에 맞는 값</b>을 사용했다.</div>
 
   <h3>2-3. 배치 · 동선 <span class="small mut">(배치도 A-102 · 평면도)</span></h3>
+  <div class="dwgrow">
+    <figure class="dwg"><div class="im"><span class="no">A-102</span><img src="dwg_site_a102.png" alt="건물배치도 A-102"></div>
+      <figcaption><b>건물배치도</b> — 13M 도로 <b>3면 접도</b>, ㄷ자형 매스, 주차 진출입 동선 (SCALE 1/350)</figcaption></figure>
+    <figure class="dwg"><div class="im"><span class="no">A-202</span><img src="dwg_floor1_a202.png" alt="1층 평면도 A-202"></div>
+      <figcaption><b>1층 평면도</b> — 근생·주차·코어 배치, 1층 근생 49.77% (SCALE 1/200)</figcaption></figure>
+  </div>
   <div class="cards">
     <div class="card sky"><div class="cap">접도 · 진출입</div><div class="bd small">13M 도로 3면 접면. 배치도상 주차장 출입구·차량 진출입구가 도로변에 분산 배치되어 진출입 동선이 확보된다.</div></div>
     <div class="card sky"><div class="cap">건물 형상 · 조경</div><div class="bd small">부정형 대지에 ㄷ자형 매스(4F/5F ROOF). 옥상조경 369.72㎡가 조경의 대부분을 차지(전체 399.66㎡ = 지상 29.94 + 옥상 369.72). 조경면적률은 도면 기재 17.27%(대지면적 환산 시 약 17.3%).</div></div>
