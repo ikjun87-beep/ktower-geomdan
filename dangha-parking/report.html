@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>검단신도시 당하동 1250 주차전용건축물 — 분양성·사업성 검토 보고서(초안)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+  @page { size: A4; margin: 15mm 13mm 18mm 13mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Pretendard","Pretendard Variable","Malgun Gothic","맑은 고딕",-apple-system,sans-serif;
+    color:#222b39; font-size:11px; line-height:1.72; margin:0; letter-spacing:-0.1px;
+    word-break: keep-all; overflow-wrap: break-word;
+  }
+  :root{
+    --navy:#13243f; --navy2:#2f6fb0; --sky:#3b86d1; --sky-l:#e9f2fb;
+    --ink:#222b39; --mut:#697587; --line:#dde4ee; --bg:#ffffff;
+    --red:#d6453f; --amber:#dd9a16; --green:#1f8d5b;
+  }
+  /* ---- running footer ---- */
+  .runfoot{ position: fixed; left:0; right:0; bottom:6mm; height:0; font-size:8px; color:var(--mut); letter-spacing:.3px; }
+  .runfoot .ln{ position:absolute; left:0; right:0; top:-5px; border-top:1px solid var(--line); }
+  .runfoot .l{ position:absolute; left:0; top:0; }
+  .runfoot .r{ position:absolute; right:0; top:0; color:var(--sky); font-weight:700; letter-spacing:1.5px; }
+  .cover ~ .runfoot{ display:block; }
+  table, .box, .stat, .cards, .specs { page-break-inside: avoid; }
+  .pagehead, h3, h4 { page-break-after: avoid; }
+
+  /* ================= COVER ================= */
+  .cover{ height:267mm; display:flex; flex-direction:column; justify-content:space-between;
+    background:linear-gradient(155deg,#0a1320 0%,#13243f 52%,#244c84 100%); color:#fff;
+    margin:-15mm -13mm 0 -13mm; padding:32mm 22mm; position:relative; overflow:hidden; }
+  .cover::after{ content:""; position:absolute; right:-90px; top:120px; width:360px; height:360px;
+    border:1.5px solid rgba(122,170,224,.28); border-radius:50%; }
+  .cover::before{ content:""; position:absolute; right:30px; bottom:-110px; width:300px; height:300px;
+    border:1.5px solid rgba(122,170,224,.18); border-radius:50%; }
+  .cover .kick{ letter-spacing:5px; font-size:12px; color:#9ec3ea; font-weight:600; position:relative;}
+  .cover h1{ font-size:34px; line-height:1.26; margin:16px 0 0; font-weight:800; letter-spacing:-0.6px; position:relative;}
+  .cover h1 b{ color:#7fb1e6; }
+  .cover .sub{ font-size:14px; color:#cdd9ea; margin-top:18px; line-height:1.7; position:relative;}
+  .cover .rule{ height:3px; width:120px; background:#7fb1e6; margin:26px 0; position:relative;}
+  .cover .meta{ font-size:12px; color:#dbe4f0; line-height:2.05; position:relative;}
+  .cover .meta b{ color:#9ec3ea; font-weight:700; }
+  .cover .foot{ font-size:10.5px; color:#9fb3cc; border-top:1px solid rgba(255,255,255,.2); padding-top:13px; position:relative;}
+  .cover .badge{ display:inline-block; border:1px solid #7fb1e6; color:#7fb1e6; font-size:11px; padding:4px 13px; border-radius:14px; margin-top:10px; position:relative;}
+
+  /* ================= SECTION / PAGE HEAD ================= */
+  .sec{ page-break-before: always; padding-top:2px; }
+  .pagehead{ border-bottom:2px solid var(--navy); padding-bottom:11px; margin:0 0 16px; }
+  .pagehead .row{ display:flex; align-items:center; gap:13px; }
+  .pagehead .badge2{ width:40px; height:40px; flex:0 0 40px; border-radius:50%; background:var(--navy);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px;
+    box-shadow:0 0 0 4px var(--sky-l); }
+  .pagehead .tt .ko{ font-size:18px; font-weight:800; color:var(--navy); line-height:1.2; letter-spacing:-0.4px;}
+  .pagehead .tt .en{ font-size:9px; font-weight:600; color:var(--sky); letter-spacing:1.8px; text-transform:uppercase; margin-top:1px;}
+  .pagehead .chip{ margin-left:auto; background:var(--sky-l); color:var(--navy); font-size:9.5px; font-weight:700;
+    padding:5px 13px; border-radius:14px; white-space:nowrap; }
+  .pagehead .chip::before{ content:"●"; color:var(--sky); font-size:7px; margin-right:5px; vertical-align:1px;}
+  .pagehead .key{ margin:11px 0 0; font-size:13px; font-weight:700; color:#26354b; line-height:1.5; letter-spacing:-0.3px;}
+  .pagehead .key b{ color:var(--sky); }
+
+  h3{ font-size:13px; color:var(--navy); font-weight:800; margin:20px 0 9px; padding-left:11px; border-left:4px solid var(--sky); letter-spacing:-0.3px;}
+  h4{ font-size:11.5px; color:var(--navy); font-weight:700; margin:14px 0 6px;}
+  p{ margin:7px 0; }
+  .mut{ color:var(--mut); }
+  .small{ font-size:9.8px; line-height:1.62;}
+
+  /* ================= TABLES ================= */
+  table{ width:100%; border-collapse:separate; border-spacing:0; margin:11px 0 8px; font-size:10px;
+    border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  th,td{ padding:8px 11px; vertical-align:middle; border-bottom:1px solid var(--line); border-right:1px solid var(--line); }
+  th:last-child, td:last-child{ border-right:none; }
+  tbody tr:last-child td{ border-bottom:none; }
+  thead th{ background:var(--navy); color:#fff; font-weight:700; text-align:center; letter-spacing:.2px; border-right-color:rgba(255,255,255,.14); border-bottom:none;}
+  thead th:last-child{ border-right:none; }
+  tbody tr:nth-child(even){ background:#f6f9fc; }
+  td.l{ text-align:left;} td.c{text-align:center;} td.r{text-align:right; font-variant-numeric:tabular-nums;}
+  tr.total td{ background:var(--sky-l); font-weight:800; color:var(--navy); border-top:2px solid var(--navy2); }
+  tr.sub2 th{ background:#244c84; }
+  /* spec table: tinted label column */
+  table.spec td.k{ background:#eef3fa; font-weight:700; color:var(--navy); }
+  table.spec th{ text-align:center; }
+  caption{ caption-side:bottom; text-align:left; font-size:8.6px; color:var(--mut); padding:7px 3px 0; line-height:1.5;}
+
+  /* ================= CALLOUT BOXES ================= */
+  .box{ border:1px solid var(--line); border-radius:7px; padding:12px 15px; margin:11px 0; background:#fff;}
+  .box.key{ border-left:5px solid var(--sky); background:#eef4fb;}
+  .box.warn{ border-left:5px solid var(--red); background:#fcf2f1;}
+  .box.ok{ border-left:5px solid var(--green); background:#f1f8f4;}
+  .box.need{ border-left:5px solid var(--amber); background:#fdf8ea;}
+  .box .t{ font-weight:800; color:var(--navy); font-size:11.5px; margin-bottom:5px;}
+  .box.ok .t{ color:var(--green);} .box.warn .t{ color:var(--red);} .box.need .t{ color:#b9810f;}
+
+  /* ================= CARDS ================= */
+  .cards{ display:flex; gap:11px; margin:11px 0; }
+  .cards > .card{ flex:1; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:#fff;}
+  .card .cap{ background:var(--navy); color:#fff; font-weight:700; font-size:10.5px; padding:7px 12px; }
+  .card.sky .cap{ background:var(--sky);} .card.red .cap{ background:var(--red);} .card.green .cap{ background:var(--green);} .card.amber .cap{ background:var(--amber);}
+  .card .bd{ padding:10px 13px; }
+  .card .bd ul{ margin:0; padding-left:16px;} .card .bd li{ margin:4px 0; font-size:9.8px;}
+
+  /* ================= STAT CARDS ================= */
+  .stat{ display:flex; gap:11px; margin:12px 0; }
+  .stat .c{ flex:1; border:1px solid var(--line); border-top:3px solid var(--navy); border-radius:7px; padding:11px 12px; text-align:center; background:#fff;}
+  .stat .c .n{ font-size:21px; font-weight:800; color:var(--navy); line-height:1.1; letter-spacing:-0.5px;}
+  .stat .c .l{ font-size:9px; color:var(--mut); margin-top:4px; line-height:1.4;}
+  .stat .c.sky{ border-top-color:var(--sky);} .stat .c.sky .n{ color:var(--sky);}
+  .stat .c.rd{ border-top-color:var(--red);} .stat .c.rd .n{ color:var(--red);}
+  .stat .c.am{ border-top-color:var(--amber);} .stat .c.am .n{ color:var(--amber);}
+
+  /* ================= TAGS / MISC ================= */
+  .tag{ display:inline-flex; align-items:center; gap:3px; font-size:8.6px; font-weight:800; padding:3px 9px; border-radius:5px; color:#fff; letter-spacing:.2px; white-space:nowrap;}
+  .tag.r{background:var(--red);} .tag.a{background:var(--amber);} .tag.g{background:var(--green);} .tag.b{background:var(--sky);}
+  .tag.g::before{content:"\2713"; font-weight:900;}
+  .tag.r::before{content:"\25B2"; font-size:7px;}
+  .tag.a::before{content:"\25CF"; font-size:6px;}
+  .tag.b::before{content:"\25C6"; font-size:6px;}
+  .grid2{ display:flex; gap:12px; } .grid2>div{ flex:1; }
+  .barbg{ background:#eaeff5; border-radius:3px; width:100%; display:inline-block; height:14px; vertical-align:middle;}
+  .bar{ height:14px; background:linear-gradient(90deg,var(--navy),var(--sky)); border-radius:3px; display:inline-block; vertical-align:top;}
+  ul{ margin:6px 0 9px; padding-left:19px;} li{ margin:4px 0;}
+  ol{ margin:6px 0 9px; padding-left:21px;} ol li{ margin:5px 0;}
+  .kpi{ background:#dcecfb; padding:1px 7px; border-radius:5px; font-weight:800; color:var(--navy); }
+  .tbd{ color:var(--amber); font-weight:800; }
+  .foot-note{ font-size:8.8px; color:var(--mut); border-top:1px solid var(--line); margin-top:16px; padding-top:8px; line-height:1.55;}
+  a{ color:var(--sky); text-decoration:none; word-break:break-all;}
+</style>
+</head>
+<body>
+
+<!-- ================= COVER (page 1 — 유지·정제) ================= -->
+<div class="cover">
+  <div>
+    <div class="kick">REAL ESTATE FEASIBILITY REVIEW</div>
+    <h1>검단신도시 당하동 1250<br><b>주차전용건축물</b><br>분양성·사업성 <b>검토 보고서</b></h1>
+    <div class="sub">인천 서구 당하동 1250 · 검단신도시 P2-주9 · 준주거지역<br>자동차관련시설(주차장) + 근린생활시설 복합 개발</div>
+    <span class="badge">건축 도면 기반 1차 검토 · 사업성 항목 추정·확인필요 · 2026.06 기준 · DRAFT</span>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="meta">
+      <b>검토 기준일</b> &nbsp; 2026. 06. 26<br>
+      <b>대상 사업</b> &nbsp; 지하1층~지상5층 / 주차 139대 + 근생 5개층 / 연면적 8,648.12㎡<br>
+      <b>설계</b> ㈜해인건축사사무소 &nbsp;·&nbsp; <b>원자료</b> 건축 도면(설계개요 A-101 · 평면도 A-201~208)
+    </div>
+  </div>
+  <div class="foot">
+    본 보고서는 <b>초안</b>이다. 건축 도면(건축개요·층별개요·배치도·평면도)을 근거로 건축 계획과 법적 요건을 정리했으며,
+    토지비·공사비·분양/임대가·주차운영 수익·시장 수치 등 사업성 항목은 자료 미확보로 추정·확인필요로 처리했다.
+    실제 의사결정 전 사업수지·시장 실사로 재확인이 필요하다.
+  </div>
+</div>
+
+<!-- ================= 0. 요약 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">00</div>
+      <div class="tt"><div class="ko">검토 요약</div><div class="en">Executive Summary</div></div>
+      <div class="chip">핵심 결론</div>
+    </div>
+    <div class="key">건축·법적 요건은 <b>안정적으로 충족</b> — 사업성은 6개 입력값 확보 후 판단 가능</div>
+  </div>
+
+  <div class="stat">
+    <div class="c"><div class="n">139대</div><div class="l">계획 주차대수<br>(전기차 7대 포함)</div></div>
+    <div class="c sky"><div class="n">72.31%</div><div class="l">주차장 면적비율<br>(요건 70%↑ 충족)</div></div>
+    <div class="c"><div class="n">5개층</div><div class="l">근린생활시설<br>(1~5층)</div></div>
+    <div class="c am"><div class="n">미정</div><div class="l">토지비·공사비·수익<br>(확인필요)</div></div>
+  </div>
+
+  <div class="box key">
+    <div class="t">검토 결론(초안)</div>
+    대상은 검단신도시 P2-주9 주차장용지(준주거지역)에 들어서는 <b>주차전용건축물</b>로, 지하1층~지상5층에 자주식 주차 139대와
+    1~5층 근린생활시설을 복합한 계획이다. 건축 도면 기준으로 <b>주차전용건축물의 3대 법적 요건(주차 70%↑·근생 30%미만·1층 근생 50%이하)을 모두 충족</b>하고,
+    건폐율 <span class="kpi">79.96%</span>(법정 80%)·용적률 <span class="kpi">363.68%</span>(법정 400%)로 법정 한도 안에서 밀도를 거의 채웠다.
+    다만 사업성 판단의 핵심 변수인 토지매입가·총공사비·주차장 운영(또는 분양/임대) 수익·근생 분양·임대가가 모두 미확보다.
+    따라서 본 초안은 건축·법적 측면을 확정하고, 사업성은 확인이 필요한 항목을 명시하는 데 초점을 둔다.
+  </div>
+
+  <h3>주차전용건축물 법적 요건 — 판정 요약</h3>
+  <table>
+    <thead><tr><th style="width:28%">요건</th><th style="width:15%">기준</th><th style="width:15%">계획값</th><th style="width:12%">판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>주차장 면적비율</b><br><span class="small mut">건축연면적 대비</span></td><td class="c">70% 이상</td><td class="c"><b>72.31%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">주차 6,254.13㎡ / 연면적 8,648.12㎡</td></tr>
+      <tr><td class="l"><b>근린생활시설 비율</b><br><span class="small mut">용적률 산정연면적(지하 제외)</span></td><td class="c">30% 미만</td><td class="c"><b>27.69%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">근생 2,327.75㎡ / 8,405.47㎡</td></tr>
+      <tr><td class="l"><b>1층 근생 비율</b><br><span class="small mut">1층 바닥면적 대비</span></td><td class="c">50% 이하</td><td class="c"><b>49.74%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">근생 912.32㎡ / 1층 1,833.14㎡</td></tr>
+      <tr><td class="l"><b>건폐율</b></td><td class="c">80% 이하</td><td class="c"><b>79.96%</b></td><td class="c"><span class="tag a">한도근접</span></td><td class="l">건축 1,848.14㎡ / 대지 2,311.20㎡</td></tr>
+      <tr><td class="l"><b>용적률</b></td><td class="c">400% 이하</td><td class="c"><b>363.68%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">용적산정 8,405.47㎡ / 대지 2,311.20㎡</td></tr>
+    </tbody>
+    <caption>출처: 건축개요(A-101) 용도구성·법규 검토표. ※ 1층 근생비율은 주차 50.26%로, 50% 경계선 — 인허가 단계 재확인 권고.</caption>
+  </table>
+
+  <div class="cards">
+    <div class="card green">
+      <div class="cap">긍정 요인</div>
+      <div class="bd"><ul>
+        <li>3면 13M 도로 접면(33.32·60.95·45.12m) — 차량 진출입·가시성 양호</li>
+        <li>준주거 + 검단신도시 P2 생활권으로 근생 배후수요 형성 가능</li>
+        <li>주차전용건축물 법적 요건 안정적 충족 — 인허가 리스크 낮음</li>
+        <li>전기차 충전 주차 7대 반영 — 친환경 의무·향후 수요 대응</li>
+      </ul></div>
+    </div>
+    <div class="card red">
+      <div class="cap">위험 요인 / 미확정</div>
+      <div class="bd"><ul>
+        <li>토지비·공사비·수익 등 <b>사업수지 전 항목 미확보</b> — 수익성 판단 불가</li>
+        <li>주차장 수익 모델 미정(직영 vs 구획 분양 vs 통임대)</li>
+        <li>검단 근생(상가) 시장 공실·미분양 부담 구조 — 근생가 보수 산정 필요</li>
+        <li>근생 30% 제한 → 수익원이 주차장에 의존, 주차 수요·요금 검증 핵심</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="box need small">
+    <div class="t" style="font-size:11px">이 초안에서 확인이 필요한 6개 항목 (다음 단계)</div>
+    ① 토지 매입가(공급가)·취득조건 &nbsp;|&nbsp; ② 총공사비(직접·간접)·평당단가 &nbsp;|&nbsp; ③ 주차장 운영방식·예상매출(요금·회전율·월정기)
+    &nbsp;|&nbsp; ④ 근생 분양가/임대료(층별) &nbsp;|&nbsp; ⑤ 자금조달 구조(자기자본·PF·신탁) &nbsp;|&nbsp; ⑥ 인허가 현황·일정.
+    위 6개가 확정되면 4장 사업수지 표의 확인필요 항목을 실값으로 대체해 수익률을 산출한다.
+  </div>
+</div>
+
+<!-- ================= 1. 사업·건축 개요 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">01</div>
+      <div class="tt"><div class="ko">사업 개요 · 건축 개요</div><div class="en">Project &amp; Building Overview</div></div>
+      <div class="chip">건축개요</div>
+    </div>
+    <div class="key">검단 P2 주차장용지에 들어서는 <b>주차 139대 + 근생 복합</b> 주차전용건축물</div>
+  </div>
+
+  <div class="grid2">
+    <table class="spec">
+      <thead><tr><th colspan="2">대지 · 사업 기본정보</th></tr></thead>
+      <tbody>
+        <tr><td class="k" style="width:34%">대지위치</td><td class="l">인천 서구 당하동 1250 (검단신도시 P2-주9)</td></tr>
+        <tr><td class="k">지역·지구</td><td class="l">준주거지역 / 지구단위계획구역</td></tr>
+        <tr><td class="k">지목</td><td class="l">주차장</td></tr>
+        <tr><td class="k">대지면적</td><td class="l">2,311.20㎡ <span class="mut">(약 699.1평)</span></td></tr>
+        <tr><td class="k">접도</td><td class="l">13M 도로 3면 접함 (각 33.32 / 60.95 / 45.12m)</td></tr>
+        <tr><td class="k">공사종류</td><td class="l">신축</td></tr>
+        <tr><td class="k">주용도</td><td class="l">자동차관련시설 — 주차장(주차전용건축물)</td></tr>
+        <tr><td class="k">설계</td><td class="l">㈜해인건축사사무소</td></tr>
+      </tbody>
+    </table>
+    <table class="spec">
+      <thead><tr><th colspan="2">규모 · 면적 제원</th></tr></thead>
+      <tbody>
+        <tr><td class="k" style="width:38%">건축규모</td><td class="l">지하 1층 / 지상 5층 (법정 5층 이하)</td></tr>
+        <tr><td class="k">최고높이</td><td class="l">23.94m</td></tr>
+        <tr><td class="k">주구조</td><td class="l">철근콘크리트 구조 — 라멘조</td></tr>
+        <tr><td class="k">건축면적</td><td class="l">1,848.14㎡ <span class="mut">(약 559.1평)</span></td></tr>
+        <tr><td class="k">연면적</td><td class="l">8,648.12㎡ <span class="mut">(약 2,616.1평)</span></td></tr>
+        <tr><td class="k">용적률산정연면적</td><td class="l">8,405.47㎡ <span class="mut">(약 2,542.7평)</span></td></tr>
+        <tr><td class="k">건폐율</td><td class="l">79.96% <span class="mut">(법정 80%)</span></td></tr>
+        <tr><td class="k">용적률</td><td class="l">363.68% <span class="mut">(법정 400%)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="stat">
+    <div class="c"><div class="n">139대</div><div class="l">계획 주차대수 (전기차 7대 포함)</div></div>
+    <div class="c sky"><div class="n">399.66㎡</div><div class="l">조경면적 17.27% (지상 29.94 + 옥상 369.72)</div></div>
+    <div class="c"><div class="n">23.94m</div><div class="l">최고높이 / 지하1·지상5층</div></div>
+  </div>
+
+  <div class="box">
+    <div class="t">사업 성격 — 주차전용건축물이란</div>
+    <p class="small" style="margin-top:0">
+    주차전용건축물은 건축물 연면적의 <b>70% 이상을 주차장</b>으로 쓰는 건축물이다(주차장법·건축법 시행령). 나머지 면적에 제한적으로
+    근린생활시설·판매시설 등을 둘 수 있어, 본 계획은 <b>주차장 72.31% + 근린생활시설 27.69%</b> 구조로 설계됐다.
+    수익 구조도 일반 분양형 빌딩과 달라, <b>주차장 운영(또는 주차구획 분양·임대) 수익</b>이 중심이고 근생은 보조 수익원이 된다.
+    따라서 사업성 검토의 1차 변수는 ‘주차 수요·요금’과 ‘근생 임대/분양 가능성’이며, 본 초안에서는 확인필요로 둔다.
+    </p>
+  </div>
+</div>
+
+<!-- ================= 2. 건축 계획 상세 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">02</div>
+      <div class="tt"><div class="ko">건축 계획 상세 — 층별 구성</div><div class="en">Architectural Plan</div></div>
+      <div class="chip">층별개요</div>
+    </div>
+    <div class="key">각 층이 <b>‘주차장 + 단일 업종 근생’</b>으로 구성된 전형적 주차전용건축물</div>
+  </div>
+
+  <h3>2-1. 층별 용도 · 주차 · 면적</h3>
+  <table>
+    <thead>
+      <tr><th rowspan="2" style="width:7%">층</th><th rowspan="2" style="width:24%">주요 용도</th><th rowspan="2" style="width:8%">주차<br>대수</th><th colspan="2">근린생활시설(㎡)</th><th colspan="2">주차장(㎡)</th><th rowspan="2">층합계<br>(㎡)</th></tr>
+      <tr class="sub2"><th>전용</th><th>합계</th><th>전용</th><th>합계</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="c">지하1</td><td class="l">기계실 / 방재실</td><td class="c">–</td><td class="r">–</td><td class="r">67.24</td><td class="r">175.41</td><td class="r">175.41</td><td class="r">242.65</td></tr>
+      <tr><td class="c">1</td><td class="l">제1종근생(소매점)+주차</td><td class="c">20</td><td class="r">848.40</td><td class="r">912.32</td><td class="r">856.30</td><td class="r">920.82</td><td class="r">1,833.14</td></tr>
+      <tr><td class="c">2</td><td class="l">제2종근생(일반음식점)+주차</td><td class="c">28</td><td class="r">330.60</td><td class="r">367.86</td><td class="r">1,298.05</td><td class="r">1,444.28</td><td class="r">1,812.14</td></tr>
+      <tr><td class="c">3</td><td class="l">제2종근생(학원)+주차</td><td class="c">31</td><td class="r">330.60</td><td class="r">367.86</td><td class="r">1,298.05</td><td class="r">1,444.28</td><td class="r">1,812.14</td></tr>
+      <tr><td class="c">4</td><td class="l">제2종근생(사무소)+주차</td><td class="c">31</td><td class="r">330.60</td><td class="r">367.86</td><td class="r">1,298.05</td><td class="r">1,444.28</td><td class="r">1,812.14</td></tr>
+      <tr><td class="c">5</td><td class="l">제1종근생(휴게음식점)+주차</td><td class="c">29</td><td class="r">266.88</td><td class="r">297.80</td><td class="r">751.09</td><td class="r">838.11</td><td class="r">1,135.91</td></tr>
+      <tr><td class="c">옥탑</td><td class="l">옥탑층(면적 미산입)</td><td class="c">–</td><td class="r">–</td><td class="r">–</td><td class="r">–</td><td class="r">–</td><td class="r">16.24</td></tr>
+      <tr class="total"><td class="c" colspan="2">합 계</td><td class="c">139</td><td class="r">2,107.08</td><td class="r">2,380.94</td><td class="r">5,501.54</td><td class="r">6,267.18</td><td class="r">8,664.36</td></tr>
+    </tbody>
+    <caption>출처: 층별개요(A-101). 주차대수는 평면도(A-202~206) 합계(20+28+31+31+29=139대, 전기차 7대 포함). 면적단위 ㎡, 합계는 공용 포함.</caption>
+  </table>
+  <div class="box key small">
+    1층 소매점, 2층 일반음식점, 3층 학원, 4층 사무소, 5층 휴게음식점으로 업종을 층별 분리했다. 주차는 자주식으로 층마다 배치(2~4층 28~31대로 최다)되며, 5층에 전기차 완속충전 주차구획이 표시돼 있다.
+  </div>
+
+  <h3>2-2. 용도별 면적 구성 비율</h3>
+  <div class="grid2">
+    <table>
+      <thead><tr><th>구분</th><th>전용(㎡)</th><th>공용(㎡)</th><th>합계(㎡)</th><th>비율</th></tr></thead>
+      <tbody>
+        <tr><td class="l">근린생활시설</td><td class="r">2,107.08</td><td class="r">286.71</td><td class="r">2,393.79</td><td class="c">27.69%</td></tr>
+        <tr><td class="l">주차장</td><td class="r">5,501.54</td><td class="r">748.59</td><td class="r">6,254.13</td><td class="c" style="color:var(--green);font-weight:800">72.31%</td></tr>
+        <tr class="total"><td class="l">합계</td><td class="r">7,608.62</td><td class="r">1,035.30</td><td class="r">8,648.12</td><td class="c">100%</td></tr>
+      </tbody>
+      <caption>건축연면적 대비 (주차장 70% 이상 요건)</caption>
+    </table>
+    <table>
+      <thead><tr><th>구분</th><th>전용(㎡)</th><th>공용(㎡)</th><th>합계(㎡)</th><th>비율</th></tr></thead>
+      <tbody>
+        <tr><td class="l">근생(1층)</td><td class="r">848.40</td><td class="r">63.92</td><td class="r">912.32</td><td class="c" style="color:var(--green);font-weight:800">49.74%</td></tr>
+        <tr><td class="l">주차장(1층)</td><td class="r">856.30</td><td class="r">64.52</td><td class="r">920.82</td><td class="c">50.26%</td></tr>
+        <tr class="total"><td class="l">합계</td><td class="r">1,704.70</td><td class="r">128.44</td><td class="r">1,833.14</td><td class="c">100%</td></tr>
+      </tbody>
+      <caption>1층 바닥면적 대비 (근생 50% 이하 요건)</caption>
+    </table>
+  </div>
+
+  <h3>2-3. 배치 · 동선 <span class="small mut">(배치도 A-102 · 평면도)</span></h3>
+  <div class="cards">
+    <div class="card sky"><div class="cap">접도 · 진출입</div><div class="bd small">13M 도로 3면 접면. 배치도상 주차장 출입구·차량 진출입구가 도로변에 분산 배치되어 진출입 동선이 확보된다.</div></div>
+    <div class="card sky"><div class="cap">건물 형상 · 조경</div><div class="bd small">부정형 대지에 ㄷ자형 매스(4F/5F ROOF). 옥상조경 369.72㎡가 조경의 대부분을 차지(전체 399.66㎡, 17.27%).</div></div>
+    <div class="card sky"><div class="cap">주차 · 코어</div><div class="bd small">자주식, 1~5층 층상 주차구조에 램프·OPEN 구간. 계단실 2개소·승강기(장애인 겸용)·화장실·자전거거치대(28대).</div></div>
+  </div>
+  <div class="box need small"><b>확인필요.</b> 본 절은 평면도(A-201~208) 표기를 요약한 것으로, 실제 차로폭·주차구획 규격(2.5×5.0m 등)·장애인/확장형 비율·전기차 충전기 수량의 법정 적합 여부는 인허가 도서(주차계획도)로 별도 검증이 필요하다.</div>
+</div>
+
+<!-- ================= 3. 입지·시장환경 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">03</div>
+      <div class="tt"><div class="ko">입지 · 시장환경</div><div class="en">Location &amp; Market</div></div>
+      <div class="chip">개발환경</div>
+    </div>
+    <div class="key">수익의 중심은 <b>주차장</b> — 주차 수요·요금 검증이 1순위 과제</div>
+  </div>
+
+  <div class="box small" style="background:#eef4fb;border-left:5px solid var(--sky)">
+    <b>데이터 원용 고지.</b> 본 대상지(당하동 1250, 검단신도시 P2)는 인근 The K Tower 검단(당하동 1237) 검토 대상지와 <b>동일 검단신도시 생활권</b>이다.
+    아래 입지·시장 데이터 일부는 The K Tower 검토(2026.06)에서 정리한 검단신도시 공통 데이터를 원용했으며, 업종·상품 차이(주차전용건축물 vs 분양형 빌딩)를 감안해 해석해야 한다.
+    주차 수요·요금 등 본 사업 고유 항목은 미확보로 확인필요로 둔다.
+  </div>
+
+  <h3>3-1. 교통 · 개발 호재 (검단신도시 공통)</h3>
+  <table>
+    <thead><tr><th style="width:22%">호재</th><th style="width:17%">상태</th><th style="width:17%">시점</th><th>핵심 내용</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>인천1호선 검단연장</b></td><td class="c"><span class="tag g">개통(확정)</span></td><td class="c">2025.6.28</td><td class="l">계양~검단 신설 3개역(아라역=101역 등). 역세권 형성</td></tr>
+      <tr><td class="l"><b>검단 법조타운</b></td><td class="c"><span class="tag b">착공(확정)</span></td><td class="c">착공 2024.12<br>개원 2028.3</td><td class="l">인천지법 북부지원·인천지검 북부지청. 배후수요는 개원 후 본격화</td></tr>
+      <tr><td class="l"><b>GTX-D / 서울5호선</b></td><td class="c"><span class="tag a">예타통과(예정)</span></td><td class="c">착공 2028목표</td><td class="l">김포~검단~서울 광역축. 착공 전 공백 리스크</td></tr>
+      <tr><td class="l"><b>서구 검단구 분구</b></td><td class="c"><span class="tag b">예정</span></td><td class="c">2026</td><td class="l">행정·생활권 위상 강화</td></tr>
+    </tbody>
+  </table>
+  <div class="box small">검단신도시는 계획 약 18.7만명/7.6만세대 규모로 2026~27년 입주가 활발하다(2026년 약 5,400세대). 주거 입주가 늘수록 <b>주차 수요와 근생 배후수요</b>가 함께 늘어나는 구조여서 본 주차전용건축물에 우호적이다. 다만 호재 상당수는 ‘예정’ 단계로, 수익 가정에 과다 반영은 금물이다.</div>
+
+  <h3>3-2. 주차 수요 — 본 사업의 핵심 변수 <span class="small mut">(확인필요)</span></h3>
+  <div class="box need">
+    <div class="t">주차장 수익 모델 — 미확정 항목</div>
+    <p class="small" style="margin-top:0">주차전용건축물의 수익은 운영 방식에 좌우된다. 아래 세 모델별로 가정과 검증 데이터를 확보해야 한다.</p>
+    <table style="margin:6px 0 0">
+      <thead><tr><th style="width:20%">모델</th><th>수익 구조</th><th style="width:32%">확인 필요 데이터</th></tr></thead>
+      <tbody>
+        <tr><td class="l"><b>① 직영 운영</b></td><td class="l">시간·일·월정기 주차요금 매출 (운영비 차감)</td><td class="l">주변 주차요금, 회전율, 월정기 수요(배후 세대·상주)</td></tr>
+        <tr><td class="l"><b>② 구획 분양</b></td><td class="l">139대 구획 개별 분양 (1회성 매출)</td><td class="l">구획당 분양가, 분양 가능성(투자수요)</td></tr>
+        <tr><td class="l"><b>③ 통임대 / 위탁</b></td><td class="l">운영사에 일괄 임대(고정 임대료)</td><td class="l">주차운영사 임대 조건, 보장 임대료</td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-bottom:0"><b>확인필요:</b> 검단신도시 P2 인근 노외·부설주차장 요금 수준, 주거·상업 상주에 따른 주차 부족 여부, 월정기권 잠재 수요.</p>
+  </div>
+
+  <h3>3-3. 근생(상가) 시장 — 검단 공통, 보수적 접근</h3>
+  <div class="cards">
+    <div class="card red"><div class="cap">검단 상가 시장 부담</div><div class="bd small">인천 중대형 상가 공실 13.6%·소규모 11.3%(2025년 3분기)로 전국 상회, 인천 미분양 중 서구(검단)가 준공후 물량의 74%(2026.2). 검단 상가는 1층만 강하고 상층 평당가는 1층의 1/3~1/5로 하락.</div></div>
+    <div class="card sky"><div class="cap">본 사업에의 함의</div><div class="bd small">본 건 근생은 27.69%(보조 수익원)에 그쳐 상가시장 부담의 영향이 분양형 빌딩보다 작다. 단 5개층 근생 <b>분양</b> 시 상층 분양가는 보수적으로, <b>임대</b> 시 업종 유치·공실 관리가 관건. 1층 소매점은 3면 접도·가시성으로 유리.</div></div>
+  </div>
+  <div class="box need small"><b>확인필요.</b> 근생 분양/임대 중 어느 전략인지, 층별 목표 분양가 또는 임대료. 검단 동일 입지 비교사례(선양법조타워 1층 계약평당 약 4,800만/평 등)는 분양형 빌딩 기준이므로, 주차전용건축물 내 근생에는 입지·접근성을 감안해 별도 적용해야 한다.</div>
+</div>
+
+<!-- ================= 4. 사업성 프레임워크 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">04</div>
+      <div class="tt"><div class="ko">사업성 검토 — 프레임워크(초안)</div><div class="en">Feasibility Framework</div></div>
+      <div class="chip">사업수지</div>
+    </div>
+    <div class="key">수지의 ‘틀’만 제시 — 값은 <b>확인필요</b>, 6개 입력값으로 완성</div>
+  </div>
+
+  <div class="box need">
+    <div class="t">초안 한계 명시</div>
+    토지비·공사비·수익 등 사업수지 핵심 수치가 미확보여서, 본 장은 <b>수지표의 ‘틀’만 제시</b>하고 값은 <span class="tbd">[확인필요]</span>로 둔다.
+    아래 입력값이 확정되면 placeholder를 채워 수익률을 산출할 수 있다.
+  </div>
+
+  <h3>4-1. 사업수지 틀 — 수입</h3>
+  <table>
+    <thead><tr><th style="width:23%">수입 항목</th><th>산정 기준(예시)</th><th style="width:17%">금액</th><th style="width:11%">비고</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>주차장 수익</b></td><td class="l">직영: (139대 × 가동률 × 요금) 연환산 / 분양: 구획당가 × 139 / 임대: 월임대료 × 12</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
+      <tr><td class="l">근생 1층(소매점)</td><td class="l">전용 약 256.6평 × 분양가/임대료</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">상대 우위</td></tr>
+      <tr><td class="l">근생 2~5층</td><td class="l">전용 약 380평 × 층별 분양가/임대료(보수)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">보수 산정</td></tr>
+      <tr class="total"><td class="l">수입 계</td><td class="l">주차 + 근생</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">100%</td></tr>
+    </tbody>
+    <caption>전용평수: 근생 1층 848.40㎡≈256.6평, 2~4층 각 330.60㎡≈100.0평, 5층 266.88㎡≈80.7평 (전용 합계 2,107.08㎡≈637.4평).</caption>
+  </table>
+
+  <h3>4-2. 사업수지 틀 — 지출</h3>
+  <table>
+    <thead><tr><th style="width:23%">지출 항목</th><th>산정 기준(예시)</th><th style="width:17%">금액</th><th style="width:11%">비고</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>토지비</b></td><td class="l">대지 699.1평 × 매입/공급 평단가 (+취득세 등)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
+      <tr><td class="l"><b>공사비(직접)</b></td><td class="l">연면적 2,616.1평 × 평당 공사단가</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
+      <tr><td class="l">간접·부대비</td><td class="l">설계·감리·인입·제세공과·예비비</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c"></td></tr>
+      <tr><td class="l">금융비</td><td class="l">PF 이자·수수료(사업기간 연동)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c"></td></tr>
+      <tr><td class="l">판매·운영비</td><td class="l">분양 시 마케팅 / 직영 시 운영비</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c"></td></tr>
+      <tr class="total"><td class="l">지출 계</td><td class="l"></td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">100%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="stat">
+    <div class="c am"><div class="n">[확인필요]</div><div class="l">세전이익</div></div>
+    <div class="c am"><div class="n">[확인필요]</div><div class="l">수익률(이익/수입)</div></div>
+    <div class="c"><div class="n">699.1평</div><div class="l">대지면적</div></div>
+    <div class="c"><div class="n">2,616.1평</div><div class="l">연면적(공사비 기준)</div></div>
+  </div>
+  <div class="box small">자료가 확보되면 The K Tower 보고서와 동일하게 <b>민감도 분석(주차 가동률·근생가·공사비 ±)</b>과 시나리오별 수익률을 추가한다. 주차전용건축물은 주차 수익 의존도가 높아, 주차 가동률·요금이 1차 민감 변수가 될 가능성이 크다.</div>
+</div>
+
+<!-- ================= 5. 리스크·필수조건 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">05</div>
+      <div class="tt"><div class="ko">리스크 · 필수조건</div><div class="en">Risk &amp; Prerequisites</div></div>
+      <div class="chip">점검항목</div>
+    </div>
+    <div class="key">인허가 리스크는 <b>낮고</b>, 수익모델·자금조달이 관건</div>
+  </div>
+
+  <h3>5-1. 리스크 점검</h3>
+  <table>
+    <thead><tr><th style="width:16%">구분</th><th>리스크</th><th style="width:15%">현재 판단</th><th style="width:25%">대응</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><b>인허가</b></td><td class="l">주차전용건축물 요건(70%·30%·50%) 위반 여부</td><td class="c"><span class="tag g">요건 충족</span></td><td class="l">건폐율 79.96%·1층 근생 49.74% 경계선 — 설계변경 시 재검증</td></tr>
+      <tr><td class="l"><b>수익모델</b></td><td class="l">주차장 운영/분양/임대 미정, 주차 수요 미검증</td><td class="c"><span class="tag a">미정</span></td><td class="l">주차 수요·요금 실사, 운영방식 조기 확정</td></tr>
+      <tr><td class="l"><b>근생 분양/임대</b></td><td class="l">검단 상가 공실·미분양 부담, 상층 흡수율</td><td class="c"><span class="tag r">시장부담</span></td><td class="l">층별 보수 가격, 선임대·업종 유치</td></tr>
+      <tr><td class="l"><b>사업수지</b></td><td class="l">토지비·공사비·금융비 미확보로 수익성 불명</td><td class="c"><span class="tag a">미확보</span></td><td class="l">6대 입력값 확정 후 수지·민감도 산출</td></tr>
+      <tr><td class="l"><b>자금조달</b></td><td class="l">2026 하반기 PF 만기 정점·자금경색</td><td class="c"><span class="tag r">환경부담</span></td><td class="l">신탁·책준·자기자본 등 신용보강 구조 설계</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5-2. 사업 진행 필수조건</h3>
+  <div class="cards">
+    <div class="card"><div class="cap">건축 · 인허가</div><div class="bd"><ol class="small" style="padding-left:16px">
+      <li>주차전용건축물 요건 유지(설계변경 시 70%/30%/50% 재검증)</li>
+      <li>주차계획도 적합성(구획규격·차로·장애인/확장형·전기차 충전)</li>
+      <li>준주거·지구단위계획 지침(높이·용도·외관) 부합</li>
+      <li>조경 399.66㎡(17.27%)·옥상조경 유지관리 계획</li>
+    </ol></div></div>
+    <div class="card sky"><div class="cap">사업 · 금융</div><div class="bd"><ol class="small" style="padding-left:16px">
+      <li>토지 권원 확보(매입/공급계약→소유권) — PF 인출 선행</li>
+      <li>주차장 운영방식 확정·수요/요금 실사로 수익 검증</li>
+      <li>근생 분양/임대 전략과 층별 가격·선임대 확보</li>
+      <li>신탁·책준·자기자본 신용보강과 본PF 기표조건 사전확정</li>
+    </ol></div></div>
+  </div>
+</div>
+
+<!-- ================= 6. 결론 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">06</div>
+      <div class="tt"><div class="ko">결론 및 다음 단계</div><div class="en">Conclusion &amp; Next Steps</div></div>
+      <div class="chip">종합</div>
+    </div>
+    <div class="key">건축 <b>확정</b> · 사업성 <b>미정</b> — 다음 단계는 데이터 확보</div>
+  </div>
+
+  <div class="box key">
+    <div class="t">종합(초안)</div>
+    <ol>
+      <li><b>건축·법적 측면은 안정적이다.</b> 주차전용건축물 3대 요건(주차 72.31%·근생 27.69%·1층 근생 49.74%)을 모두 충족하고, 건폐율·용적률도 법정 한도 안에서 밀도를 거의 채웠다. 3면 13M 접도로 주차·근생 접근성도 양호하다.</li>
+      <li><b>사업성은 아직 판단할 수 없다.</b> 토지비·공사비·주차/근생 수익이 미확보여서, 본 초안은 수지의 ‘틀’과 확인필요 항목을 제시하는 데 그친다.</li>
+      <li><b>수익의 중심은 주차장이다.</b> 근생이 30% 미만으로 제한되는 구조상 주차 수요·요금·운영방식이 수익성을 좌우한다. 검단 상가 시장 부담을 감안하면 근생은 보수적으로 보는 게 안전하다.</li>
+      <li><b>다음 단계는 6대 입력값 확보다.</b> 토지비·공사비·주차수익·근생가·자금구조·인허가 일정이 확정되면 The K Tower 보고서 수준의 사업수지·민감도·시나리오 분석으로 확장한다.</li>
+    </ol>
+  </div>
+
+  <h3>다음 단계 — 확보해야 할 데이터</h3>
+  <table>
+    <thead><tr><th style="width:6%">순위</th><th>확인 항목</th><th style="width:32%">출처 / 방법</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td class="l">토지 매입가/공급가·취득조건</td><td class="l">매매계약서, LH/iH 공급공고(주차장용지)</td></tr>
+      <tr><td class="c">2</td><td class="l">총공사비(직접·간접)·평당 공사단가</td><td class="l">시공사 견적, 유사 주차전용건축물 단가</td></tr>
+      <tr><td class="c">3</td><td class="l">주차장 운영방식·수요·요금</td><td class="l">주차운영사 협의, 인근 주차요금·회전율 실사</td></tr>
+      <tr><td class="c">4</td><td class="l">근생 분양/임대 전략·층별 가격</td><td class="l">분양·임대 자문, 검단 비교사례 조사</td></tr>
+      <tr><td class="c">5</td><td class="l">자금조달 구조(자기자본·PF·신탁)</td><td class="l">금융주선·신탁사 사전협의</td></tr>
+      <tr><td class="c">6</td><td class="l">인허가 진행 현황·사업일정</td><td class="l">건축 인허가 도서, 행정청 협의</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box small">
+    <b>본 초안의 한계.</b> 건축 도면(설계개요·층별개요·평면도) 외의 자료가 없어, 사업성·시장 수치는 추정 또는 확인필요로 표기했다.
+    면적·비율 등 건축 수치는 도면 기재값을 그대로 인용했으며, 인허가 단계에서 최종본과 대조가 필요하다.
+    검단신도시 시장 데이터 일부는 The K Tower 검토(2026.06)에서 원용했고, 업종 차이를 감안해 해석해야 한다.
+  </div>
+</div>
+
+<!-- ================= 부록 ================= -->
+<div class="sec">
+  <div class="pagehead">
+    <div class="row">
+      <div class="badge2">A</div>
+      <div class="tt"><div class="ko">부록 — 원자료 · 출처</div><div class="en">Appendix &amp; Sources</div></div>
+      <div class="chip">References</div>
+    </div>
+  </div>
+  <h4>건축 도면(원자료)</h4>
+  <p class="small">설계개요 A-101(건축개요·층별개요·용도구성 비율표) · 건물배치도 A-102 · 지하1층 평면도 A-201 · 1층 A-202 · 2층 A-203 · 3층 A-204 · 4층 A-205 · 5층 A-206 · 지붕층 A-207 · 옥탑지붕 A-208 — ㈜해인건축사사무소. 파일: 「당하동 주차장부지 개발.pdf」</p>
+  <h4>입지 · 시장(원용)</h4>
+  <p class="small">검단신도시 시장·호재·상가 데이터는 The K Tower 검단 적정분양가 검토 및 사업성 재검토 보고서(2026.06.24)에서 원용 — 한국부동산원 임대동향, 국토부 미분양 통계, 인천1호선 검단연장 개통, 검단 법조타운, 검단 상가 공실/미분양 등.</p>
+  <div class="foot-note">
+    검단신도시 당하동 1250 주차전용건축물 — 분양성·사업성 검토 보고서(초안) · 검토기준일 2026.06.26 · 건축 도면 기반 1차 검토.
+    본 보고서는 <b>초안</b>이며 투자 권유가 아니다. 사업성 수치는 미확보로 추정·확인필요를 포함한다. 실제 의사결정 전 사업수지·시장 실사·전문가(감정평가·신탁·법무·주차운영) 검토를 권고한다.
+  </div>
+</div>
+
+<div class="runfoot">
+  <div class="ln"></div>
+  <div class="l">검단신도시 당하동 1250 주차전용건축물 · 분양성·사업성 검토 보고서(초안) · 2026.06.26</div>
+  <div class="r">DRAFT · CONFIDENTIAL</div>
+</div>
+
+</body>
+</html>
