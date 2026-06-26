@@ -186,11 +186,11 @@
     <tbody>
       <tr><td class="l"><b>주차장 면적비율</b><br><span class="small mut">건축연면적 대비</span></td><td class="c">70% 이상</td><td class="c"><b>72.31%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">주차 6,254.13㎡ / 연면적 8,648.12㎡</td></tr>
       <tr><td class="l"><b>근린생활시설 비율</b><br><span class="small mut">용적률 산정연면적(지하 제외)</span></td><td class="c">30% 미만</td><td class="c"><b>27.69%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">근생 2,327.75㎡ / 8,405.47㎡</td></tr>
-      <tr><td class="l"><b>1층 근생 비율</b><br><span class="small mut">1층 바닥면적 대비</span></td><td class="c">50% 이하</td><td class="c"><b>49.74%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">근생 912.32㎡ / 1층 1,833.14㎡</td></tr>
+      <tr><td class="l"><b>1층 근생 비율</b><br><span class="small mut">1층 바닥면적 대비</span></td><td class="c">50% 이하</td><td class="c"><b>49.77%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">근생 912.32㎡ / 1층 1,833.14㎡</td></tr>
       <tr><td class="l"><b>건폐율</b></td><td class="c">80% 이하</td><td class="c"><b>79.96%</b></td><td class="c"><span class="tag a">한도근접</span></td><td class="l">건축 1,848.14㎡ / 대지 2,311.20㎡</td></tr>
       <tr><td class="l"><b>용적률</b></td><td class="c">400% 이하</td><td class="c"><b>363.68%</b></td><td class="c"><span class="tag g">충족</span></td><td class="l">용적산정 8,405.47㎡ / 대지 2,311.20㎡</td></tr>
     </tbody>
-    <caption>출처: 건축개요(A-101) 용도구성·법규 검토표. ※ 1층 근생비율은 주차 50.26%로, 50% 경계선 — 인허가 단계 재확인 권고.</caption>
+    <caption>출처: 건축개요(A-101) 용도구성·법규 검토표. ※ 1층 근생비율 49.77%(주차 50.23%)는 면적 계산(912.32÷1,833.14)·도면 비고(3)에 따른 정확값으로, 도면 표상 49.74로 오기된 것을 정정함. 50% 경계지표이므로 인허가 단계 재확인 권고.</caption>
   </table>
 
   <div class="cards">
@@ -216,7 +216,7 @@
 
   <div class="box need small">
     <div class="t" style="font-size:11px">이 초안에서 확인이 필요한 6개 항목 (다음 단계)</div>
-    ① 토지 매입가(공급가)·취득조건 &nbsp;|&nbsp; ② 총공사비(직접·간접)·평당단가 &nbsp;|&nbsp; ③ 주차장 운영방식·예상매출(요금·회전율·월정기)
+    ① 토지 매입가 + <b>공급계약상 용도·전매·주차장 의무운영 조건</b> &nbsp;|&nbsp; ② 총공사비(직접·간접)·평당단가 &nbsp;|&nbsp; ③ 주차장 운영방식·예상매출(요금·회전율·월정기)
     &nbsp;|&nbsp; ④ 근생 분양가/임대료(층별) &nbsp;|&nbsp; ⑤ 자금조달 구조(자기자본·PF·신탁) &nbsp;|&nbsp; ⑥ 인허가 현황·일정.
     위 6개가 확정되면 4장 사업수지 표의 확인필요 항목을 실값으로 대체해 수익률을 산출한다.
   </div>
@@ -309,7 +309,7 @@
     <caption>출처: 층별개요(A-101). 주차대수는 평면도(A-202~206) 합계(20+28+31+31+29=139대, 전기차 7대 포함). 면적단위 ㎡, 합계는 공용 포함.</caption>
   </table>
   <div class="box key small">
-    1층 소매점, 2층 일반음식점, 3층 학원, 4층 사무소, 5층 휴게음식점으로 업종을 층별 분리했다. 주차는 자주식으로 층마다 배치(2~4층 28~31대로 최다)되며, 5층에 전기차 완속충전 주차구획이 표시돼 있다.
+    1층 소매점, 2층 일반음식점, 3층 학원, 4층 사무소, 5층 휴게음식점으로 업종을 층별 분리했다. 주차는 자주식으로 층마다 배치(2~4층 28~31대로 최다)되며, 5층에 전기차 완속·급속 충전 주차구획이 표시돼 있다.
   </div>
 
   <h3>2-2. 용도별 면적 구성 비율</h3>
@@ -326,13 +326,14 @@
     <table>
       <thead><tr><th>구분</th><th>전용(㎡)</th><th>공용(㎡)</th><th>합계(㎡)</th><th>비율</th></tr></thead>
       <tbody>
-        <tr><td class="l">근생(1층)</td><td class="r">848.40</td><td class="r">63.92</td><td class="r">912.32</td><td class="c" style="color:var(--green);font-weight:800">49.74%</td></tr>
-        <tr><td class="l">주차장(1층)</td><td class="r">856.30</td><td class="r">64.52</td><td class="r">920.82</td><td class="c">50.26%</td></tr>
+        <tr><td class="l">근생(1층)</td><td class="r">848.40</td><td class="r">63.92</td><td class="r">912.32</td><td class="c" style="color:var(--green);font-weight:800">49.77%</td></tr>
+        <tr><td class="l">주차장(1층)</td><td class="r">856.30</td><td class="r">64.52</td><td class="r">920.82</td><td class="c">50.23%</td></tr>
         <tr class="total"><td class="l">합계</td><td class="r">1,704.70</td><td class="r">128.44</td><td class="r">1,833.14</td><td class="c">100%</td></tr>
       </tbody>
       <caption>1층 바닥면적 대비 (근생 50% 이하 요건)</caption>
     </table>
   </div>
+  <div class="box small" style="border-left:3px solid var(--line)"><b>면적 수치 기준 안내.</b> 도면에는 산정 목적별로 면적값이 다르게 나온다 — 주차장은 <b>층별개요 6,267.18㎡</b>(층별 공용 합산)와 <b>비율표 6,254.13㎡</b>(건축연면적 기준)로 약 13㎡ 차이가 있고, 근생도 2,380.94(층별 합계)·2,393.79(연면적 비율)·2,327.75㎡(용적률 산정, 지하 제외)로 나뉜다. 모두 도면 기재값이며, <b>요건 판정에는 각 요건이 정한 분모(연면적/용적산정/1층 바닥)에 맞는 값</b>을 사용했다.</div>
 
   <h3>2-3. 배치 · 동선 <span class="small mut">(배치도 A-102 · 평면도)</span></h3>
   <div class="cards">
@@ -372,22 +373,36 @@
   </table>
   <div class="box small">검단신도시는 계획 약 18.7만명/7.6만세대 규모로 2026~27년 입주가 활발하다(2026년 약 5,400세대). 주거 입주가 늘수록 <b>주차 수요와 근생 배후수요</b>가 함께 늘어나는 구조여서 본 주차전용건축물에 우호적이다. 다만 호재 상당수는 ‘예정’ 단계로, 수익 가정에 과다 반영은 금물이다.</div>
 
-  <h3>3-2. 주차 수요 — 본 사업의 핵심 변수 <span class="small mut">(확인필요)</span></h3>
-  <div class="box need">
-    <div class="t">주차장 수익 모델 — 미확정 항목</div>
-    <p class="small" style="margin-top:0">주차전용건축물의 수익은 운영 방식에 좌우된다. 아래 세 모델별로 가정과 검증 데이터를 확보해야 한다.</p>
-    <table style="margin:6px 0 0">
-      <thead><tr><th style="width:20%">모델</th><th>수익 구조</th><th style="width:32%">확인 필요 데이터</th></tr></thead>
+  <h3>3-2. 먼저 따질 것 — 139대 중 ‘수익화 가능’ 주차대수</h3>
+  <div class="box key">
+    <div class="t">총 139대 ≠ 수익화 가능 대수</div>
+    <p class="small" style="margin-top:0">본 건은 1~5층에 근생(소매·음식·학원·사무소)이 들어가므로, 주차 139대 중 일부는 <b>근생의 법정 부설주차</b>로 묶여 자유롭게 분양·임대·운영할 수 없다. 수익모델의 출발점은 ‘총 139대’가 아니라 <b>‘부설주차를 뺀 가용 대수’</b>다.</p>
+    <table style="margin:6px 0">
+      <thead><tr><th style="width:30%">구분</th><th>면적 / 기준</th><th style="width:13%">대수</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td class="l"><b>① 직영 운영</b></td><td class="l">시간·일·월정기 주차요금 매출 (운영비 차감)</td><td class="l">주변 주차요금, 회전율, 월정기 수요(배후 세대·상주)</td></tr>
-        <tr><td class="l"><b>② 구획 분양</b></td><td class="l">139대 구획 개별 분양 (1회성 매출)</td><td class="l">구획당 분양가, 분양 가능성(투자수요)</td></tr>
-        <tr><td class="l"><b>③ 통임대 / 위탁</b></td><td class="l">운영사에 일괄 임대(고정 임대료)</td><td class="l">주차운영사 임대 조건, 보장 임대료</td></tr>
+        <tr><td class="l">계획 총 주차대수</td><td class="c">도면 A-202~206</td><td class="c">139대</td><td class="l">전기차 7대 포함</td></tr>
+        <tr><td class="l">근생 법정 부설주차(추정)</td><td class="c">근생 2,393.79㎡ ÷ 134㎡/대</td><td class="c">약 18대</td><td class="l">주차장법 시행령 별표1 기본원단위</td></tr>
+        <tr class="total"><td class="l">수익화 가능 주차대수(추정)</td><td class="c">139 − 18</td><td class="c">약 121대</td><td class="l">분양·임대·운영 대상</td></tr>
       </tbody>
+      <caption>※ 근생 부설주차 원단위는 주차장법 시행령 별표1(근린생활시설 시설면적 134㎡당 1대) 기준 추정. <span class="tbd">인천광역시 주차장 조례·업종별(음식점 등) 가중으로 의무대수가 늘 수 있어 정확값은 확인필요</span> — 부설대수가 늘면 가용대수는 줄어든다.</caption>
     </table>
-    <p class="small" style="margin-bottom:0"><b>확인필요:</b> 검단신도시 P2 인근 노외·부설주차장 요금 수준, 주거·상업 상주에 따른 주차 부족 여부, 월정기권 잠재 수요.</p>
   </div>
 
-  <h3>3-3. 근생(상가) 시장 — 검단 공통, 보수적 접근</h3>
+  <h3>3-3. 주차장 수익 모델 — 미확정 항목 <span class="small mut">(확인필요)</span></h3>
+  <div class="box need">
+    <p class="small" style="margin-top:0">주차전용건축물의 수익은 운영 방식에 좌우된다. 아래 세 모델별로 가정과 검증 데이터를 확보해야 한다. 분양·임대·운영 대상은 위 <b>가용 약 121대</b> 기준이다.</p>
+    <table style="margin:6px 0">
+      <thead><tr><th style="width:18%">모델</th><th>수익 구조</th><th style="width:34%">확인 필요 데이터 / 법적 제약</th></tr></thead>
+      <tbody>
+        <tr><td class="l"><b>① 직영 운영</b></td><td class="l">시간·일·월정기 주차요금 매출 (운영비 차감)</td><td class="l">주변 주차요금·회전율·월정기 수요. 주차장 용도 유지의무·요금규제 확인</td></tr>
+        <tr><td class="l"><b>② 구획 분양</b></td><td class="l">가용 구획 개별 분양 (1회성 매출)</td><td class="l">구획당 분양가·투자수요. <b>건축물분양법상 분양신고·분양보증/분양관리신탁 대상 여부</b>(신탁사 핵심 쟁점)</td></tr>
+        <tr><td class="l"><b>③ 통임대 / 위탁</b></td><td class="l">운영사에 일괄 임대(고정 임대료)</td><td class="l">주차운영사 임대 조건·보장 임대료. 공급계약상 운영·전매 제한 여부</td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin:6px 0 0"><b>참고 — 직영 매출 예시(가정).</b> 가용 121대를 월정기 위주로 운영한다고 가정하면, 월정기 6~9만원/대 만차 기준 <b>연 약 0.87억~1.31억원</b>(시간주차 별도) 수준이다. 이 규모는 통상의 토지비+공사비에 견주면 크지 않아, <b>근생 임대/분양 또는 구획 분양을 병행</b>해야 사업성이 선다 — 주차 단독 수익만으로는 한계가 분명하다. <span class="tbd">실제 요금·회전율·수요는 확인필요.</span></p>
+  </div>
+
+  <h3>3-4. 근생(상가) 시장 — 검단 공통, 보수적 접근</h3>
   <div class="cards">
     <div class="card red"><div class="cap">검단 상가 시장 부담</div><div class="bd small">인천 중대형 상가 공실 13.6%·소규모 11.3%(2025년 3분기)로 전국 상회, 인천 미분양 중 서구(검단)가 준공후 물량의 74%(2026.2). 검단 상가는 1층만 강하고 상층 평당가는 1층의 1/3~1/5로 하락.</div></div>
     <div class="card sky"><div class="cap">본 사업에의 함의</div><div class="bd small">본 건 근생은 27.69%(보조 수익원)에 그쳐 상가시장 부담의 영향이 분양형 빌딩보다 작다. 단 5개층 근생 <b>분양</b> 시 상층 분양가는 보수적으로, <b>임대</b> 시 업종 유치·공실 관리가 관건. 1층 소매점은 3면 접도·가시성으로 유리.</div></div>
@@ -416,7 +431,7 @@
   <table>
     <thead><tr><th style="width:23%">수입 항목</th><th>산정 기준(예시)</th><th style="width:17%">금액</th><th style="width:11%">비고</th></tr></thead>
     <tbody>
-      <tr><td class="l"><b>주차장 수익</b></td><td class="l">직영: (139대 × 가동률 × 요금) 연환산 / 분양: 구획당가 × 139 / 임대: 월임대료 × 12</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
+      <tr><td class="l"><b>주차장 수익</b></td><td class="l">가용 약 121대 기준 — 직영: (대수 × 가동률 × 요금) 연환산 / 구획분양: 구획당가 × 대수 / 통임대: 월임대료 × 12</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
       <tr><td class="l">근생 1층(소매점)</td><td class="l">전용 약 256.6평 × 분양가/임대료</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">상대 우위</td></tr>
       <tr><td class="l">근생 2~5층</td><td class="l">전용 약 380평 × 층별 분양가/임대료(보수)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">보수 산정</td></tr>
       <tr class="total"><td class="l">수입 계</td><td class="l">주차 + 근생</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">100%</td></tr>
@@ -428,7 +443,7 @@
   <table>
     <thead><tr><th style="width:23%">지출 항목</th><th>산정 기준(예시)</th><th style="width:17%">금액</th><th style="width:11%">비고</th></tr></thead>
     <tbody>
-      <tr><td class="l"><b>토지비</b></td><td class="l">대지 699.1평 × 매입/공급 평단가 (+취득세 등)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
+      <tr><td class="l"><b>토지비</b></td><td class="l">대지 699.1평 × 매입/공급 평단가 (+취득세 등). 주차장용지 <b>공급계약상 용도·전매·운영 조건</b>이 구획분양·통임대 모델을 제약할 수 있음</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
       <tr><td class="l"><b>공사비(직접)</b></td><td class="l">연면적 2,616.1평 × 평당 공사단가</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c">핵심</td></tr>
       <tr><td class="l">간접·부대비</td><td class="l">설계·감리·인입·제세공과·예비비</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c"></td></tr>
       <tr><td class="l">금융비</td><td class="l">PF 이자·수수료(사업기간 연동)</td><td class="r"><span class="tbd">[확인필요]</span></td><td class="c"></td></tr>
@@ -461,11 +476,12 @@
   <table>
     <thead><tr><th style="width:16%">구분</th><th>리스크</th><th style="width:15%">현재 판단</th><th style="width:25%">대응</th></tr></thead>
     <tbody>
-      <tr><td class="l"><b>인허가</b></td><td class="l">주차전용건축물 요건(70%·30%·50%) 위반 여부</td><td class="c"><span class="tag g">요건 충족</span></td><td class="l">건폐율 79.96%·1층 근생 49.74% 경계선 — 설계변경 시 재검증</td></tr>
+      <tr><td class="l"><b>인허가</b></td><td class="l">주차전용건축물 요건(70%·30%·50%) 위반 여부</td><td class="c"><span class="tag g">요건 충족</span></td><td class="l">건폐율 79.96%·1층 근생 49.77% 경계선 — 설계변경 시 재검증</td></tr>
       <tr><td class="l"><b>수익모델</b></td><td class="l">주차장 운영/분양/임대 미정, 주차 수요 미검증</td><td class="c"><span class="tag a">미정</span></td><td class="l">주차 수요·요금 실사, 운영방식 조기 확정</td></tr>
       <tr><td class="l"><b>근생 분양/임대</b></td><td class="l">검단 상가 공실·미분양 부담, 상층 흡수율</td><td class="c"><span class="tag r">시장부담</span></td><td class="l">층별 보수 가격, 선임대·업종 유치</td></tr>
       <tr><td class="l"><b>사업수지</b></td><td class="l">토지비·공사비·금융비 미확보로 수익성 불명</td><td class="c"><span class="tag a">미확보</span></td><td class="l">6대 입력값 확정 후 수지·민감도 산출</td></tr>
       <tr><td class="l"><b>자금조달</b></td><td class="l">2026 하반기 PF 만기 정점·자금경색</td><td class="c"><span class="tag r">환경부담</span></td><td class="l">신탁·책준·자기자본 등 신용보강 구조 설계</td></tr>
+      <tr><td class="l"><b>운영·법적</b></td><td class="l">주차장 용도 유지의무, 주차요금 규제, 구획분양 시 건축물분양법 적용</td><td class="c"><span class="tag a">확인필요</span></td><td class="l">공급계약·주차장법·건축물분양법 검토, 분양관리신탁 구조 점검</td></tr>
     </tbody>
   </table>
 
@@ -500,7 +516,7 @@
   <div class="box key">
     <div class="t">종합(초안)</div>
     <ol>
-      <li><b>건축·법적 측면은 안정적이다.</b> 주차전용건축물 3대 요건(주차 72.31%·근생 27.69%·1층 근생 49.74%)을 모두 충족하고, 건폐율·용적률도 법정 한도 안에서 밀도를 거의 채웠다. 3면 13M 접도로 주차·근생 접근성도 양호하다.</li>
+      <li><b>건축·법적 측면은 안정적이다.</b> 주차전용건축물 3대 요건(주차 72.31%·근생 27.69%·1층 근생 49.77%)을 모두 충족하고, 건폐율·용적률도 법정 한도 안에서 밀도를 거의 채웠다. 3면 13M 접도로 주차·근생 접근성도 양호하다.</li>
       <li><b>사업성은 아직 판단할 수 없다.</b> 토지비·공사비·주차/근생 수익이 미확보여서, 본 초안은 수지의 ‘틀’과 확인필요 항목을 제시하는 데 그친다.</li>
       <li><b>수익의 중심은 주차장이다.</b> 근생이 30% 미만으로 제한되는 구조상 주차 수요·요금·운영방식이 수익성을 좌우한다. 검단 상가 시장 부담을 감안하면 근생은 보수적으로 보는 게 안전하다.</li>
       <li><b>다음 단계는 6대 입력값 확보다.</b> 토지비·공사비·주차수익·근생가·자금구조·인허가 일정이 확정되면 The K Tower 보고서 수준의 사업수지·민감도·시나리오 분석으로 확장한다.</li>
@@ -511,7 +527,7 @@
   <table>
     <thead><tr><th style="width:6%">순위</th><th>확인 항목</th><th style="width:32%">출처 / 방법</th></tr></thead>
     <tbody>
-      <tr><td class="c">1</td><td class="l">토지 매입가/공급가·취득조건</td><td class="l">매매계약서, LH/iH 공급공고(주차장용지)</td></tr>
+      <tr><td class="c">1</td><td class="l">토지 매입가/공급가 + 공급계약상 용도·전매·주차장 의무운영 조건</td><td class="l">매매계약서, LH/iH 공급공고(주차장용지)</td></tr>
       <tr><td class="c">2</td><td class="l">총공사비(직접·간접)·평당 공사단가</td><td class="l">시공사 견적, 유사 주차전용건축물 단가</td></tr>
       <tr><td class="c">3</td><td class="l">주차장 운영방식·수요·요금</td><td class="l">주차운영사 협의, 인근 주차요금·회전율 실사</td></tr>
       <tr><td class="c">4</td><td class="l">근생 분양/임대 전략·층별 가격</td><td class="l">분양·임대 자문, 검단 비교사례 조사</td></tr>
