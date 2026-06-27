@@ -47,22 +47,21 @@
     <div class="card title">
       <div class="kick">REAL ESTATE LOCATION MAP</div>
       <h1>검단신도시 당하동 1250 위치도</h1>
-      <div class="sub">대상지 · 비교사례 · 교통·개발호재 — 평당가 비교 연계(§4)</div>
+      <div class="sub">현장 인근 — 대상지 · 인접 검토사례 · 아라역 · 법조타운 (좌표 검증본)</div>
       <div class="meta">검토기준일 2026.06 · 좌표 추정(검증본) · 반경 500m 표시 · 베이스맵 © CARTO · OpenStreetMap</div>
     </div>
     <div class="card legend" id="legend"></div>
   </div>
 
 <script>
-// ===== 지점 정의 (보고서 기준 · 위치 검증 좌표 고정) =====
+// ===== 지점 정의 (아라역=37.602386,126.688074 검증좌표 앵커 · 인근 연번필지 보정) =====
+// 메트로시티·iH웰카운티는 검단 내 위치 미특정(원용 벤치마크)이라 지도 핀 제외 → §4 비교사례 표에서 다룸.
 const PLACES = [
-  {n:"당하동 1250 (주차전용 대상지)", q:"인천광역시 서구 당하동 1250", grp:"대상지", pr:"본 검토 · 검단 P2-주9", color:"#e0322d", ll:[37.6010,126.6452], big:true},
-  {n:"The K Tower 검단", q:"인천광역시 서구 당하동 1237", grp:"대상지", pr:"검단 C3-①-5", color:"#d98a0f", ll:[37.6002,126.6440]},
-  {n:"선양법조타워", q:"인천광역시 서구 당하동 1235-6", grp:"비교사례", pr:"1층 ~4,800만/평", color:"#2f6fb0", ll:[37.5995,126.6432]},
-  {n:"메트로시티(검단)", q:"검단신도시 메트로시티", grp:"비교사례", pr:"1층 4,500~4,900만/평", color:"#2f6fb0", ll:[37.6035,126.6398]},
-  {n:"iH 웰카운티 단지내상가", q:"검단 웰카운티", grp:"비교사례", pr:"전용평당 4,750~5,100만", color:"#2f6fb0", ll:[37.5970,126.6470]},
-  {n:"인천지법 북부지원(법조타운)", q:"인천지방법원 북부지원", grp:"교통·호재", pr:"개원 2028.3 · 배후수요", color:"#1f8d5b", ll:[37.5988,126.6418]},
-  {n:"아라역 (인천1호선)", q:"아라역 인천 1호선", grp:"교통·호재", pr:"2025.6.28 개통", color:"#566377", ll:[37.6018,126.6425]},
+  {n:"당하동 1250 (주차전용 대상지)", q:"인천광역시 서구 당하동 1250", grp:"대상지", pr:"본 검토 · 검단 P2-주9", color:"#e0322d", ll:[37.60160,126.68690], big:true},
+  {n:"The K Tower 검단", q:"인천광역시 서구 당하동 1237", grp:"대상지", pr:"검단 C3-①-5 · 인접 검토사례", color:"#d98a0f", ll:[37.60205,126.68760]},
+  {n:"선양법조타워", q:"인천광역시 서구 당하동 1235-6", grp:"비교사례(직접)", pr:"1층 계약 ~4,800만/평", color:"#2f6fb0", ll:[37.60120,126.68625]},
+  {n:"아라역 (인천1호선 I109)", q:"인천광역시 서구 당하동 1238", grp:"교통·호재", pr:"2025.6.28 개통 · 좌표 검증", color:"#566377", ll:[37.602386,126.688074]},
+  {n:"검단 법조타운(인천지법 북부지원)", q:"인천광역시 서구 당하동 191 일원", grp:"교통·호재", pr:"개원 2028.3 · 배후수요", color:"#1f8d5b", ll:[37.60055,126.68490]},
 ];
 
 const sat = L.tileLayer('https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
@@ -89,7 +88,7 @@ PLACES.forEach((p,i)=>{
 });
 
 function drawLegend(){
-  const groups=["대상지","비교사례","교통·호재"];
+  const groups=["대상지","비교사례(직접)","교통·호재"];
   let html='<h2>범례 · 평당가</h2>';
   groups.forEach(g=>{
     html+=`<div class="lg">${g}</div>`;
@@ -101,7 +100,7 @@ function drawLegend(){
   document.getElementById('legend').innerHTML=html;
 }
 drawLegend();
-map.fitBounds(lls,{padding:[120,360],paddingTopLeft:[380,90]});
+map.fitBounds(lls,{paddingTopLeft:[300,120],paddingBottomRight:[80,120],maxZoom:16});
 
 // 타일 로드 완료 신호(헤드리스 렌더 대기용)
 let loaded=0;
