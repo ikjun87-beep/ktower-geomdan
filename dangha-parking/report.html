@@ -27,8 +27,9 @@
   .stitle.sm{ font-size:25px; }
   .stitle b{ color:var(--gold); }
   .srule{ width:58px; height:4px; background:var(--gold); margin:11px 0 0; border-radius:2px; }
-  .sbody{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; min-height:0; }
-  .sbody.spread{ justify-content:space-between; }
+  /* 전 슬라이드 균일 수직 리듬: 일정 gap + 중앙정렬(오와열·여백 균일) */
+  .sbody{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; gap:14px; min-height:0; }
+  .sbody.spread{ justify-content:center; }
   .sbody.top{ justify-content:flex-start; }
   .sfoot{ flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
     border-top:1px solid var(--gold-l); padding-top:6px; margin-top:9px; font-size:10px; color:var(--mut); }
@@ -65,7 +66,7 @@
   p.body{ font-size:16px; line-height:1.7; color:#2a3445; }
   .mut{ color:var(--mut); } .gold{ color:var(--gold-d); font-weight:800; }
   .row{ display:flex; gap:15px; } .row.fill{ flex:1 1 auto; min-height:0; }
-  .col{ flex:1; display:flex; flex-direction:column; }
+  .col{ flex:1; display:flex; flex-direction:column; gap:13px; }
 
   .lead{ font-size:18.5px; line-height:1.55; color:var(--navy); font-weight:700; }
   .lead b{ color:var(--gold-d); }
@@ -110,9 +111,10 @@
   ul.clean li b{ color:var(--gold-d); }
   ul.clean li::before{ content:""; position:absolute; left:0; top:7px; width:10px; height:10px; background:var(--gold); border-radius:2px; transform:rotate(45deg); }
 
-  .facts{ display:grid; grid-template-columns:1fr 1fr; gap:0 26px; }
-  .facts .f{ display:flex; border-bottom:1px solid var(--line); padding:9.5px 2px; font-size:14.5px; }
-  .facts .f .k{ width:88px; color:var(--gold-d); font-weight:800; flex:0 0 auto; }
+  .facts{ display:grid; grid-template-columns:1fr 1fr; gap:0 18px; }
+  .facts .f{ display:flex; border-bottom:1px solid var(--line); padding:9.5px 2px; font-size:14px; }
+  .facts .f .k{ width:64px; color:var(--gold-d); font-weight:800; flex:0 0 auto; }
+  .facts .f .v{ white-space:nowrap; }
   .facts .f .v{ color:#2a3445; }
 
   /* figures (map/도면) */
@@ -206,7 +208,7 @@
           <div class="f"><span class="k">근생</span><span class="v">1~5층 5개층</span></div>
           <div class="f"><span class="k">접도</span><span class="v">13M 도로 3면 접함</span></div>
         </div>
-        <div class="estnote" style="margin-top:12px;">원자료: 건축 도면(설계개요 A-101 · 배치도 A-102 · 평면도 A-201~208), ㈜해인건축사사무소. 면적·대수는 도면 기재값.</div>
+        <div class="estnote">원자료: 건축 도면(설계개요 A-101 · 배치도 A-102 · 평면도 A-201~208), ㈜해인건축사사무소. 면적·대수는 도면 기재값.</div>
       </div>
       <div class="col" style="flex:1;">
         <table>
@@ -219,7 +221,7 @@
             <tr><td class="l"><b>용적률</b></td><td class="c">400% 이하</td><td class="c"><b>363.68%</b></td><td class="c"><span class="tag g">충족</span></td></tr>
           </tbody>
         </table>
-        <div class="call amber" style="margin-top:13px;"><span class="t">경계지표 경고</span>건폐율 79.96%·1층 근생 49.77%는 <b>법정 한계에 근접</b>한다. 설계변경·인허가 단계에서 세 요건(70·30·50%)과 건폐율을 재검증해야 한다. 단, 인허가 리스크 자체는 낮다.</div>
+        <div class="call amber"><span class="t">경계지표 경고</span>건폐율 79.96%·1층 근생 49.77%는 <b>법정 한계에 근접</b>한다. 설계변경·인허가 단계에서 세 요건(70·30·50%)과 건폐율을 재검증해야 한다. 단, 인허가 리스크 자체는 낮다.</div>
       </div>
     </div>
   </div>
@@ -248,7 +250,7 @@
       <div class="kpi"><div class="n">3면</div><div class="l">13M 도로 접면<br>(가시성·진출입 우위)</div></div>
       <div class="kpi bl"><div class="n">2025.6</div><div class="l">인천1호선 아라역<br>개통(역세권)</div></div>
     </div>
-    <table style="margin-top:4px;">
+    <table>
       <thead><tr><th class="l" style="width:22%">개발 호재</th><th style="width:18%">상태</th><th style="width:16%">시점</th><th class="l">핵심 내용</th></tr></thead>
       <tbody>
         <tr><td class="l"><b>인천1호선 검단연장</b></td><td class="c"><span class="tag g">개통(확정)</span></td><td class="c">2025.6.28</td><td class="l">아라역 등 3개역 신설 — 역세권 형성, 주차·근생 접근성 개선</td></tr>
