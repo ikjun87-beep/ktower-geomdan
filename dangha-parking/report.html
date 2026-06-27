@@ -3,20 +3,23 @@
 <head>
 <meta charset="utf-8">
 <title>검단신도시 당하동 1250 주차전용건축물 — 분양성 검토 (적정 분양가·입지·시세)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
   @page { size: 297mm 167mm; margin: 0; }   /* 16:9 가로 */
   * { box-sizing: border-box; margin:0; padding:0; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   :root{
     /* 그래파이트 네이비 + 진짜 골드 강조 (파랑 절제) */
-    --ink:#202733; --navy:#1b2738; --navy2:#2a3a55;
+    --ink:#21262d; --navy:#1b2738; --navy2:#2a3a55;
     --gold:#b3873a; --gold-d:#8f6a2b; --gold-l:#f3ecdc; --gold-b:#d8c191;
-    --paper:#ffffff; --mut:#5d6b7e; --line:#dde3ec; --soft:#f6f8fb;
+    --paper:#ffffff; --mut:#656565; --line:#dfdfdf; --soft:#f5f5f5;
     --blue:#2f6fb0; --red:#c0392b; --amber:#c98a1a; --green:#1e8e5a;
   }
-  body{ font-family:"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400;
-    counter-reset:slidepg; word-break:keep-all; overflow-wrap:break-word; }
-  .serif{ font-family:"Noto Serif KR","Noto Sans KR",serif; }
+  body{ font-family:"Pretendard Variable",Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif; color:var(--ink); background:#5b6675; font-weight:400;
+    counter-reset:slidepg; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+  /* Dabang 규율: 단일 패밀리(Pretendard) — 위계는 크기보다 굵기·위치로. .serif는 호환용 별칭 */
+  .serif{ font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif; letter-spacing:-.4px; }
 
   .slide{ width:297mm; height:167mm; background:#fff; position:relative; overflow:hidden;
     page-break-after:always; margin:0 auto 6mm; padding:13mm 15mm 10mm;
@@ -73,8 +76,8 @@
 
   /* KPI cards */
   .kpis{ display:flex; gap:14px; } .kpis.fill{ flex:1 1 auto; }
-  .kpi{ flex:1; border:1px solid #e3e9f1; border-top:3px solid var(--gold); border-radius:11px;
-    padding:14px 16px; background:#fff; box-shadow:0 3px 12px rgba(21,35,59,.06); display:flex; flex-direction:column; justify-content:center; }
+  .kpi{ flex:1; border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:11px;
+    padding:14px 16px; background:#fff; display:flex; flex-direction:column; justify-content:center; }
   .kpi .n{ font-size:33px; font-weight:800; color:var(--navy); line-height:1.05; }
   .kpi .l{ font-size:13px; color:var(--mut); margin-top:8px; line-height:1.4; }
   .kpi.gd{ border-top-color:var(--gold);} .kpi.gd .n{ color:var(--gold-d);}
@@ -83,12 +86,12 @@
   .kpi.bl{ border-top-color:var(--blue);} .kpi.bl .n{ color:var(--blue);}
 
   /* callout */
-  .call{ border:1px solid #e6ebf2; border-left:4px solid var(--gold); background:#fff; border-radius:8px; padding:14px 18px;
-    font-size:15.5px; line-height:1.65; box-shadow:0 2px 9px rgba(21,35,59,.05); }
+  .call{ border:1px solid var(--line); border-left:4px solid var(--gold); background:#fff; border-radius:8px; padding:14px 18px;
+    font-size:15.5px; line-height:1.65; }
   .call.warn{ border-left-color:var(--red); } .call.ok{ border-left-color:var(--green); }
   .call.amber{ border-left-color:var(--amber); background:#fffaf0; }
   .call.gold{ border-left-color:var(--gold); background:var(--gold-l); }
-  .call .t{ font-weight:800; color:var(--navy); font-size:15px; display:block; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid #eef2f7; }
+  .call .t{ font-weight:800; color:var(--navy); font-size:15px; display:block; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid var(--line); }
   .call.gold .t{ border-bottom-color:#e7d9b6; }
 
   /* tables */
@@ -118,20 +121,20 @@
   .facts .f .v{ color:#2a3445; }
 
   /* figures (map/도면) */
-  .figbox{ border:1px solid var(--line); border-radius:9px; overflow:hidden; background:#fff; display:flex; flex-direction:column; box-shadow:0 2px 9px rgba(21,35,59,.05); }
+  .figbox{ border:1px solid var(--line); border-radius:9px; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
   .figbox .im{ position:relative; flex:1 1 auto; min-height:0; }
-  .figbox .im img{ width:100%; height:100%; object-fit:contain; background:#eef2f7; display:block; }
+  .figbox .im img{ width:100%; height:100%; object-fit:contain; background:var(--soft); display:block; }
   .figbox .im.cover img{ object-fit:cover; }
   .figbox .no{ position:absolute; left:9px; top:9px; background:var(--navy); color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:5px; z-index:2; }
-  .figbox .cap{ flex:0 0 auto; font-size:12.5px; color:var(--mut); padding:8px 12px; border-top:1px solid var(--line); background:#fafcff; line-height:1.45; }
+  .figbox .cap{ flex:0 0 auto; font-size:12.5px; color:var(--mut); padding:8px 12px; border-top:1px solid var(--line); background:var(--soft); line-height:1.45; }
   .figbox .cap b{ color:var(--navy); }
   .dwgrow{ display:flex; gap:14px; flex:1 1 auto; min-height:0; }
   .dwgrow .figbox{ flex:1; }
 
   /* flow */
   .flow{ display:flex; align-items:stretch; gap:0; }
-  .node{ flex:1; border:1px solid #e3e9f1; border-top:3px solid var(--gold); border-radius:9px; padding:13px 13px;
-    display:flex; flex-direction:column; justify-content:flex-start; background:#fff; box-shadow:0 2px 8px rgba(21,35,59,.05); }
+  .node{ flex:1; border:1px solid var(--line); border-top:3px solid var(--gold); border-radius:9px; padding:13px 13px;
+    display:flex; flex-direction:column; justify-content:flex-start; background:#fff; }
   .node .nt{ font-size:14.5px; font-weight:800; color:var(--navy); margin-bottom:5px; }
   .node .nd{ font-size:12.8px; color:var(--mut); line-height:1.5; }
   .arrow{ flex:0 0 24px; display:flex; align-items:center; justify-content:center; color:var(--gold); font-size:19px; font-weight:800; }
