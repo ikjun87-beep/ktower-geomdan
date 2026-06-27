@@ -20,10 +20,22 @@
 그래파이트 네이비 + 골드 강조(파랑 절제). 표지 배경에 `cover_render.png` 슬롯(실사 렌더용) — 미제공 시 블루프린트 텍스처 폴백.
 **다방(Dabang) 디자인 규율 반영:** ① **Pretendard Variable** 단일 패밀리(세리프 제거) — 위계는 크기보다 굵기·위치로 ② **box-shadow 0** — 깊이는 1px 헤어라인(`#dfdfdf`) + 배경 톤(`#f5f5f5`)으로만 ③ 3계층 색 규율 — 골드=브랜드/강조, 회색=콘텐츠, 파란 틴트 제거(근생 경로 카드도 골드 틴트로 통일).
 
-## ⏳ 남은 작업(사용자 몫, 약 5%)
+## ⏳ 남은 작업(사용자 몫)
 1. **표지 실사 렌더 이미지** — `cover_render.png`(가로 16:9, 1600×900↑)를 이 폴더에 넣으면 표지에 자동 합성.
    - 프롬프트: *Photorealistic architectural rendering of a modern 5-story parking-and-retail building in a Korean new town (검단신도시), dusk, glass-and-metal facade, warm-lit ground-floor retail, 3-sided street frontage, ㄷ-shaped massing. Building on the RIGHT; LEFT third dark sky for text. Muted graphite & navy with warm light, subtle gold. 16:9, cinematic. No text.*
-2. **위치도 ①대상지·②K타워 필지 정밀점** — 현재 "인근 블록 추정"(아라역·법조타운·법조타워는 OSM 검증 좌표로 확정). `map_locator_edit.html`을 브라우저로 열어 ①②만 정확한 건물로 드래그 → [좌표 복사] → 전달하면 확정 반영.
+   - 이미지 탐색은 Pinterest(kr.pinterest.com) 우선 참고.
+
+## ✅ 위치도 좌표 — VWorld 지번 지오코딩으로 확정
+모든 핀을 VWorld(국토부 공간정보) 지번 지오코더로 확정. 검증 앵커(KR법조타워 1235-2)가 OSM 좌표와 일치해 교차검증 완료.
+| 핀 | 지번 | 위도 | 경도 |
+|---|---|---|---|
+| ① 대상지 | 당하동 1250 | 37.589292 | 126.708149 |
+| ② The K Tower | 당하동 1237 | 37.591566 | 126.711137 |
+| ③ 선양법조타워 | 당하동 1235-6 | 37.591015 | 126.711648 |
+| ④ 아라역 | 당하동 1238(역 POI) | 37.592259 | 126.713301 |
+| ⑤ 법조타운 | 인천지법 북부지원 | 37.589701 | 126.711991 |
+
+> 갱신 방법: `map_locator.html`의 `PLACES` 좌표 → `map_locator.png` 재렌더(헤드리스). VWorld 호출은 `api.vworld.kr/req/address?...&address=인천광역시 서구 당하동 1250&type=parcel&key=<KEY>` (키는 URL 방식이라 재현 가능).
 
 ## PDF 재생성 (Windows Chrome 헤드리스)
 ```bash
