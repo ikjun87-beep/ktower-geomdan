@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>당하동 1250 위치도 — 핀 정확 보정용 (드래그 후 좌표 복사)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  *{box-sizing:border-box;} html,body{margin:0;height:100%;font-family:"Malgun Gothic",sans-serif;color:#16233a;}
+  #map{position:absolute;inset:0;background:#0a1320;}
+  .card{position:absolute;z-index:1000;background:rgba(255,255,255,.96);border-radius:12px;box-shadow:0 8px 28px rgba(8,18,36,.3);}
+  .help{left:14px;top:14px;max-width:340px;padding:13px 16px;border-top:4px solid #2f6fb0;}
+  .help h1{font-size:16px;margin:0 0 6px;color:#10203b;}
+  .help p{font-size:12.5px;line-height:1.55;margin:5px 0;color:#42505f;}
+  .help b{color:#10203b;} .help .step{color:#2f6fb0;font-weight:800;}
+  .ctrl{right:14px;top:14px;display:flex;flex-direction:column;gap:7px;align-items:flex-end;}
+  .seg{display:flex;background:#fff;border-radius:9px;overflow:hidden;box-shadow:0 4px 14px rgba(8,18,36,.22);}
+  .seg button{border:none;background:transparent;padding:8px 12px;font-size:12px;font-weight:700;color:#56657a;cursor:pointer;}
+  .seg button.on{background:#10203b;color:#fff;}
+  .btn{border:none;border-radius:9px;background:#2f6fb0;color:#fff;padding:10px 15px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 5px 16px rgba(47,111,176,.4);}
+  .btn.ghost{background:#fff;color:#33425a;}
+  .legend{left:14px;bottom:16px;padding:11px 14px;width:330px;font-size:12px;}
+  .legend .li{display:flex;gap:8px;align-items:flex-start;margin:5px 0;}
+  .legend .pn{flex:0 0 18px;height:18px;border-radius:50%;color:#fff;font-size:11px;font-weight:800;text-align:center;line-height:18px;}
+  .legend b{color:#10203b;}
+  .leaflet-tooltip.nm{background:#10203b;border:none;color:#fff;font-weight:700;font-size:11px;padding:2px 8px;border-radius:6px;}
+  .toast{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:1200;background:#10203b;color:#fff;font-size:13px;font-weight:700;padding:10px 20px;border-radius:22px;opacity:0;transition:.3s;}
+  .toast.show{opacity:1;}
+  textarea{position:absolute;right:14px;bottom:16px;z-index:1000;width:330px;height:150px;font-size:11px;font-family:monospace;border:1px solid #cdd6e3;border-radius:9px;padding:9px;display:none;}
+</style>
+</head>
+<body>
+  <div id="map"></div>
+  <div class="card help">
+    <h1>📍 핀 정확 보정용 지도</h1>
+    <p><span class="step">1.</span> 위성지도에서 각 <b>핀을 정확한 건물 위로 드래그</b>하세요. (확정 지번 주소는 핀 클릭 시 표시)</p>
+    <p><span class="step">2.</span> 다 옮기면 우측 하단 <b>[좌표 복사]</b> 클릭 → 자동 복사됨.</p>
+    <p><span class="step">3.</span> 복사된 내용을 <b>채팅에 붙여넣기</b> → 제가 최종 위치도(report·deck)에 반영합니다.</p>
+    <p style="color:#8a96a5">※ 카카오맵/네이버지도를 옆에 띄워 건물 위치를 대조하면 정확합니다.</p>
+  </div>
+  <div class="card ctrl">
+    <div class="seg" id="seg">
+      <button data-b="sat" class="on">위성</button>
+      <button data-b="street">일반</button>
+    </div>
+    <button class="btn ghost" onclick="fitAll()">전체 보기</button>
+    <button class="btn" onclick="copyCoords()">좌표 복사 ⧉</button>
+  </div>
+  <div class="card legend" id="legend"></div>
+  <textarea id="out" readonly></textarea>
+  <div class="toast" id="toast"></div>
+<script>
+// 확정 지번 주소(웹 검색) + 시작 좌표(보정 전 추정) — 사용자가 드래그로 정확히 보정
+const PLACES = [
+  {n:"① 당하동 1250 (대상지)",   q:"인천 서구 당하동 1250 (검단 P2-주9, 주차전용 대상지)", color:"#e0322d", ll:[37.60160,126.68690], big:true},
+  {n:"② The K Tower 검단",       q:"인천 서구 당하동 1237 (검단 C3-①-5)",                color:"#d98a0f", ll:[37.60205,126.68760]},
+  {n:"③ 선양법조타워(비교사례)", q:"인천 서구 당하동 1235-6 (지하1~지상7, 법조타운 인접)", color:"#2f6fb0", ll:[37.60120,126.68625]},
+  {n:"④ 아라역(인천1호선 I109)",  q:"인천 서구 당하동 1238 일원",                          color:"#566377", ll:[37.602386,126.688074]},
+  {n:"⑤ 검단 법조타운",          q:"인천지법 북부지원·지검(선양법조타워 인접)",            color:"#1f8d5b", ll:[37.60055,126.68490]},
+];
+const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'© Esri'});
+const street = L.tileLayer('https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:20,attribution:'© CARTO'});
+const map = L.map('map',{zoomControl:true}).setView([37.6013,126.6868],17);
+let cur='sat'; sat.addTo(map);
+document.getElementById('seg').addEventListener('click',e=>{const b=e.target.dataset.b;if(!b)return;
+  document.querySelectorAll('#seg button').forEach(x=>x.classList.toggle('on',x.dataset.b===b));
+  map.removeLayer(cur==='sat'?sat:street); cur=b; (b==='sat'?sat:street).addTo(map);});
+function pin(c,big){const w=big?34:26,h=big?44:34;
+  return L.divIcon({className:'',html:`<svg width="${w}" height="${h}" viewBox="0 0 30 40"><path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 13 23.5 14.2 24.6a1.1 1.1 0 0 0 1.6 0C17 38.5 30 25.5 30 15 30 6.7 23.3 0 15 0z" fill="${c}" stroke="#fff" stroke-width="2"/><circle cx="15" cy="15" r="6" fill="#fff"/></svg>`,iconSize:[w,h],iconAnchor:[w/2,h],tooltipAnchor:[0,-h+8]});}
+const mks=[];
+PLACES.forEach((p,i)=>{const m=L.marker(p.ll,{icon:pin(p.color,p.big),draggable:true}).addTo(map);
+  m.bindTooltip(p.n,{className:'nm',direction:'top',permanent:true});
+  m.bindPopup(`<b>${p.n}</b><br>${p.q}<br><span style="color:#8a96a5">드래그해서 정확한 위치로</span>`);
+  m.on('dragend',()=>toast('핀 이동됨 — 다 옮기면 [좌표 복사]'));
+  mks.push(m);});
+function fitAll(){map.fitBounds(mks.map(m=>m.getLatLng()),{padding:[80,80]});}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1600);}
+function legend(){document.getElementById('legend').innerHTML='<b>핀 5개 — 정확한 건물로 드래그</b>'+PLACES.map((p,i)=>
+  `<div class="li"><span class="pn" style="background:${p.color}">${i+1}</span><span><b>${p.n.replace(/^[①②③④⑤]\s/,'')}</b><br><span style="color:#7a8696">${p.q}</span></span></div>`).join('');}
+function copyCoords(){const data=PLACES.map((p,i)=>{const ll=mks[i].getLatLng();return{번호:i+1,이름:p.n,주소:p.q,lat:+ll.lat.toFixed(6),lng:+ll.lng.toFixed(6)};});
+  const txt='[위치도 보정 좌표]\n'+JSON.stringify(data,null,2);
+  const ta=document.getElementById('out');ta.style.display='block';ta.value=txt;ta.select();
+  if(navigator.clipboard)navigator.clipboard.writeText(txt);
+  toast('좌표 복사됨 → 채팅에 붙여넣기');}
+legend();
+</script>
+</body>
+</html>
