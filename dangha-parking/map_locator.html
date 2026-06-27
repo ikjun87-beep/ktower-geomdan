@@ -11,8 +11,8 @@
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
   *{box-sizing:border-box;} html,body{margin:0;height:100%;font-family:"Pretendard","Malgun Gothic",sans-serif;color:#16233a;}
   :root{--navy:#10203b;--navy2:#1d3a66;--sky:#2f6fb0;--sky2:#5fa0dd;--red:#e0322d;--amber:#d98a0f;--green:#1f8d5b;--slate:#566377;--line:#dde4ee;}
-  /* 보고서 figure 비율(가로형)로 고정 */
-  #wrap{position:relative;width:1280px;height:760px;overflow:hidden;}
+  /* 보고서 figure 비율(와이드)로 고정 — 슬라이드 본문 꽉 차게 */
+  #wrap{position:relative;width:1680px;height:680px;overflow:hidden;}
   #map{position:absolute;inset:0;background:#0a1320;}
   .leaflet-container{font-family:inherit;}
 
@@ -100,7 +100,7 @@ function drawLegend(){
   document.getElementById('legend').innerHTML=html;
 }
 drawLegend();
-map.fitBounds(lls,{paddingTopLeft:[300,120],paddingBottomRight:[80,120],maxZoom:16});
+map.fitBounds(lls,{paddingTopLeft:[372,86],paddingBottomRight:[64,96],maxZoom:17});
 
 // 타일 로드 완료 신호(헤드리스 렌더 대기용)
 let loaded=0;
