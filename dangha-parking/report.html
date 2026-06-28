@@ -24,11 +24,15 @@
   .slide{ width:297mm; height:167mm; background:#fff; position:relative; overflow:hidden;
     page-break-after:always; margin:0 auto 6mm; padding:13mm 15mm 10mm;
     display:flex; flex-direction:column; counter-increment:slidepg; }
-  .shead{ flex:0 0 auto; margin-bottom:8px; }
-  .skick{ font-size:12px; letter-spacing:4px; color:var(--gold); font-weight:800; text-transform:uppercase; }
-  .stitle{ font-size:30px; font-weight:800; color:var(--navy); margin-top:4px; line-height:1.16; letter-spacing:-.3px; }
+  /* 표지 톤앤매너: 전 슬라이드 상단 풀블리드 다크 그래파이트 헤더 밴드(골드 강조), 본문은 밝게 */
+  .shead{ flex:0 0 auto; margin:-13mm -15mm 14px -15mm; padding:13mm 15mm 12px 15mm; position:relative;
+    background:linear-gradient(105deg,#16212f 0%,#26384f 56%,#1a2636 100%); border-bottom:2px solid var(--gold); }
+  .shead::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-d) 100%); }
+  .skick{ font-size:12px; letter-spacing:4px; color:var(--gold-b); font-weight:800; text-transform:uppercase; }
+  .stitle{ font-size:30px; font-weight:800; color:#f3f6fb; margin-top:4px; line-height:1.16; letter-spacing:-.3px; }
   .stitle.sm{ font-size:25px; }
-  .stitle b{ color:var(--gold); }
+  .stitle b{ color:#e6c884; }
   .srule{ width:58px; height:4px; background:var(--gold); margin:11px 0 0; border-radius:2px; }
   /* 전 슬라이드 균일 수직 리듬: 일정 gap + 중앙정렬(오와열·여백 균일) */
   .sbody{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:center; gap:14px; min-height:0; }
